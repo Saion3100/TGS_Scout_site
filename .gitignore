@@ -1,0 +1,14 @@
+# Local environment
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# PHP tooling
+/vendor/
+.phpunit.result.cache
