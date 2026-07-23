@@ -1,66 +1,75 @@
 <?php
 declare(strict_types=1);
-
-require_once dirname(__DIR__) . '/src/JsonRepository.php';
-
-$repository = new JsonRepository(dirname(__DIR__) . '/data/scouts.json');
-$scouts = $repository->all();
-function escape(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
+require_once dirname(__DIR__) . '/src/bootstrap.php';
+$teams = data('teams');
+$students = array_values(array_filter(data('students'), fn(array $s): bool => (bool) ($s['is_active'] ?? false)));
+renderHeader();
 ?>
-<!doctype html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TGS Scout | Talent directory</title>
-    <link rel="stylesheet" href="/assets/style.css">
-</head>
-<body>
-    <header class="site-header">
-        <a class="brand" href="/">TGS<span>Scout</span></a>
-        <span class="header-label">Talent directory / 2026</span>
-    </header>
+<section class="home-hero">
+    <div class="hero-copy">
+        <p class="kicker"><span></span>TOKYO GAME SHOW 2026</p>
+        <h1>つくったゲームから、<br><em>つくった人</em>へ。</h1>
+        <p class="lead">試遊で感じた「おもしろい」の先にいる、学生クリエイターの技術と実績を紹介します。</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="/teams.php">作品から探す <span>→</span></a>
+            <a class="text-link" href="/students.php">職種・技術から学生を探す <span>↗</span></a>
+        </div>
+    </div>
+    <div class="hero-visual" aria-label="TGS出展学生作品">
+        <div class="visual-type">PLAY<br><span>MEET</span><br>CREATE</div>
+        <span class="visual-badge">TGS<br>2026</span>
+        <div class="visual-caption">STUDENT GAME CREATORS<br>PORTFOLIO DIRECTORY</div>
+    </div>
+    <div class="scroll-cue">SCROLL <span>↓</span></div>
+</section>
 
-    <main>
-        <section class="hero">
-            <p class="eyebrow">Find the people who move ideas forward</p>
-            <h1>チームの次の一手を、<br><em>人</em>から見つける。</h1>
-            <p class="hero-copy">技術と視点を持つスカウト候補を、シンプルなデータで見つけるためのディレクトリ。</p>
-            <div class="hero-meta"><strong><?= count($scouts) ?></strong> profiles indexed <span></span> JSON powered</div>
-        </section>
+<section class="intro section-pad">
+    <p class="section-number">01 — ABOUT</p>
+    <div class="intro-grid">
+        <h2>作品の裏側にいる、<br>一人ひとりの力を見る。</h2>
+        <div>
+            <p>TGS SCOUTは、展示ゲームを起点に学生の担当箇所や技術、ポートフォリオへつながる企業担当者向けサイトです。</p>
+            <p>気になる学生へのご連絡は学校が窓口となり、面談・採用・インターンのご相談をおつなぎします。</p>
+        </div>
+    </div>
+</section>
 
-        <section class="directory" aria-labelledby="directory-title">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">Current roster</p>
-                    <h2 id="directory-title">Scout profiles</h2>
-                </div>
-                <a class="api-link" href="/api/scouts.php">View JSON API <span>↗</span></a>
+<section class="featured section-pad">
+    <div class="section-head">
+        <div><p class="section-number">02 — FEATURED GAMES</p><h2>出展作品</h2></div>
+        <a class="text-link" href="/teams.php">すべての作品を見る <span>→</span></a>
+    </div>
+    <div class="team-grid">
+        <?php foreach ($teams as $i => $team): ?>
+        <a class="team-card theme-<?= e($team['theme']) ?>" href="/team_detail.php?id=<?= e($team['id']) ?>">
+            <div class="game-art">
+                <span class="game-number">0<?= $i + 1 ?></span>
+                <strong><?= e($team['game_name']) ?></strong>
             </div>
-            <div class="profile-grid">
-                <?php foreach ($scouts as $scout): ?>
-                    <article class="profile-card">
-                        <div class="profile-top">
-                            <span class="avatar"><?= escape(mb_substr((string) $scout['name'], 0, 1)) ?></span>
-                            <span class="status"><?= escape((string) $scout['status']) ?></span>
-                        </div>
-                        <h3><?= escape((string) $scout['name']) ?></h3>
-                        <p class="role"><?= escape((string) $scout['role']) ?></p>
-                        <p class="location">◎ <?= escape((string) $scout['location']) ?></p>
-                        <div class="skills">
-                            <?php foreach ($scout['skills'] as $skill): ?>
-                                <span><?= escape((string) $skill) ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
+            <div class="team-card-body">
+                <span><?= e($team['genre']) ?></span>
+                <h3><?= e($team['game_name']) ?></h3>
+                <p><?= e($team['catchcopy']) ?></p>
+                <small>BOOTH <?= e($team['booth_no']) ?></small>
             </div>
-        </section>
-    </main>
+        </a>
+        <?php endforeach; ?>
+    </div>
+</section>
 
-    <footer>Built with PHP + JSON <span>•</span> TGS Scout</footer>
-</body>
-</html>
+<section class="people section-pad">
+    <div class="section-head">
+        <div><p class="section-number">03 — CREATORS</p><h2>学生クリエイター</h2></div>
+        <a class="text-link" href="/students.php">すべての学生を見る <span>→</span></a>
+    </div>
+    <div class="student-grid">
+        <?php foreach (array_slice($students, 0, 4) as $student) studentCard($student); ?>
+    </div>
+</section>
+
+<section class="contact-band">
+    <p>FOR RECRUITERS / COMPANIES</p>
+    <h2>気になる作品・学生が<br>見つかりましたか？</h2>
+    <a class="button button-white" href="/contact.php">学校へ問い合わせる <span>→</span></a>
+</section>
+<?php renderFooter(); ?>

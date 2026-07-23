@@ -1,0 +1,35 @@
+[
+  {
+    "id": "t01",
+    "game_name": "RE:FRAME",
+    "genre": "視点変換アクションパズル",
+    "booth_no": "09-C01",
+    "catchcopy": "見方を変えれば、道はひらく。",
+    "description": "カメラの角度によって足場のつながり方が変化する、3Dアクションパズル。ひらめきと操作が一体になる瞬間を目指しました。",
+    "highlights": ["視点で地形が変化", "直感的なアクション", "独自シェーダー表現"],
+    "theme": "red",
+    "video_url": ""
+  },
+  {
+    "id": "t02",
+    "game_name": "LUMINOUS TIDE",
+    "genre": "深海探索アドベンチャー",
+    "booth_no": "09-C02",
+    "catchcopy": "光をたよりに、記憶の海へ。",
+    "description": "光を失った深海を進み、生き物たちの記憶を集める探索ゲーム。音と光が導く静かな冒険を体験できます。",
+    "highlights": ["光を操る探索", "環境音による誘導", "手描きの生物図鑑"],
+    "theme": "navy",
+    "video_url": ""
+  },
+  {
+    "id": "t03",
+    "game_name": "KITCHEN RAIDERS",
+    "genre": "協力型クッキングアクション",
+    "booth_no": "09-C03",
+    "catchcopy": "連携できなきゃ、店が飛ぶ。",
+    "description": "二人で声を掛け合い、暴走する厨房を切り抜ける協力アクション。短時間でも盛り上がる役割分担を設計しました。",
+    "highlights": ["2人協力プレイ", "毎回変わる厨房", "短時間で遊べる"],
+    "theme": "yellow",
+    "video_url": ""
+  }
+]
