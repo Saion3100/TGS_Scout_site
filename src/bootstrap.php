@@ -19,6 +19,15 @@ function e(mixed $value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function firstCharacter(string $value): string
+{
+    if (function_exists('mb_substr')) {
+        return mb_substr($value, 0, 1, 'UTF-8');
+    }
+
+    return preg_match('/^./us', $value, $matches) === 1 ? $matches[0] : '';
+}
+
 function findById(array $items, string $id): ?array
 {
     foreach ($items as $item) {
@@ -119,8 +128,8 @@ function studentCard(array $student): void
 {
     ?>
 <a class="student-card" href="/student_detail.php?id=<?= e($student['id']) ?>">
-    <span class="card-index"><?= e(str_pad((string) array_search($student, data('students'), true) + 1, 2, '0', STR_PAD_LEFT)) ?></span>
-    <div class="portrait" aria-hidden="true"><span><?= e(mb_substr($student['name'], 0, 1)) ?></span></div>
+    <span class="card-index"><?= e(str_pad((string) (array_search($student, data('students'), true) + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+    <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span></div>
     <div class="student-card-body">
         <span class="role-label"><?= e($student['role_ja']) ?></span>
         <h3><?= e($student['name']) ?></h3>

@@ -12,7 +12,7 @@ renderHeader($student['name'], 'students');
 <section class="profile-hero">
     <div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/students.php">CREATORS</a><span>/</span><?= e($student['name']) ?></div>
     <div class="profile-hero-grid">
-        <div class="profile-portrait"><span><?= e(mb_substr($student['name'], 0, 1)) ?></span><small>CREATOR PROFILE</small></div>
+        <div class="profile-portrait"><span><?= e(firstCharacter($student['name'])) ?></span><small>CREATOR PROFILE</small></div>
         <div class="profile-title">
             <span class="role-label"><?= e($student['role_ja']) ?></span>
             <h1><?= e($student['name']) ?></h1>
