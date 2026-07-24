@@ -89,6 +89,7 @@ function renderHeader(string $title = '', string $current = ''): void
 <body>
 <header class="site-header">
     <a class="brand" href="/" aria-label="TGS Scout ホーム">
+        <img class="brand-logo" src="/assets/KRClogo.jpg" alt="KRC">
         <span class="brand-mark">TGS</span><span>SCOUT</span><small>2026</small>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">MENU</button>
