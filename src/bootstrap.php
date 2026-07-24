@@ -49,6 +49,8 @@ function teamMembers(string $teamId): array
         $student = findById($students, $relation['student_id']);
         if ($student && ($student['is_active'] ?? false)) {
             $student['team_role'] = $relation['role'];
+            $student['team_role_group'] = $relation['role_group'] ?? $student['role_ja'];
+            $student['team_responsibility'] = $relation['responsibility'] ?? '';
             $members[] = $student;
         }
     }
@@ -96,6 +98,8 @@ function renderHeader(string $title = '', string $current = ''): void
     <nav id="global-nav" class="global-nav" aria-label="メインナビゲーション">
         <a class="<?= $current === 'teams' ? 'is-current' : '' ?>" href="/teams.php">作品を探す</a>
         <a class="<?= $current === 'students' ? 'is-current' : '' ?>" href="/students.php">学生を探す</a>
+        <a class="<?= $current === 'roles' ? 'is-current' : '' ?>" href="/roles.php">職種から探す</a>
+        <a class="<?= $current === 'guide' ? 'is-current' : '' ?>" href="/guide.php">企業の方へ</a>
         <a class="nav-contact <?= $current === 'contact' ? 'is-current' : '' ?>" href="/contact.php">学校へ問い合わせ</a>
     </nav>
 </header>
@@ -115,7 +119,10 @@ function renderFooter(): void
     <div class="footer-links">
         <a href="/teams.php">出展作品</a>
         <a href="/students.php">学生一覧</a>
+        <a href="/roles.php">職種別一覧</a>
+        <a href="/guide.php">企業向け案内</a>
         <a href="/contact.php">お問い合わせ</a>
+        <a href="/privacy.php">プライバシーポリシー</a>
     </div>
     <small>© 2026 TGS SCOUT PROJECT</small>
 </footer>
@@ -135,6 +142,7 @@ function studentCard(array $student): void
         <span class="role-label"><?= e($student['role_ja']) ?></span>
         <h3><?= e($student['name']) ?></h3>
         <p class="name-en"><?= e($student['name_en']) ?></p>
+        <p class="student-meta"><?= e($student['grade'] ?? '') ?> / <?= e($student['graduation_year'] ?? '') ?></p>
         <div class="tag-list">
             <?php foreach (array_slice($student['skills'], 0, 3) as $skill): ?><span><?= e($skill) ?></span><?php endforeach; ?>
         </div>

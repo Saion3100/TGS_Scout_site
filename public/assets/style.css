@@ -4,4 +4,45 @@
 @media(max-width:900px){.global-nav{gap:18px}.home-hero{grid-template-columns:1fr}.hero-copy{min-height:640px;padding-left:8vw;padding-right:8vw}.hero-visual{min-height:520px}.scroll-cue{display:none}.intro-grid{grid-template-columns:1fr;gap:35px}.team-grid{grid-template-columns:repeat(2,1fr)}.student-grid,.student-grid-list{grid-template-columns:repeat(2,1fr)}.contact-band{grid-template-columns:1fr}.detail-hero-grid{grid-template-columns:1fr}.profile-hero-grid{grid-template-columns:300px 1fr;gap:40px}.profile-portrait{height:400px}.contact-layout{grid-template-columns:1fr;gap:40px}.contact-layout aside{position:static}}
 @media(max-width:640px){.site-header{height:68px;padding:0 20px}.nav-toggle{display:block}.global-nav{display:none;position:absolute;top:68px;left:0;right:0;height:auto;background:#fff;padding:18px 20px 25px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line)}.global-nav.is-open{display:flex}.global-nav a{min-height:52px}.global-nav a.is-current:after{display:none}.global-nav .nav-contact{justify-content:center}.hero-copy{min-height:590px;padding:65px 28px}.home-hero h1{font-size:49px}.hero-actions{align-items:flex-start;flex-direction:column;gap:14px}.hero-visual{min-height:430px}.visual-type{font-size:67px}.section-pad{padding:70px 22px}.intro-grid h2,.section-head h2,.listing h2{font-size:34px}.section-head{align-items:flex-start;gap:25px;flex-direction:column}.team-grid,.team-grid-large,.student-grid,.student-grid-list{grid-template-columns:1fr}.team-grid-large .game-art{height:280px}.contact-band{padding:70px 24px}.site-footer{grid-template-columns:1fr}.footer-links{flex-direction:column;gap:12px}.page-hero{padding:65px 22px}.page-hero h1{font-size:50px}.breadcrumbs{margin-bottom:45px;overflow:hidden}.detail-hero,.profile-hero{padding:28px 22px 65px}.detail-hero h1{font-size:60px}.detail-art{height:320px}.detail-cta{padding:45px 22px;align-items:flex-start;flex-direction:column;gap:25px}.filters{flex-direction:column}.filter-row{display:grid;grid-template-columns:1fr 1fr}.search-box{min-width:0}.profile-hero-grid{grid-template-columns:1fr}.profile-portrait{height:390px}.profile-title h1{font-size:55px}.contact-form{padding:25px 18px}.form-row{grid-template-columns:1fr}.portfolio-frame,.portfolio-placeholder{height:420px}}
 .brand-logo{width:52px;height:52px;object-fit:cover;margin-right:12px}
+.student-meta,.profile-meta,.team-name{font-size:11px;color:var(--muted);line-height:1.8}[data-team][hidden]{display:none}.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.facts-grid>div{min-height:125px;padding:25px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:13px}.facts-grid span{font-size:9px;color:var(--red);font-weight:800;letter-spacing:.1em}.facts-grid strong{font-size:16px}.control-list{list-style:none;padding:0;margin:0}.control-list li{padding:18px 0;border-top:1px solid var(--line);font-weight:700}.control-list li:last-child{border-bottom:1px solid var(--line)}.team-member-grid{align-items:stretch}.team-member-item{display:flex;min-width:0;flex-direction:column}.team-member-item .student-card{flex:1}.member-role{margin:0 0 6px;color:var(--red);font-size:10px;font-weight:800;letter-spacing:.08em}.member-duty{font-size:11px;min-height:32px;margin:0 0 12px;color:var(--muted)}.filter-selects{display:flex;gap:10px;flex-wrap:wrap}.filter-selects label{font-size:9px;font-weight:800;color:var(--muted)}.filter-selects select{display:block;border:1px solid var(--line);background:#fff;padding:9px 26px 9px 10px;margin-top:5px;min-height:40px}.resource-actions{display:flex;gap:8px;flex-wrap:wrap}.button-outline{border:1px solid var(--ink);background:#fff}.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.steps-grid article{background:#fff;padding:40px;min-height:240px}.steps-grid article>span{font-size:11px;color:var(--red);font-weight:800}.steps-grid h2{font-size:25px;margin-top:35px}.steps-grid p,.policy p{color:var(--muted);line-height:2}.soft-section{background:var(--soft)}.policy{max-width:900px;margin:auto}.policy h2{font-size:24px;margin:50px 0 10px;border-bottom:1px solid var(--line);padding-bottom:15px}.policy h2:first-child{margin-top:0}.privacy-check{display:block;font-size:12px;margin:25px 0}.privacy-check input{display:inline!important;width:auto!important}.privacy-check a{text-decoration:underline}
 @media(max-width:640px){.brand-logo{width:42px;height:42px;margin-right:9px}}
+@media(max-width:900px){.facts-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}.filter-selects{width:100%}}
+@media(max-width:640px){.facts-grid,.steps-grid{grid-template-columns:1fr}.filter-selects{display:grid;grid-template-columns:1fr 1fr}.filter-selects select{width:100%}.global-nav{overflow-y:auto;max-height:calc(100vh - 68px)}}
+
+/* Small labels remain readable on desktop and mobile. */
+.brand small,
+.section-number,
+.game-number,
+.team-card-body>span,
+.role-label,
+.team-card-body small,
+.card-index,
+.name-en,
+.contact-band p,
+.site-footer>small,
+.breadcrumbs,
+.count-label,
+.profile-portrait small,
+.filter-selects label,
+.member-role,
+.facts-grid span,
+.steps-grid article>span,
+.contact-form b {
+    font-size:12px;
+    line-height:1.5;
+}
+
+.tag-list span,
+.filter-button,
+.contact-layout dl,
+.contact-form>fieldset>label,
+.form-row label,
+.form-note,
+.privacy-check,
+.student-meta,
+.profile-meta,
+.team-name,
+.member-duty {
+    font-size:13px;
+    line-height:1.6;
+}

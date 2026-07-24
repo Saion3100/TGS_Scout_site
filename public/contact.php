@@ -22,6 +22,8 @@ renderHeader('お問い合わせ', 'contact');
     </aside>
     <form class="contact-form" action="/contact.php?sent=1" method="get" data-contact-form>
         <input type="hidden" name="sent" value="1">
+        <?php if ($student): ?><input type="hidden" name="student_id" value="<?= e($student['id']) ?>"><?php endif; ?>
+        <?php if ($team): ?><input type="hidden" name="team_id" value="<?= e($team['id']) ?>"><?php endif; ?>
         <fieldset>
             <legend><span>01</span>お問い合わせの目的 <b>必須</b></legend>
             <?php
@@ -33,13 +35,17 @@ renderHeader('お問い合わせ', 'contact');
         <fieldset>
             <legend><span>02</span>企業・ご担当者情報</legend>
             <label>企業名 <b>必須</b><input name="company" required autocomplete="organization"></label>
+            <div class="form-row"><label>部署名<input name="department" autocomplete="organization-title"></label><label>役職<input name="position" autocomplete="organization-title"></label></div>
             <div class="form-row"><label>お名前 <b>必須</b><input name="name" required autocomplete="name"></label><label>メールアドレス <b>必須</b><input type="email" name="email" required autocomplete="email"></label></div>
+            <div class="form-row"><label>電話番号<input type="tel" name="phone" autocomplete="tel"></label><label>企業Webサイト<input type="url" name="website" placeholder="https://"></label></div>
         </fieldset>
         <fieldset>
             <legend><span>03</span>ご相談内容</legend>
             <label>対象の作品・学生<input name="subject" value="<?= e($subject) ?>" placeholder="作品名または学生名"></label>
+            <label>希望連絡時期<input name="preferred_time" placeholder="例：2026年10月上旬"></label>
             <label>メッセージ<textarea name="message" rows="7" placeholder="ご相談内容をご記入ください"></textarea></label>
         </fieldset>
+        <label class="privacy-check"><input type="checkbox" name="privacy_agreed" required> <a href="/privacy.php" target="_blank">プライバシーポリシー</a>に同意する <b>必須</b></label>
         <p class="form-note">※ 現在はデモ版のため、入力内容は送信されません。</p>
         <button class="button button-primary submit-button" type="submit">入力内容を確認する <span>→</span></button>
     </form>

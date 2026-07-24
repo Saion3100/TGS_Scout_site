@@ -21,6 +21,16 @@ renderHeader($team['game_name'], 'teams');
         <div class="detail-art"><strong><?= e($team['game_name']) ?></strong><span>PLAYABLE AT TGS 2026</span></div>
     </div>
 </section>
+<section class="game-facts section-pad">
+    <div class="facts-grid">
+        <div><span>制作チーム</span><strong><?= e($team['team_name']) ?></strong></div>
+        <div><span>プレイ人数</span><strong><?= e($team['players']) ?></strong></div>
+        <div><span>対応機種</span><strong><?= e(implode(' / ', $team['platforms'])) ?></strong></div>
+        <div><span>使用エンジン</span><strong><?= e($team['engine']) ?></strong></div>
+        <div><span>制作期間</span><strong><?= e($team['production_period']) ?></strong></div>
+        <div><span>試遊台</span><strong><?= e($team['booth_no']) ?></strong></div>
+    </div>
+</section>
 <section class="game-about section-pad">
     <p class="section-number">01 — ABOUT THE GAME</p>
     <div class="intro-grid">
@@ -30,12 +40,24 @@ renderHeader($team['game_name'], 'teams');
         </div>
     </div>
 </section>
+<section class="controls section-pad">
+    <p class="section-number">02 — HOW TO PLAY</p>
+    <div class="intro-grid"><h2>操作方法</h2><ul class="control-list"><?php foreach ($team['controls'] as $control): ?><li><?= e($control) ?></li><?php endforeach; ?></ul></div>
+</section>
 <?php if (!empty($team['video_url'])): ?>
 <section class="media-section section-pad"><iframe src="<?= e($team['video_url']) ?>" title="<?= e($team['game_name']) ?> 紹介動画" loading="lazy" allowfullscreen></iframe></section>
 <?php endif; ?>
 <section class="members section-pad">
-    <div class="section-head"><div><p class="section-number">02 — TEAM MEMBERS</p><h2>この作品をつくった学生</h2></div><span class="count-label"><?= count($members) ?> CREATORS</span></div>
-    <div class="student-grid"><?php foreach ($members as $member) studentCard($member); ?></div>
+    <div class="section-head"><div><p class="section-number">03 — TEAM MEMBERS</p><h2>この作品をつくった学生</h2></div><span class="count-label"><?= count($members) ?> CREATORS</span></div>
+    <div class="student-grid team-member-grid">
+        <?php foreach ($members as $member): ?>
+        <div class="team-member-item">
+            <p class="member-role"><?= e($member['team_role_group']) ?> / <?= e($member['team_role']) ?></p>
+            <p class="member-duty"><?= e($member['team_responsibility']) ?></p>
+            <?php studentCard($member); ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
 </section>
 <section class="detail-cta"><p>この作品について詳しく聞きたい</p><a class="button button-primary" href="/contact.php?team=<?= e($team['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
 <?php renderFooter(); ?>
