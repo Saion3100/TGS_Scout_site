@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/src/bootstrap.php';
+require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $studentId = filter_input(INPUT_GET, 'student', FILTER_UNSAFE_RAW) ?: '';
 $teamId = filter_input(INPUT_GET, 'team', FILTER_UNSAFE_RAW) ?: '';
 $student = $studentId ? findById(data('students'), $studentId) : null;
@@ -20,7 +20,7 @@ renderHeader('お問い合わせ', 'contact');
         <p>学生個人への直接連絡ではなく、学校が窓口となって適切におつなぎします。</p>
         <dl><dt>受付内容</dt><dd>採用、面談、インターン、学校説明会、産学連携</dd><dt>現在の対象</dt><dd><?= $subject ? e($subject) : '指定なし' ?></dd></dl>
     </aside>
-    <form class="contact-form" action="/contact.php?sent=1" method="get" data-contact-form>
+    <form class="contact-form" action="<?= e(url('contact.php')) ?>" method="get" data-contact-form>
         <input type="hidden" name="sent" value="1">
         <?php if ($student): ?><input type="hidden" name="student_id" value="<?= e($student['id']) ?>"><?php endif; ?>
         <?php if ($team): ?><input type="hidden" name="team_id" value="<?= e($team['id']) ?>"><?php endif; ?>
@@ -45,7 +45,7 @@ renderHeader('お問い合わせ', 'contact');
             <label>希望連絡時期<input name="preferred_time" placeholder="例：2026年10月上旬"></label>
             <label>メッセージ<textarea name="message" rows="7" placeholder="ご相談内容をご記入ください"></textarea></label>
         </fieldset>
-        <label class="privacy-check"><input type="checkbox" name="privacy_agreed" required> <a href="/privacy.php" target="_blank">プライバシーポリシー</a>に同意する <b>必須</b></label>
+        <label class="privacy-check"><input type="checkbox" name="privacy_agreed" required> <a href="<?= e(url('privacy.php')) ?>" target="_blank">プライバシーポリシー</a>に同意する <b>必須</b></label>
         <p class="form-note">※ 現在はデモ版のため、入力内容は送信されません。</p>
         <button class="button button-primary submit-button" type="submit">入力内容を確認する <span>→</span></button>
     </form>

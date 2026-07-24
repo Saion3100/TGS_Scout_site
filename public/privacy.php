@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/src/bootstrap.php';
+require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 renderHeader('プライバシーポリシー');
 ?>
 <section class="page-hero"><p class="section-number">PRIVACY POLICY</p><h1>プライバシーポリシー</h1><p>TGS SCOUT 2026における個人情報の取り扱いについて。</p></section>

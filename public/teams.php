@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/src/bootstrap.php';
+require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $teams = data('teams');
 renderHeader('出展作品', 'teams');
 ?>
@@ -21,7 +21,7 @@ renderHeader('出展作品', 'teams');
     <div class="listing-meta"><strong><?= count($teams) ?></strong> GAMES <span>TGS 2026 EXHIBITION</span></div>
     <div class="team-grid team-grid-large">
         <?php foreach ($teams as $i => $team): ?>
-        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e($team['genre']) ?>" data-engine="<?= e($team['engine']) ?>" data-platform="<?= e(implode(' ', $team['platforms'])) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name'] . ' ' . $team['booth_no']) ?>" href="/team_detail.php?id=<?= e($team['id']) ?>">
+        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e($team['genre']) ?>" data-engine="<?= e($team['engine']) ?>" data-platform="<?= e(implode(' ', $team['platforms'])) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name'] . ' ' . $team['booth_no']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
             <div class="game-art">
                 <span class="game-number">0<?= $i + 1 ?></span>
                 <strong><?= e($team['game_name']) ?></strong>

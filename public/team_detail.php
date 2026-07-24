@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/src/bootstrap.php';
+require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW) ?: '';
 $team = findById(data('teams'), $id);
 if (!$team) { http_response_code(404); renderHeader('作品が見つかりません'); ?>
-<section class="empty-state"><p>404</p><h1>作品が見つかりません</h1><a class="button button-primary" href="/teams.php">作品一覧へ戻る</a></section>
+<section class="empty-state"><p>404</p><h1>作品が見つかりません</h1><a class="button button-primary" href="<?= e(url('teams.php')) ?>">作品一覧へ戻る</a></section>
 <?php renderFooter(); exit; }
 $members = teamMembers($id);
 renderHeader($team['game_name'], 'teams');
 ?>
 <section class="detail-hero theme-<?= e($team['theme']) ?>">
-    <div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/teams.php">GAMES</a><span>/</span><?= e($team['game_name']) ?></div>
+    <div class="breadcrumbs"><a href="<?= e(url()) ?>">HOME</a><span>/</span><a href="<?= e(url('teams.php')) ?>">GAMES</a><span>/</span><?= e($team['game_name']) ?></div>
     <div class="detail-hero-grid">
         <div>
             <p class="kicker"><span></span><?= e($team['genre']) ?></p>
@@ -59,5 +59,5 @@ renderHeader($team['game_name'], 'teams');
         <?php endforeach; ?>
     </div>
 </section>
-<section class="detail-cta"><p>この作品について詳しく聞きたい</p><a class="button button-primary" href="/contact.php?team=<?= e($team['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
+<section class="detail-cta"><p>この作品について詳しく聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?team=<?= e($team['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
 <?php renderFooter(); ?>

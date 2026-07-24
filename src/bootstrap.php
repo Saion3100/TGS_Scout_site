@@ -4,6 +4,12 @@ declare(strict_types=1);
 require_once __DIR__ . '/JsonRepository.php';
 
 const DATA_DIR = __DIR__ . '/../data';
+const BASE_PATH = '/it-work/TGS_Scout';
+
+function url(string $path = ''): string
+{
+    return BASE_PATH . ($path === '' || $path === '/' ? '/' : '/' . ltrim($path, '/'));
+}
 
 function data(string $name): array
 {
@@ -14,7 +20,7 @@ function data(string $name): array
     return $cache[$name];
 }
 
-function e(mixed $value): string
+function e($value): string
 {
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
@@ -86,21 +92,21 @@ function renderHeader(string $title = '', string $current = ''): void
     <meta name="robots" content="noindex,nofollow,noarchive">
     <meta name="theme-color" content="#e60012">
     <title><?= e($fullTitle) ?></title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="<?= e(url('assets/style.css')) ?>">
 </head>
 <body>
 <header class="site-header">
-    <a class="brand" href="/" aria-label="TGS Scout ホーム">
-        <img class="brand-logo" src="/assets/KRClogo.jpg" alt="KRC">
+    <a class="brand" href="<?= e(url()) ?>" aria-label="TGS Scout ホーム">
+        <img class="brand-logo" src="<?= e(url('assets/KRClogo.jpg')) ?>" alt="KRC">
         <span class="brand-mark">TGS</span><span>SCOUT</span><small>2026</small>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">MENU</button>
     <nav id="global-nav" class="global-nav" aria-label="メインナビゲーション">
-        <a class="<?= $current === 'teams' ? 'is-current' : '' ?>" href="/teams.php">作品を探す</a>
-        <a class="<?= $current === 'students' ? 'is-current' : '' ?>" href="/students.php">学生を探す</a>
-        <a class="<?= $current === 'roles' ? 'is-current' : '' ?>" href="/roles.php">職種から探す</a>
-        <a class="<?= $current === 'guide' ? 'is-current' : '' ?>" href="/guide.php">企業の方へ</a>
-        <a class="nav-contact <?= $current === 'contact' ? 'is-current' : '' ?>" href="/contact.php">学校へ問い合わせ</a>
+        <a class="<?= $current === 'teams' ? 'is-current' : '' ?>" href="<?= e(url('teams.php')) ?>">作品を探す</a>
+        <a class="<?= $current === 'students' ? 'is-current' : '' ?>" href="<?= e(url('students.php')) ?>">学生を探す</a>
+        <a class="<?= $current === 'roles' ? 'is-current' : '' ?>" href="<?= e(url('roles.php')) ?>">職種から探す</a>
+        <a class="<?= $current === 'guide' ? 'is-current' : '' ?>" href="<?= e(url('guide.php')) ?>">企業の方へ</a>
+        <a class="nav-contact <?= $current === 'contact' ? 'is-current' : '' ?>" href="<?= e(url('contact.php')) ?>">学校へ問い合わせ</a>
     </nav>
 </header>
 <main>
@@ -113,20 +119,20 @@ function renderFooter(): void
 </main>
 <footer class="site-footer">
     <div>
-        <a class="brand brand-footer" href="/"><span class="brand-mark">TGS</span><span>SCOUT</span><small>2026</small></a>
+        <a class="brand brand-footer" href="<?= e(url()) ?>"><span class="brand-mark">TGS</span><span>SCOUT</span><small>2026</small></a>
         <p>ゲームを遊ぶだけで終わらせない。<br>つくった学生の技術と実績へ、その場でつながる。</p>
     </div>
     <div class="footer-links">
-        <a href="/teams.php">出展作品</a>
-        <a href="/students.php">学生一覧</a>
-        <a href="/roles.php">職種別一覧</a>
-        <a href="/guide.php">企業向け案内</a>
-        <a href="/contact.php">お問い合わせ</a>
-        <a href="/privacy.php">プライバシーポリシー</a>
+        <a href="<?= e(url('teams.php')) ?>">出展作品</a>
+        <a href="<?= e(url('students.php')) ?>">学生一覧</a>
+        <a href="<?= e(url('roles.php')) ?>">職種別一覧</a>
+        <a href="<?= e(url('guide.php')) ?>">企業向け案内</a>
+        <a href="<?= e(url('contact.php')) ?>">お問い合わせ</a>
+        <a href="<?= e(url('privacy.php')) ?>">プライバシーポリシー</a>
     </div>
     <small>© 2026 TGS SCOUT PROJECT</small>
 </footer>
-<script src="/assets/app.js"></script>
+<script src="<?= e(url('assets/app.js')) ?>"></script>
 </body>
 </html>
 <?php
@@ -135,7 +141,7 @@ function renderFooter(): void
 function studentCard(array $student): void
 {
     ?>
-<a class="student-card" href="/student_detail.php?id=<?= e($student['id']) ?>">
+<a class="student-card" href="<?= e(url('student_detail.php')) ?>?id=<?= e($student['id']) ?>">
     <span class="card-index"><?= e(str_pad((string) (array_search($student, data('students'), true) + 1), 2, '0', STR_PAD_LEFT)) ?></span>
     <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span></div>
     <div class="student-card-body">

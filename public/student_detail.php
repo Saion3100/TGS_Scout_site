@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
-require_once dirname(__DIR__) . '/src/bootstrap.php';
+require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW) ?: '';
 $student = findById(data('students'), $id);
 if (!$student || !($student['is_active'] ?? false)) { http_response_code(404); renderHeader('学生が見つかりません'); ?>
-<section class="empty-state"><p>404</p><h1>学生が見つかりません</h1><a class="button button-primary" href="/students.php">学生一覧へ戻る</a></section>
+<section class="empty-state"><p>404</p><h1>学生が見つかりません</h1><a class="button button-primary" href="<?= e(url('students.php')) ?>">学生一覧へ戻る</a></section>
 <?php renderFooter(); exit; }
 $teams = studentTeams($id);
 renderHeader($student['name'], 'students');
 ?>
 <section class="profile-hero">
-    <div class="breadcrumbs"><a href="/">HOME</a><span>/</span><a href="/students.php">CREATORS</a><span>/</span><?= e($student['name']) ?></div>
+    <div class="breadcrumbs"><a href="<?= e(url()) ?>">HOME</a><span>/</span><a href="<?= e(url('students.php')) ?>">CREATORS</a><span>/</span><?= e($student['name']) ?></div>
     <div class="profile-hero-grid">
         <div class="profile-portrait"><span><?= e(firstCharacter($student['name'])) ?></span><small>CREATOR PROFILE</small></div>
         <div class="profile-title">
@@ -43,7 +43,7 @@ renderHeader($student['name'], 'students');
 <section class="works section-pad">
     <div class="section-head"><div><p class="section-number">04 — WORKS</p><h2>参加作品</h2></div></div>
     <div class="team-grid"><?php foreach ($teams as $i => $team): ?>
-        <a class="team-card compact theme-<?= e($team['theme']) ?>" href="/team_detail.php?id=<?= e($team['id']) ?>">
+        <a class="team-card compact theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
             <div class="game-art"><strong><?= e($team['game_name']) ?></strong></div>
             <div class="team-card-body"><span><?= e($team['student_role']) ?></span><h3><?= e($team['game_name']) ?></h3><p><?= e($team['genre']) ?></p></div>
         </a>
@@ -62,5 +62,5 @@ renderHeader($student['name'], 'students');
     <?php if (!empty($student['drive_pdf_id'])): ?><iframe class="portfolio-frame" src="https://drive.google.com/file/d/<?= e($student['drive_pdf_id']) ?>/preview" title="<?= e($student['name']) ?>のポートフォリオ" loading="lazy"></iframe>
     <?php else: ?><div class="portfolio-placeholder"><span>PORTFOLIO PREVIEW</span><p>公開資料はリンクからご覧ください。</p></div><?php endif; ?>
 </section>
-<section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="/contact.php?student=<?= e($student['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
+<section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
 <?php renderFooter(); ?>

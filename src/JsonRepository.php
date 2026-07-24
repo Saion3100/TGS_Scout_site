@@ -3,8 +3,12 @@ declare(strict_types=1);
 
 final class JsonRepository
 {
-    public function __construct(private readonly string $filePath)
+    /** @var string */
+    private $filePath;
+
+    public function __construct(string $filePath)
     {
+        $this->filePath = $filePath;
     }
 
     /** @return list<array<string, mixed>> */
