@@ -98,3 +98,39 @@
     .intro-grid{grid-template-columns:1.05fr .95fr;gap:72px}
     .intro-grid h2{word-break:auto-phrase}
 }
+
+/* Keep student filters spacious instead of squeezing role buttons vertically. */
+.filters[data-filter-root]{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(300px,390px);
+    align-items:end;
+    gap:24px 32px;
+}
+.filters[data-filter-root] .filter-row{grid-column:1/-1}
+.filters[data-filter-root] .filter-selects{width:100%}
+.filters .search-box{width:100%}
+
+@media(max-width:900px){
+    .filters[data-filter-root],
+    .filters[data-team-filter-root]{
+        display:grid;
+        grid-template-columns:1fr;
+        align-items:stretch;
+        gap:24px;
+    }
+    .filters .filter-selects{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+        gap:14px;
+    }
+    .filters .filter-selects select{width:100%}
+    .filters .search-box{min-width:0}
+}
+
+@media(max-width:640px){
+    .filters .filter-selects{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:420px){
+    .filters .filter-selects{grid-template-columns:1fr}
+}
