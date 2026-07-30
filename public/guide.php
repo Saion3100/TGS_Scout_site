@@ -12,5 +12,5 @@ renderHeader('企業の方へ', 'guide');
         <article><span>03</span><h2>学校へ相談する</h2><p>気になる学生や作品を指定し、面談・採用・説明会についてお問い合わせください。</p></article>
     </div>
 </section>
-<section class="intro section-pad"><p class="section-number">CONTACT POLICY</p><div class="intro-grid"><h2>学生の連絡先は<br>公開していません。</h2><div><p>企業の皆さまと学生の双方が安心してやり取りできるよう、国際理工カレッジが連絡窓口となります。</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>">学校へ問い合わせる <span>→</span></a></div></div></section>
+<section class="intro section-pad"><p class="section-number">CONTACT POLICY</p><div class="intro-grid"><h2>学生の連絡先は<br>公開していません。</h2><div><p>企業の皆さまと学生の双方が安心してやり取りできるよう、国際理工カレッジの担当教員が連絡窓口となります。</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>">学校へ問い合わせる <span>→</span></a></div></div></section>
 <?php renderFooter(); ?>
