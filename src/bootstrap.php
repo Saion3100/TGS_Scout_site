@@ -62,7 +62,7 @@ function teamMembers(string $teamId): array
         $student = findById($students, $relation['student_id']);
         if ($student && ($student['is_active'] ?? false)) {
             $student['team_role'] = $relation['role'];
-            $student['team_role_group'] = $relation['role_group'] ?? $student['role_ja'];
+            $student['team_role_group'] = $relation['role_group'] ?? $student['role'];
             $student['team_responsibility'] = $relation['responsibility'] ?? '';
             $members[] = $student;
         }
@@ -85,6 +85,14 @@ function studentTeams(string $studentId): array
         }
     }
     return $result;
+}
+
+function googleDrivePreviewUrl(string $url): string
+{
+    if (preg_match('~drive\.google\.com/file/d/([^/]+)~', $url, $matches) !== 1) {
+        return '';
+    }
+    return 'https://drive.google.com/file/d/' . rawurlencode($matches[1]) . '/preview';
 }
 
 function renderHeader(string $title = '', string $current = ''): void
@@ -156,10 +164,10 @@ function studentCard(array $student): void
     <span class="card-index"><?= e(str_pad((string) (array_search($student, data('students'), true) + 1), 2, '0', STR_PAD_LEFT)) ?></span>
     <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span></div>
     <div class="student-card-body">
-        <span class="role-label"><?= e($student['role_ja']) ?></span>
+        <span class="role-label"><?= e($student['role']) ?></span>
         <h3><?= e($student['name']) ?></h3>
         <p class="name-en"><?= e($student['name_en']) ?></p>
-        <p class="student-meta"><?= e($student['grade'] ?? '') ?> / <?= e($student['graduation_year'] ?? '') ?></p>
+        <p class="student-meta"><?= e($student['graduation_year'] ?? '') ?></p>
         <div class="tag-list">
             <?php foreach (array_slice($student['skills'], 0, 3) as $skill): ?><span><?= e($skill) ?></span><?php endforeach; ?>
         </div>

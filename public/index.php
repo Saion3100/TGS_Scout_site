@@ -3,14 +3,17 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $teams = data('teams');
 $students = array_values(array_filter(data('students'), fn(array $s): bool => (bool) ($s['is_active'] ?? false)));
-$featuredStudents = array_values(array_filter(
-    $students,
-    fn(array $student): bool => isset($student['featured_order'])
-));
-usort(
-    $featuredStudents,
-    fn(array $a, array $b): int => $a['featured_order'] <=> $b['featured_order']
-);
+$featuredEntries = data('featured_students');
+usort($featuredEntries, fn(array $a, array $b): int => $a['order'] <=> $b['order']);
+$featuredStudents = [];
+foreach ($featuredEntries as $entry) {
+    $student = findById($students, $entry['student_id']);
+    if ($student) {
+        $student['featured_focus'] = $entry['focus'];
+        $student['teacher_comment'] = $entry['teacher_comment'];
+        $featuredStudents[] = $student;
+    }
+}
 renderHeader();
 ?>
 <section class="home-hero">

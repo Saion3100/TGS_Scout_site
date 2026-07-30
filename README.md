@@ -29,7 +29,8 @@ php -S localhost:8000 -t public
 ## データ更新
 
 - `data/students.json` 学生情報
+- `data/featured_students.json` トップページの注目学生情報
 - `data/teams.json` 作品情報
 - `data/mapping.json` 学生と作品の所属関係
 
-Google Driveプレビューは学生データの `drive_pdf_id` にファイルIDを設定すると表示されます。デザイナーの外部作品ページは `vivivit_url` を利用します。
+`portfolio_url` にGoogle DriveのファイルURLを設定すると、学生詳細ページにPDFプレビューが表示されます。VIVIVITなどの外部作品ページも同じ項目を利用します。
