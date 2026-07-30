@@ -4,11 +4,18 @@ declare(strict_types=1);
 require_once __DIR__ . '/JsonRepository.php';
 
 const DATA_DIR = __DIR__ . '/../data';
-const BASE_PATH = '/it-work/TGS_Scout';
 
 function url(string $path = ''): string
 {
-    return BASE_PATH . ($path === '' || $path === '/' ? '/' : '/' . ltrim($path, '/'));
+    static $basePath;
+
+    if ($basePath === null) {
+        $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+        $directory = str_replace('\\', '/', dirname($scriptName));
+        $basePath = in_array($directory, ['', '.', '/'], true) ? '' : rtrim($directory, '/');
+    }
+
+    return $basePath . ($path === '' || $path === '/' ? '/' : '/' . ltrim($path, '/'));
 }
 
 function data(string $name): array

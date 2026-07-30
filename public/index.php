@@ -3,16 +3,25 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $teams = data('teams');
 $students = array_values(array_filter(data('students'), fn(array $s): bool => (bool) ($s['is_active'] ?? false)));
+$featuredStudents = array_values(array_filter(
+    $students,
+    fn(array $student): bool => isset($student['featured_order'])
+));
+usort(
+    $featuredStudents,
+    fn(array $a, array $b): int => $a['featured_order'] <=> $b['featured_order']
+);
 renderHeader();
 ?>
 <section class="home-hero">
     <div class="hero-copy">
-        <p class="kicker"><span></span>TOKYO GAME SHOW 2026</p>
-        <h1>つくったゲームから、<br><em>つくった人</em>へ。</h1>
-        <p class="lead">試遊で感じた「おもしろい」の先にいる、学生クリエイターの技術と実績を紹介します。</p>
+        <p class="official-label">国際理工カレッジ公式</p>
+        <p class="kicker"><span></span>TGS2026 企業関係者向け 学生紹介サイト</p>
+        <h1>これから伸びる<br>学生クリエイターと、<br><em>今からつながる。</em></h1>
+        <p class="lead">国際理工カレッジが、TGS2026出展作品とその制作学生を企業関係者向けにご紹介します。作品、担当箇所、技術、ポートフォリオをご覧いただけます。</p>
         <div class="hero-actions">
-            <a class="button button-primary" href="<?= e(url('teams.php')) ?>">作品から探す <span>→</span></a>
-            <a class="text-link" href="<?= e(url('students.php')) ?>">職種・技術から学生を探す <span>↗</span></a>
+            <a class="button button-primary" href="#featured-students">注目学生を見る <span>↓</span></a>
+            <a class="text-link" href="<?= e(url('teams.php')) ?>">TGS出展作品を見る <span>→</span></a>
         </div>
     </div>
     <div class="hero-visual" aria-label="TGS出展学生作品">
@@ -23,20 +32,70 @@ renderHeader();
     <div class="scroll-cue">SCROLL <span>↓</span></div>
 </section>
 
-<section class="intro section-pad">
-    <p class="section-number">01 — ABOUT</p>
-    <div class="intro-grid">
-        <h2>作品の裏側にいる、<br>一人ひとりの力を見る。</h2>
+<section class="value-section section-pad" aria-labelledby="value-title">
+    <div class="section-head value-heading">
         <div>
-            <p>TGS SCOUTは、展示ゲームを起点に学生の担当箇所や技術、ポートフォリオへつながる企業担当者向けサイトです。</p>
+            <p class="section-number">01 — WHY TGS SCOUT</p>
+            <h2 id="value-title">学校公式だからできる、<br>一足早い出会い。</h2>
+        </div>
+        <p>作品を見て終わるのではなく、担当した学生の技術と実績を確認し、学校を通じて面談・採用・インターンをご相談いただけます。</p>
+    </div>
+    <div class="value-grid">
+        <article>
+            <span>01 / SCHOOL OFFICIAL</span>
+            <h3>学校が直接紹介</h3>
+            <p>国際理工カレッジが学生情報を確認して掲載。ご連絡も学校が窓口となります。</p>
+        </article>
+        <article>
+            <span>02 / FOR TGS2026 COMPANIES</span>
+            <h3>企業関係者向け</h3>
+            <p>TGS2026でご案内する企業関係者向けの学生紹介サイトです。</p>
+        </article>
+        <article>
+            <span>03 / EARLY ACCESS</span>
+            <h3>28卒・29卒と早期接点</h3>
+            <p>就職活動が本格化する前の学生クリエイターを、作品と実績からご覧いただけます。</p>
+        </article>
+    </div>
+</section>
+
+<section class="intro section-pad">
+    <p class="section-number">02 — CONCEPT</p>
+    <div class="intro-grid">
+        <h2>つくったゲームから、<br><em>つくった人</em>へ。</h2>
+        <div>
+            <p>試遊で感じた「おもしろい」の先にいる、一人ひとりの力を見る。TGS SCOUTは、展示ゲームを起点に学生の担当箇所や技術、ポートフォリオへつながるサイトです。</p>
             <p>気になる学生へのご連絡は学校が窓口となり、面談・採用・インターンのご相談をおつなぎします。</p>
         </div>
     </div>
 </section>
 
+<section id="featured-students" class="people featured-students section-pad">
+    <div class="section-head">
+        <div>
+            <p class="section-number">03 — TEACHER'S PICK</p>
+            <h2>まずは、この学生から。</h2>
+            <p class="section-description">教員が制作への取り組みと今後の成長に注目する、28卒・29卒の学生クリエイターです。</p>
+        </div>
+        <a class="text-link" href="<?= e(url('students.php')) ?>">すべての学生を見る <span>→</span></a>
+    </div>
+    <div class="featured-student-grid">
+        <?php foreach (array_slice($featuredStudents, 0, 3) as $student): ?>
+        <article class="featured-student">
+            <?php studentCard($student); ?>
+            <div class="teacher-note">
+                <span>TEACHER'S NOTE</span>
+                <strong><?= e($student['featured_focus']) ?></strong>
+                <p><?= e($student['teacher_comment']) ?></p>
+            </div>
+        </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
 <section class="featured section-pad">
     <div class="section-head">
-        <div><p class="section-number">02 — FEATURED GAMES</p><h2>出展作品</h2></div>
+        <div><p class="section-number">04 — FEATURED GAMES</p><h2>TGS出展作品</h2></div>
         <a class="text-link" href="<?= e(url('teams.php')) ?>">すべての作品を見る <span>→</span></a>
     </div>
     <div class="team-grid">
@@ -57,13 +116,16 @@ renderHeader();
     </div>
 </section>
 
-<section class="people section-pad">
+<section class="student-search-cta section-pad">
     <div class="section-head">
-        <div><p class="section-number">03 — CREATORS</p><h2>学生クリエイター</h2></div>
-        <a class="text-link" href="<?= e(url('students.php')) ?>">すべての学生を見る <span>→</span></a>
-    </div>
-    <div class="student-grid">
-        <?php foreach (array_slice($students, 0, 4) as $student) studentCard($student); ?>
+        <div>
+            <p class="section-number">05 — FIND CREATORS</p>
+            <h2>求める職種・技術から、<br>学生を探す。</h2>
+        </div>
+        <div class="search-cta-copy">
+            <p>プログラマー、デザイナー、プランナーなどの職種や、卒業予定年、使用技術から学生を絞り込めます。</p>
+            <a class="button button-primary" href="<?= e(url('students.php')) ?>">学生を探す <span>→</span></a>
+        </div>
     </div>
 </section>
 
