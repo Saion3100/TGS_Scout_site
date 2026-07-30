@@ -123,7 +123,6 @@ function renderHeader(string $title = '', string $current = ''): void
     <nav id="global-nav" class="global-nav" aria-label="メインナビゲーション">
         <a class="<?= $current === 'teams' ? 'is-current' : '' ?>" href="<?= e(url('teams.php')) ?>">作品を探す</a>
         <a class="<?= $current === 'students' ? 'is-current' : '' ?>" href="<?= e(url('students.php')) ?>">学生を探す</a>
-        <a class="<?= $current === 'roles' ? 'is-current' : '' ?>" href="<?= e(url('roles.php')) ?>">職種から探す</a>
         <a class="<?= $current === 'guide' ? 'is-current' : '' ?>" href="<?= e(url('guide.php')) ?>">企業の方へ</a>
         <a class="nav-contact <?= $current === 'contact' ? 'is-current' : '' ?>" href="<?= e(url('contact.php')) ?>">学校へ問い合わせ</a>
     </nav>
@@ -144,7 +143,6 @@ function renderFooter(): void
     <div class="footer-links">
         <a href="<?= e(url('teams.php')) ?>">出展作品</a>
         <a href="<?= e(url('students.php')) ?>">学生一覧</a>
-        <a href="<?= e(url('roles.php')) ?>">職種別一覧</a>
         <a href="<?= e(url('guide.php')) ?>">企業向け案内</a>
         <a href="<?= e(url('contact.php')) ?>">お問い合わせ</a>
         <a href="<?= e(url('privacy.php')) ?>">プライバシーポリシー</a>
