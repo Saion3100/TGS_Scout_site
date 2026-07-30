@@ -91,6 +91,7 @@
 
 /* Give the home hero copy room to wrap in meaningful phrases on wide screens. */
 @media(min-width:901px){
+    .site-header{padding-left:28px;padding-right:28px}
     .home-hero{grid-template-columns:minmax(0,1.18fr) minmax(410px,.82fr)}
     .hero-copy{padding-right:clamp(48px,4vw,80px)}
     .home-hero h1{font-size:clamp(48px,4.6vw,76px);word-break:auto-phrase}

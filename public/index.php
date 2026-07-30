@@ -32,7 +32,7 @@ renderHeader();
         <span class="visual-badge">TGS<br>2026</span>
         <div class="visual-caption">STUDENT GAME CREATORS<br>PORTFOLIO DIRECTORY</div>
     </div>
-    <div class="scroll-cue">SCROLL <span>↓</span></div>
+    <div class="scroll-cue">SCROLL <span>→</span></div>
 </section>
 
 <section class="value-section section-pad" aria-labelledby="value-title">
