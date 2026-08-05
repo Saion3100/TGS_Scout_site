@@ -121,6 +121,86 @@ if (empty($_SESSION['admin_authenticated'])) {
 }
 
 $students = repository('students')->all();
+$section = (string) ($_GET['section'] ?? $_POST['section'] ?? 'students');
+
+if ($section === 'featured') {
+    $featuredItems = repository('featured_students')->all();
+    usort($featuredItems, static fn(array $a, array $b): int => ((int) ($a['order'] ?? 0)) <=> ((int) ($b['order'] ?? 0)));
+    $selectedStudentId = (string) ($_GET['student_id'] ?? '');
+    $isFeaturedNew = isset($_GET['new']);
+    $featured = null;
+    if ($isFeaturedNew) {
+        $featured = [];
+    } elseif ($selectedStudentId !== '') {
+        foreach ($featuredItems as $item) {
+            if ((string) ($item['student_id'] ?? '') === $selectedStudentId) { $featured = $item; break; }
+        }
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['save_featured']) || isset($_POST['delete_featured']))) {
+        try {
+            if (!hash_equals((string) ($_SESSION['csrf_token'] ?? ''), (string) ($_POST['csrf_token'] ?? ''))) {
+                throw new RuntimeException('セッションの有効期限が切れました。再読み込みしてください。');
+            }
+            $originalStudentId = adminText('original_student_id');
+            if (isset($_POST['delete_featured'])) {
+                if ($originalStudentId === '') { throw new InvalidArgumentException('削除対象が見つかりません。'); }
+                $remaining = array_values(array_filter($featuredItems, static fn(array $item): bool => (string) ($item['student_id'] ?? '') !== $originalStudentId));
+                if (count($remaining) === count($featuredItems)) { throw new InvalidArgumentException('削除対象が見つかりません。'); }
+                repository('featured_students')->replaceAll($remaining);
+                header('Location: ' . url('admin.php') . '?section=featured&deleted=1');
+                exit;
+            }
+
+            $studentId = adminText('student_id');
+            $order = filter_input(INPUT_POST, 'order', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+            $focus = adminText('focus');
+            $teacherComment = adminText('teacher_comment');
+            if ($studentId === '' || findById($students, $studentId) === null) { throw new InvalidArgumentException('学生を選択してください。'); }
+            if ($order === false || $order === null) { throw new InvalidArgumentException('表示順は1以上の整数で入力してください。'); }
+            if ($focus === '' || $teacherComment === '') { throw new InvalidArgumentException('注目ポイントと教員コメントを入力してください。'); }
+            foreach ($featuredItems as $item) {
+                if ((string) ($item['student_id'] ?? '') === $studentId && $studentId !== $originalStudentId) {
+                    throw new InvalidArgumentException('選択した学生はすでに注目学生へ登録されています。');
+                }
+            }
+            $record = ['student_id' => $studentId, 'order' => (int) $order, 'focus' => $focus, 'teacher_comment' => $teacherComment];
+            $updated = false;
+            foreach ($featuredItems as $index => $item) {
+                if ((string) ($item['student_id'] ?? '') === $originalStudentId && $originalStudentId !== '') {
+                    $featuredItems[$index] = $record; $updated = true; break;
+                }
+            }
+            if (!$updated) { $featuredItems[] = $record; }
+            usort($featuredItems, static fn(array $a, array $b): int => ((int) $a['order']) <=> ((int) $b['order']));
+            repository('featured_students')->replaceAll($featuredItems);
+            header('Location: ' . url('admin.php') . '?section=featured&student_id=' . rawurlencode($studentId) . '&saved=1');
+            exit;
+        } catch (Throwable $exception) {
+            $error = $exception->getMessage();
+            $isFeaturedNew = adminText('original_student_id') === '';
+            $selectedStudentId = adminText('student_id');
+            $featured = ['student_id' => $selectedStudentId, 'order' => adminText('order'), 'focus' => adminText('focus'), 'teacher_comment' => adminText('teacher_comment')];
+        }
+    }
+    if (isset($_GET['saved'])) { $notice = '注目学生を保存しました。トップページにも反映されています。'; }
+    if (isset($_GET['deleted'])) { $notice = '注目学生から削除しました。'; }
+    renderAdminStart('注目学生管理');
+    ?>
+    <section class="admin-shell">
+      <div class="admin-toolbar"><div><p class="section-number">TGS SCOUT ADMIN</p><h1>注目学生管理</h1><p class="admin-lead">トップページに掲載する学生と教員コメント</p></div><div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ戻る</a><form method="post"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div></div>
+      <nav class="admin-tabs" aria-label="管理データ"><a href="<?= e(url('admin.php')) ?>">学生</a><a class="is-active" href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><span>作品 <small>準備中</small></span><span>所属関係 <small>準備中</small></span></nav>
+      <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
+      <div class="admin-grid"><aside class="admin-list"><div class="admin-list-head"><strong>掲載中</strong><span><?= count($featuredItems) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?section=featured&new=1">＋ 注目学生を追加</a>
+      <?php foreach ($featuredItems as $item): $listedStudent = findById($students, (string) $item['student_id']); ?><a class="<?= !$isFeaturedNew && $selectedStudentId === (string) $item['student_id'] ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?section=featured&student_id=<?= e($item['student_id']) ?>"><span><strong><?= e($listedStudent['name'] ?? '不明な学生') ?></strong><small><?= e($item['focus'] ?? '') ?></small></span><span class="admin-order"><?= e($item['order'] ?? '') ?></span></a><?php endforeach; ?></aside>
+      <div class="admin-editor"><?php if ($featured !== null): ?><div class="admin-editor-head"><div><p class="section-number"><?= $isFeaturedNew ? 'NEW FEATURED STUDENT' : 'EDIT FEATURED STUDENT' ?></p><h2><?= $isFeaturedNew ? '注目学生を追加' : e((findById($students, (string) ($featured['student_id'] ?? ''))['name'] ?? '注目学生を編集')) ?></h2></div><span>必須項目 <b>*</b></span></div>
+      <form method="post" class="admin-student-form"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="section" value="featured"><input type="hidden" name="original_student_id" value="<?= e($isFeaturedNew ? '' : ($featured['student_id'] ?? '')) ?>">
+      <fieldset><legend><span>01</span>掲載内容</legend><div class="admin-form-grid"><label><span>学生 <b>*</b></span><select name="student_id" required><option value="">選択してください</option><?php foreach ($students as $candidate): ?><option value="<?= e($candidate['id']) ?>" <?= (string) ($featured['student_id'] ?? '') === (string) $candidate['id'] ? 'selected' : '' ?>><?= e($candidate['name']) ?>（<?= e($candidate['role']) ?>）</option><?php endforeach; ?></select></label><label><span>表示順 <b>*</b></span><input type="number" name="order" min="1" value="<?= e($featured['order'] ?? count($featuredItems) + 1) ?>" required></label><label class="admin-span-2"><span>注目ポイント <b>*</b></span><input name="focus" value="<?= e($featured['focus'] ?? '') ?>" required></label><label class="admin-span-2"><span>教員コメント <b>*</b></span><textarea name="teacher_comment" rows="7" required><?= e($featured['teacher_comment'] ?? '') ?></textarea></label></div></fieldset>
+      <div class="admin-form-actions"><p>保存するとトップページの注目学生へ即時反映されます。</p><div class="admin-action-buttons"><?php if (!$isFeaturedNew): ?><button class="button admin-delete-button" name="delete_featured" value="1" formnovalidate onclick="return confirm('この学生を注目学生から削除しますか？')">削除する</button><?php endif; ?><button class="button button-primary" name="save_featured" value="1"><?= $isFeaturedNew ? '追加する' : '変更を保存する' ?> <span>→</span></button></div></div></form>
+      <?php else: ?><div class="admin-empty"><span>FEATURED STUDENTS</span><h2>編集する学生を選択</h2><p>左の一覧から選ぶか、注目学生を追加してください。</p></div><?php endif; ?></div></div>
+    </section><?php renderAdminEnd(); exit;
+}
+
 $selectedId = (string) ($_GET['id'] ?? '');
 $isNew = isset($_GET['new']);
 $student = $isNew ? [] : ($selectedId !== '' ? findById($students, $selectedId) : null);
@@ -166,7 +246,7 @@ renderAdminStart('学生データ管理');
 ?>
 <section class="admin-shell">
   <div class="admin-toolbar"><div><p class="section-number">TGS SCOUT ADMIN</p><h1>学生データ管理</h1><p class="admin-lead">学生プロフィールの登録・更新</p></div><div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ戻る</a><form method="post"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div></div>
-  <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" href="<?= e(url('admin.php')) ?>">学生</a><span title="今後対応予定">注目学生 <small>準備中</small></span><span title="今後対応予定">作品 <small>準備中</small></span><span title="今後対応予定">所属関係 <small>準備中</small></span></nav>
+  <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" href="<?= e(url('admin.php')) ?>">学生</a><a href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><span title="今後対応予定">作品 <small>準備中</small></span><span title="今後対応予定">所属関係 <small>準備中</small></span></nav>
   <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
   <div class="admin-grid">
     <aside class="admin-list"><div class="admin-list-head"><strong>登録学生</strong><span><?= count($students) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?new=1">＋ 新しい学生を追加</a><?php foreach ($students as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?id=<?= e($item['id'] ?? '') ?>"><span><strong><?= e($item['name'] ?? '(氏名なし)') ?></strong><small><?= e($item['role'] ?? '') ?></small></span><span class="admin-status <?= !empty($item['is_active']) ? 'is-public' : '' ?>"><?= !empty($item['is_active']) ? '公開' : '非公開' ?></span></a><?php endforeach; ?></aside>
