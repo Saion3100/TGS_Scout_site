@@ -9,6 +9,36 @@
 @media(max-width:900px){.facts-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}.filter-selects{width:100%}}
 @media(max-width:640px){.facts-grid,.steps-grid{grid-template-columns:1fr}.filter-selects{display:grid;grid-template-columns:1fr 1fr}.filter-selects select{width:100%}.global-nav{overflow-y:auto;max-height:calc(100vh - 68px)}}
 
+/* Contact action that stays within reach on student and work detail pages. */
+.detail-sticky-cta{position:fixed;right:24px;bottom:24px;z-index:20;padding:13px 15px;display:flex;align-items:center;justify-content:flex-start;gap:14px;background:var(--red);color:#fff;box-shadow:0 12px 32px rgba(0,0,0,.22);font-size:13px;font-weight:800;line-height:1.35;transition:transform .2s,box-shadow .2s}
+.detail-sticky-cta:hover,.detail-sticky-cta:focus-visible{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,0,0,.28)}
+.detail-sticky-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.detail-sticky-cta small{display:block;margin-bottom:4px;font-size:9px;font-weight:600;letter-spacing:.04em;opacity:.85}
+.detail-sticky-cta b{font-size:18px}
+@media(max-width:640px){body:has(.detail-sticky-cta){padding-bottom:72px}.detail-sticky-cta{right:0;bottom:0;left:0;min-height:64px;padding:10px 20px;justify-content:space-between;box-shadow:0 -6px 24px rgba(0,0,0,.2)}.detail-sticky-cta:hover,.detail-sticky-cta:focus-visible{transform:none}}
+
+/* Responsive footer navigation. */
+.site-footer{grid-template-columns:minmax(0,1.3fr) minmax(360px,1fr)}
+.footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;align-self:start}
+.footer-links a{min-height:42px;display:flex;align-items:center;border-bottom:1px solid #333;transition:color .2s,border-color .2s}
+.footer-links a:hover,.footer-links a:focus-visible{color:#fff;border-color:var(--red)}
+.footer-links a:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+@media(max-width:900px){
+    .site-footer{grid-template-columns:1fr;padding-top:55px}
+    .footer-links{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+    .site-footer>small{grid-column:1}
+}
+@media(max-width:640px){
+    .site-footer{padding:48px 22px 28px;gap:30px}
+    .brand-footer{margin-bottom:18px}
+    .site-footer p br{display:none}
+    .footer-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+    .footer-links a{min-height:48px;font-size:12px}
+    .footer-links a:last-child{grid-column:1/-1}
+    .site-footer>small{padding-top:20px}
+}
+@media(max-width:360px){.footer-links{grid-template-columns:1fr}.footer-links a:last-child{grid-column:auto}}
+
 /* Home page value proposition and curated student entry point. */
 .brand-group{display:flex;align-items:center}
 .school-logo-link{display:flex;align-items:center}

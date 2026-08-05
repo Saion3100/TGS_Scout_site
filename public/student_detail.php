@@ -58,4 +58,7 @@ renderHeader($student['name'], 'students');
     <?php else: ?><div class="portfolio-placeholder"><span>PORTFOLIO PREVIEW</span><p>公開資料はリンクからご覧ください。</p></div><?php endif; ?>
 </section>
 <section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
+<a class="detail-sticky-cta" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>" aria-label="<?= e($student['name']) ?>さんについて学校へ相談する">
+    <span><small>気になる学生が見つかったら</small>この学生について相談</span><b aria-hidden="true">→</b>
+</a>
 <?php renderFooter(); ?>
