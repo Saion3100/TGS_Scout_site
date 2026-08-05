@@ -1,6 +1,7 @@
 # Local environment
 .env
 .env.*
+.deploy-backup/
 
 # OS and editor files
 .DS_Store

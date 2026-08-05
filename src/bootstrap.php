@@ -32,6 +32,14 @@ function e($value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function repository(string $name): JsonRepository
+{
+    if (!in_array($name, ['students', 'teams'], true)) {
+        throw new InvalidArgumentException('Unsupported data type.');
+    }
+    return new JsonRepository(DATA_DIR . '/' . $name . '.json');
+}
+
 function firstCharacter(string $value): string
 {
     if (function_exists('mb_substr')) {
