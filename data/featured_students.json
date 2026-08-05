@@ -1,18 +1,18 @@
 [
   {
-    "student_id": "s002",
+    "student_id": "2",
     "order": 1,
     "focus": "世界観を伝えるビジュアル設計",
     "teacher_comment": "3D制作からUIまで幅広く取り組み、作品全体の世界観を一貫して表現する力に注目しています。"
   },
   {
-    "student_id": "s004",
+    "student_id": "4",
     "order": 2,
     "focus": "チーム制作を支える実装力",
     "teacher_comment": "ゲーム機能だけでなく制作を効率化するツールにも目を向け、チーム全体を支える姿勢が強みです。"
   },
   {
-    "student_id": "s005",
+    "student_id": "5",
     "order": 3,
     "focus": "体験を広げるサウンド制作",
     "teacher_comment": "楽曲・効果音の制作からゲームへの実装まで一貫して学び、音で体験を設計する力を伸ばしています。"

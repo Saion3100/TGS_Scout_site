@@ -1,102 +1,154 @@
 [
-  {
-    "id": "s001",
-    "name": "国際 太郎",
-    "name_kana": "こくさい たろう",
-    "name_en": "Taro Kokusai",
-    "graduation_year": "2027年卒",
-    "course": "ゲームプログラマコース",
-    "role": "プログラマー",
-    "desired_roles": ["ゲームプログラマー", "グラフィックスプログラマー"],
-    "headline": "遊びの手触りを、コードで磨く。",
-    "bio": "ゲームプレイと描画表現を担当するプログラマーです。操作した瞬間に気持ちよさが伝わる実装を大切にしています。",
-    "skills": ["C++", "Unreal Engine 5", "HLSL"],
-    "fields": ["ゲームプレイ", "グラフィックス"],
-    "interview_available": true,
-    "internship_interest": true,
-    "portfolio_url": "https://drive.google.com/file/d/1qAK3grQ_KxVt0PNJiS-_hMiU3fiSKUDX/view?usp=drive_link",
-    "source_code_url": "https://github.com/",
-    "video_url": "",
-    "is_active": true
-  },
-  {
-    "id": "s002",
-    "name": "未来 花",
-    "name_kana": "みらい はな",
-    "name_en": "Hana Mirai",
-    "graduation_year": "2028年卒",
-    "course": "ゲームグラフィックコース",
-    "role": "デザイナー",
-    "desired_roles": ["3Dデザイナー", "UIデザイナー"],
-    "headline": "世界観が伝わる、一枚をつくる。",
-    "bio": "コンセプトアートからUIまで、ゲームの体験を支えるビジュアル設計に取り組んでいます。",
-    "skills": ["Maya", "Substance 3D Painter", "Photoshop"],
-    "fields": ["3D", "コンセプトアート", "UI"],
-    "interview_available": true,
-    "internship_interest": true,
-    "portfolio_url": "https://www.vivivit.com/",
-    "source_code_url": "",
-    "video_url": "",
-    "is_active": true
-  },
-  {
-    "id": "s003",
-    "name": "東京 海斗",
-    "name_kana": "とうきょう かいと",
-    "name_en": "Kaito Tokyo",
-    "graduation_year": "2027年卒",
-    "course": "ゲームプランナーコース",
-    "role": "プランナー",
-    "desired_roles": ["ゲームプランナー", "レベルデザイナー"],
-    "headline": "ルールから、夢中になる時間を設計する。",
-    "bio": "企画立案、レベルデザイン、プレイテストの分析と改善を担当しています。",
-    "skills": ["Unity", "Level Design", "Google Sheets"],
-    "fields": ["企画", "レベルデザイン"],
-    "interview_available": true,
-    "internship_interest": false,
-    "portfolio_url": "https://drive.google.com/",
-    "source_code_url": "",
-    "video_url": "",
-    "is_active": true
-  },
-  {
-    "id": "s004",
-    "name": "幕張 凛",
-    "name_kana": "まくはり りん",
-    "name_en": "Rin Makuhari",
-    "graduation_year": "2028年卒",
-    "course": "ゲームプログラマコース",
-    "role": "プログラマー",
-    "desired_roles": ["ゲームプログラマー", "ツールエンジニア"],
-    "headline": "見えない仕組みで、チームを速くする。",
-    "bio": "ツール開発とゲームシステムを中心に、制作フロー全体を支える実装が得意です。",
-    "skills": ["C#", "Unity", "Git"],
-    "fields": ["ゲームシステム", "ツール開発"],
-    "interview_available": true,
-    "internship_interest": true,
-    "portfolio_url": "https://drive.google.com/",
-    "source_code_url": "https://github.com/",
-    "video_url": "",
-    "is_active": true
-  },
-  {
-    "id": "s005",
-    "name": "千葉 ひかり",
-    "name_kana": "ちば ひかり",
-    "name_en": "Hikari Chiba",
-    "graduation_year": "2029年卒",
-    "course": "ゲームサウンドコース",
-    "role": "サウンド",
-    "desired_roles": ["サウンドデザイナー", "コンポーザー"],
-    "headline": "音で、画面の外側まで描く。",
-    "bio": "楽曲制作と効果音、実装までを一貫して担当し、プレイヤーの感情を導く音を目指しています。",
-    "skills": ["FMOD", "Cubase", "Sound Design"],
-    "fields": ["BGM", "効果音", "サウンド実装"],
-    "interview_available": true,
-    "internship_interest": false,
-    "portfolio_url": "https://drive.google.com/",
-    "source_code_url": "",
-    "video_url": "",
-    "is_active": true
-  }
+    {
+        "id": "1",
+        "name": "国際 太郎",
+        "name_kana": "こくさい たろう",
+        "name_en": "Taro Kokusai",
+        "graduation_year": "2027年卒",
+        "course": "ゲームプログラマコース",
+        "role": "プログラマー",
+        "desired_roles": [
+            "ゲームプログラマー",
+            "グラフィックスプログラマー"
+        ],
+        "headline": "遊びの手触りを、コードで磨く。",
+        "bio": "ゲームプレイと描画表現を担当するプログラマーです。操作した瞬間に気持ちよさが伝わる実装を大切にしています。",
+        "skills": [
+            "C++",
+            "Unreal Engine 5",
+            "HLSL"
+        ],
+        "fields": [
+            "ゲームプレイ",
+            "グラフィックス"
+        ],
+        "interview_available": true,
+        "internship_interest": true,
+        "portfolio_url": "https:\/\/drive.google.com\/file\/d\/1qAK3grQ_KxVt0PNJiS-_hMiU3fiSKUDX\/view?usp=drive_link",
+        "source_code_url": "https:\/\/github.com\/",
+        "video_url": "",
+        "is_active": true
+    },
+    {
+        "id": "2",
+        "name": "未来 花",
+        "name_kana": "みらい はな",
+        "name_en": "Hana Mirai",
+        "graduation_year": "2028年卒",
+        "course": "ゲームグラフィックコース",
+        "role": "デザイナー",
+        "desired_roles": [
+            "3Dデザイナー",
+            "UIデザイナー"
+        ],
+        "headline": "世界観が伝わる、一枚をつくる。",
+        "bio": "コンセプトアートからUIまで、ゲームの体験を支えるビジュアル設計に取り組んでいます。",
+        "skills": [
+            "Maya",
+            "Substance 3D Painter",
+            "Photoshop"
+        ],
+        "fields": [
+            "3D",
+            "コンセプトアート",
+            "UI"
+        ],
+        "interview_available": true,
+        "internship_interest": true,
+        "portfolio_url": "https:\/\/www.vivivit.com\/",
+        "source_code_url": "",
+        "video_url": "",
+        "is_active": true
+    },
+    {
+        "id": "3",
+        "name": "東京 海斗",
+        "name_kana": "とうきょう かいと",
+        "name_en": "Kaito Tokyo",
+        "graduation_year": "2027年卒",
+        "course": "ゲームプランナーコース",
+        "role": "プランナー",
+        "desired_roles": [
+            "ゲームプランナー",
+            "レベルデザイナー"
+        ],
+        "headline": "ルールから、夢中になる時間を設計する。",
+        "bio": "企画立案、レベルデザイン、プレイテストの分析と改善を担当しています。",
+        "skills": [
+            "Unity",
+            "Level Design",
+            "Google Sheets"
+        ],
+        "fields": [
+            "企画",
+            "レベルデザイン"
+        ],
+        "interview_available": true,
+        "internship_interest": false,
+        "portfolio_url": "https:\/\/drive.google.com\/",
+        "source_code_url": "",
+        "video_url": "",
+        "is_active": true
+    },
+    {
+        "id": "4",
+        "name": "幕張 凛",
+        "name_kana": "まくはり りん",
+        "name_en": "Rin Makuhari",
+        "graduation_year": "2028年卒",
+        "course": "ゲームプログラマコース",
+        "role": "プログラマー",
+        "desired_roles": [
+            "ゲームプログラマー",
+            "ツールエンジニア"
+        ],
+        "headline": "見えない仕組みで、チームを速くする。",
+        "bio": "ツール開発とゲームシステムを中心に、制作フロー全体を支える実装が得意です。",
+        "skills": [
+            "C#",
+            "Unity",
+            "Git"
+        ],
+        "fields": [
+            "ゲームシステム",
+            "ツール開発"
+        ],
+        "interview_available": true,
+        "internship_interest": true,
+        "portfolio_url": "https:\/\/drive.google.com\/",
+        "source_code_url": "https:\/\/github.com\/",
+        "video_url": "",
+        "is_active": true
+    },
+    {
+        "id": "5",
+        "name": "千葉 ひかり",
+        "name_kana": "ちば ひかり",
+        "name_en": "Hikari Chiba",
+        "graduation_year": "2029年卒",
+        "course": "ゲームサウンドコース",
+        "role": "サウンド",
+        "desired_roles": [
+            "サウンドデザイナー",
+            "コンポーザー"
+        ],
+        "headline": "音で、画面の外側まで描く。",
+        "bio": "楽曲制作と効果音、実装までを一貫して担当し、プレイヤーの感情を導く音を目指しています。",
+        "skills": [
+            "FMOD",
+            "Cubase",
+            "Sound Design"
+        ],
+        "fields": [
+            "BGM",
+            "効果音",
+            "サウンド実装"
+        ],
+        "interview_available": true,
+        "internship_interest": false,
+        "portfolio_url": "https:\/\/drive.google.com\/",
+        "source_code_url": "",
+        "video_url": "",
+        "is_active": false
+    }
 ]

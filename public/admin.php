@@ -8,6 +8,94 @@ $configuredPassword = (string) getenv('TGS_ADMIN_PASSWORD');
 $error = '';
 $notice = '';
 
+function renderAdminStart(string $title = 'データ管理'): void
+{
+    ?>
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#111111">
+<title><?= e($title) ?> | TGS SCOUT ADMIN</title>
+<link rel="stylesheet" href="<?= e(url('assets/style.css')) ?>">
+</head><body class="admin-body"><main class="admin-main">
+<?php
+}
+
+function renderAdminEnd(): void
+{
+    ?></main></body></html><?php
+}
+
+function adminText(string $name): string
+{
+    return trim((string) ($_POST[$name] ?? ''));
+}
+
+/** @return list<string> */
+function adminList(string $name): array
+{
+    $parts = preg_split('/[\r\n,、]+/u', adminText($name)) ?: [];
+    return array_values(array_unique(array_filter(array_map('trim', $parts), static fn(string $value): bool => $value !== '')));
+}
+
+function adminListText(array $values): string
+{
+    return implode(PHP_EOL, array_map('strval', $values));
+}
+
+function validateAdminUrl(string $value, string $label): string
+{
+    if ($value !== '' && (filter_var($value, FILTER_VALIDATE_URL) === false || !preg_match('~^https?://~i', $value))) {
+        throw new InvalidArgumentException($label . 'は http:// または https:// から始まるURLを入力してください。');
+    }
+    return $value;
+}
+
+/** @param list<array<string, mixed>> $students */
+function nextStudentId(array $students): string
+{
+    $maximum = 0;
+    foreach ($students as $student) {
+        if (preg_match('/^\d+$/', (string) ($student['id'] ?? '')) === 1) {
+            $maximum = max($maximum, (int) $student['id']);
+        }
+    }
+    return (string) ($maximum + 1);
+}
+
+/** @return array<string, mixed> */
+function studentFromPost(string $studentId): array
+{
+    $required = ['name' => '氏名', 'name_kana' => 'ふりがな', 'name_en' => '英字氏名', 'graduation_year' => '卒業予定年', 'course' => 'コース', 'role' => '主職種', 'headline' => '見出し', 'bio' => 'プロフィール'];
+    $values = [];
+    foreach ($required as $key => $label) {
+        $values[$key] = adminText($key);
+        if ($values[$key] === '') {
+            throw new InvalidArgumentException($label . 'を入力してください。');
+        }
+    }
+    return [
+        'id' => $studentId,
+        'name' => $values['name'],
+        'name_kana' => $values['name_kana'],
+        'name_en' => $values['name_en'],
+        'graduation_year' => $values['graduation_year'],
+        'course' => $values['course'],
+        'role' => $values['role'],
+        'desired_roles' => adminList('desired_roles'),
+        'headline' => $values['headline'],
+        'bio' => $values['bio'],
+        'skills' => adminList('skills'),
+        'fields' => adminList('fields'),
+        'interview_available' => isset($_POST['interview_available']),
+        'internship_interest' => isset($_POST['internship_interest']),
+        'portfolio_url' => validateAdminUrl(adminText('portfolio_url'), 'ポートフォリオURL'),
+        'source_code_url' => validateAdminUrl(adminText('source_code_url'), 'ソースコードURL'),
+        'video_url' => validateAdminUrl(adminText('video_url'), '動画URL'),
+        'is_active' => isset($_POST['is_active']),
+    ];
+}
+
 if (isset($_POST['logout'])) {
     session_destroy();
     header('Location: ' . url('admin.php'));
@@ -25,47 +113,97 @@ if (empty($_SESSION['admin_authenticated']) && isset($_POST['password'])) {
 }
 
 if (empty($_SESSION['admin_authenticated'])) {
-    renderHeader('データ管理'); ?>
-    <section class="admin-shell"><div class="admin-panel"><p class="section-number">ADMIN</p><h1>データ管理</h1>
+    renderAdminStart('ログイン'); ?>
+    <section class="admin-shell admin-login-shell"><div class="admin-panel"><p class="section-number">TGS SCOUT ADMIN</p><h1>データ管理</h1><p class="admin-lead">学生・作品情報を安全に管理します。</p>
     <?php if ($configuredPassword === ''): ?><p class="admin-alert">サーバー環境変数 <code>TGS_ADMIN_PASSWORD</code> が未設定のため、管理画面を利用できません。</p>
     <?php else: ?><form method="post" class="admin-login"><label>管理パスワード<input type="password" name="password" required autocomplete="current-password"></label><?php if ($error): ?><p class="admin-error"><?= e($error) ?></p><?php endif; ?><button class="button button-primary">ログイン</button></form><?php endif; ?>
-    </div></section><?php renderFooter(); exit;
+    <a class="admin-back-link" href="<?= e(url()) ?>">← 公開ページへ戻る</a></div></section><?php renderAdminEnd(); exit;
 }
 
-$type = (string) ($_GET['type'] ?? $_POST['type'] ?? 'students');
-if (!in_array($type, ['students', 'teams'], true)) { $type = 'students'; }
-$items = repository($type)->all();
+$students = repository('students')->all();
 $selectedId = (string) ($_GET['id'] ?? '');
 $isNew = isset($_GET['new']);
-$selected = $isNew ? ['id' => ''] : ($selectedId !== '' ? findById($items, $selectedId) : null);
+$student = $isNew ? [] : ($selectedId !== '' ? findById($students, $selectedId) : null);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['record_json'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
+    $isNew = ($_POST['mode'] ?? '') === 'new';
     try {
         if (!hash_equals((string) ($_SESSION['csrf_token'] ?? ''), (string) ($_POST['csrf_token'] ?? ''))) {
             throw new RuntimeException('セッションの有効期限が切れました。再読み込みしてください。');
         }
-        $record = json_decode((string) $_POST['record_json'], true, 512, JSON_THROW_ON_ERROR);
-        if (!is_array($record)) {
-            throw new InvalidArgumentException('1件分のJSONオブジェクトを入力してください。');
+        $originalId = adminText('original_id');
+        if (!$isNew && ($originalId === '' || findById($students, $originalId) === null)) {
+            throw new InvalidArgumentException('編集対象の学生が見つかりません。');
         }
-        repository($type)->saveById($record, ($_POST['mode'] ?? '') === 'new');
-        header('Location: ' . url('admin.php') . '?type=' . rawurlencode($type) . '&id=' . rawurlencode((string) $record['id']) . '&saved=1');
+        $studentId = $isNew ? nextStudentId($students) : $originalId;
+        $student = studentFromPost($studentId);
+        repository('students')->saveById($student, $isNew);
+        header('Location: ' . url('admin.php') . '?id=' . rawurlencode($student['id']) . '&saved=1');
         exit;
     } catch (Throwable $exception) {
-        $error = $exception instanceof JsonException ? 'JSONの形式が正しくありません：' . $exception->getMessage() : $exception->getMessage();
-        $selected = json_decode((string) $_POST['record_json'], true) ?: ['id' => ''];
-        $isNew = ($_POST['mode'] ?? '') === 'new';
+        $error = $exception->getMessage();
+        $student = studentFromPostFallback();
+        $selectedId = (string) ($student['id'] ?? '');
     }
 }
-if (isset($_GET['saved'])) { $notice = '保存しました。公開ページにも反映されています。'; }
-renderHeader('データ管理');
+
+function studentFromPostFallback(): array
+{
+    $fields = ['name','name_kana','name_en','graduation_year','course','role','headline','bio','portfolio_url','source_code_url','video_url'];
+    $student = [];
+    foreach ($fields as $field) { $student[$field] = adminText($field); }
+    $student['id'] = adminText('original_id');
+    foreach (['desired_roles','skills','fields'] as $field) { $student[$field] = adminList($field); }
+    foreach (['interview_available','internship_interest','is_active'] as $field) { $student[$field] = isset($_POST[$field]); }
+    return $student;
+}
+
+if (isset($_GET['saved'])) { $notice = '学生データを保存しました。公開ページにも反映されています。'; }
+$roles = array_values(array_unique(array_filter(array_column($students, 'role'))));
+$courses = array_values(array_unique(array_filter(array_column($students, 'course'))));
+$graduationYears = array_values(array_unique(array_filter(array_column($students, 'graduation_year'))));
+renderAdminStart('学生データ管理');
 ?>
 <section class="admin-shell">
-  <div class="admin-toolbar"><div><p class="section-number">ADMIN</p><h1>データ管理</h1></div><form method="post"><button class="button button-outline" name="logout" value="1">ログアウト</button></form></div>
-  <nav class="admin-tabs"><a class="<?= $type === 'students' ? 'is-active' : '' ?>" href="<?= e(url('admin.php')) ?>?type=students">学生</a><a class="<?= $type === 'teams' ? 'is-active' : '' ?>" href="<?= e(url('admin.php')) ?>?type=teams">作品</a></nav>
-  <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error"><?= e($error) ?></p><?php endif; ?>
-  <div class="admin-grid"><aside class="admin-list"><a class="button button-primary" href="<?= e(url('admin.php')) ?>?type=<?= e($type) ?>&new=1">新規追加</a><?php foreach ($items as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?type=<?= e($type) ?>&id=<?= e($item['id'] ?? '') ?>"><strong><?= e($item[$type === 'students' ? 'name' : 'game_name'] ?? '(名称なし)') ?></strong><small><?= e($item['id'] ?? '') ?></small></a><?php endforeach; ?></aside>
-    <div class="admin-editor"><?php if ($selected !== null): ?><h2><?= $isNew ? '新規追加' : '編集' ?></h2><p>項目名を変えず、値を編集してください。配列は <code>["項目1", "項目2"]</code> の形式です。</p><form method="post"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="type" value="<?= e($type) ?>"><input type="hidden" name="mode" value="<?= $isNew ? 'new' : 'edit' ?>"><textarea name="record_json" rows="28" spellcheck="false" required><?= e(json_encode($selected, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)) ?></textarea><button class="button button-primary">保存する</button></form><?php else: ?><p>左の一覧から編集対象を選ぶか、「新規追加」を押してください。</p><?php endif; ?></div>
+  <div class="admin-toolbar"><div><p class="section-number">TGS SCOUT ADMIN</p><h1>学生データ管理</h1><p class="admin-lead">学生プロフィールの登録・更新</p></div><div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ戻る</a><form method="post"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div></div>
+  <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" href="<?= e(url('admin.php')) ?>">学生</a><span title="今後対応予定">注目学生 <small>準備中</small></span><span title="今後対応予定">作品 <small>準備中</small></span><span title="今後対応予定">所属関係 <small>準備中</small></span></nav>
+  <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
+  <div class="admin-grid">
+    <aside class="admin-list"><div class="admin-list-head"><strong>登録学生</strong><span><?= count($students) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?new=1">＋ 新しい学生を追加</a><?php foreach ($students as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?id=<?= e($item['id'] ?? '') ?>"><span><strong><?= e($item['name'] ?? '(氏名なし)') ?></strong><small><?= e($item['role'] ?? '') ?></small></span><span class="admin-status <?= !empty($item['is_active']) ? 'is-public' : '' ?>"><?= !empty($item['is_active']) ? '公開' : '非公開' ?></span></a><?php endforeach; ?></aside>
+    <div class="admin-editor">
+      <?php if ($student !== null): ?>
+      <div class="admin-editor-head"><div><p class="section-number"><?= $isNew ? 'NEW STUDENT' : 'EDIT STUDENT' ?></p><h2><?= $isNew ? '学生を新規追加' : e($student['name'] ?? '学生を編集') ?></h2></div><span>必須項目 <b>*</b></span></div>
+      <form method="post" class="admin-student-form">
+        <input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="mode" value="<?= $isNew ? 'new' : 'edit' ?>"><input type="hidden" name="original_id" value="<?= e($student['id'] ?? '') ?>">
+        <fieldset><legend><span>01</span>基本情報</legend><div class="admin-form-grid">
+          <label><span>氏名 <b>*</b></span><input name="name" value="<?= e($student['name'] ?? '') ?>" required></label>
+          <label><span>ふりがな <b>*</b></span><input name="name_kana" value="<?= e($student['name_kana'] ?? '') ?>" required></label>
+          <label><span>英字氏名 <b>*</b></span><input name="name_en" value="<?= e($student['name_en'] ?? '') ?>" placeholder="Taro Kokusai" required></label>
+          <label><span>卒業予定年 <b>*</b></span><select name="graduation_year" required><option value="">選択してください</option><?php foreach ($graduationYears as $value): ?><option value="<?= e($value) ?>" <?= ($student['graduation_year'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
+          <label><span>コース <b>*</b></span><select name="course" required><option value="">選択してください</option><?php foreach ($courses as $value): ?><option value="<?= e($value) ?>" <?= ($student['course'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
+          <label><span>主職種 <b>*</b></span><select name="role" required><option value="">選択してください</option><?php foreach ($roles as $value): ?><option value="<?= e($value) ?>" <?= ($student['role'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
+          <label class="admin-span-2">希望職種<textarea name="desired_roles" rows="3" placeholder="1行に1項目"><?= e(adminListText($student['desired_roles'] ?? [])) ?></textarea></label>
+        </div></fieldset>
+        <fieldset><legend><span>02</span>プロフィール・スキル</legend><div class="admin-form-grid">
+          <label class="admin-span-2"><span>見出し <b>*</b></span><input name="headline" value="<?= e($student['headline'] ?? '') ?>" required></label>
+          <label class="admin-span-2"><span>プロフィール <b>*</b></span><textarea name="bio" rows="6" required><?= e($student['bio'] ?? '') ?></textarea></label>
+          <label>使用技術・ツール<textarea name="skills" rows="5" placeholder="C++&#10;Unreal Engine 5"><?= e(adminListText($student['skills'] ?? [])) ?></textarea><small>1行に1項目、またはカンマ区切り</small></label>
+          <label>専門分野<textarea name="fields" rows="5" placeholder="ゲームプレイ&#10;グラフィックス"><?= e(adminListText($student['fields'] ?? [])) ?></textarea><small>1行に1項目、またはカンマ区切り</small></label>
+        </div></fieldset>
+        <fieldset><legend><span>03</span>作品・資料リンク</legend><div class="admin-form-grid admin-url-fields">
+          <label class="admin-span-2">ポートフォリオURL<input type="url" name="portfolio_url" value="<?= e($student['portfolio_url'] ?? '') ?>" placeholder="https://"></label>
+          <label class="admin-span-2">ソースコードURL<input type="url" name="source_code_url" value="<?= e($student['source_code_url'] ?? '') ?>" placeholder="https://"></label>
+          <label class="admin-span-2">動画URL<input type="url" name="video_url" value="<?= e($student['video_url'] ?? '') ?>" placeholder="https://"></label>
+        </div></fieldset>
+        <fieldset><legend><span>04</span>公開・活動設定</legend><div class="admin-check-grid">
+          <label><input type="checkbox" name="interview_available" value="1" <?= !empty($student['interview_available']) ? 'checked' : '' ?>><span><strong>面談可能</strong><small>企業との面談を受け付ける</small></span></label>
+          <label><input type="checkbox" name="internship_interest" value="1" <?= !empty($student['internship_interest']) ? 'checked' : '' ?>><span><strong>インターン希望</strong><small>インターンを希望している</small></span></label>
+          <label><input type="checkbox" name="is_active" value="1" <?= !empty($student['is_active']) ? 'checked' : '' ?>><span><strong>プロフィールを公開</strong><small>一覧と公開APIに表示する</small></span></label>
+        </div></fieldset>
+        <div class="admin-form-actions"><p>保存するとJSONへ変換され、公開サイトへ即時反映されます。</p><button class="button button-primary" name="save_student" value="1"><?= $isNew ? '学生を追加する' : '変更を保存する' ?> <span>→</span></button></div>
+      </form>
+      <?php else: ?><div class="admin-empty"><span>STUDENT DATA</span><h2>編集する学生を選択</h2><p>左の一覧から学生を選ぶか、新しい学生を追加してください。</p></div><?php endif; ?>
+    </div>
   </div>
 </section>
-<?php renderFooter();
+<?php renderAdminEnd();

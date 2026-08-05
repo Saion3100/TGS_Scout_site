@@ -28,11 +28,19 @@ TGS 2026の展示作品を起点に、学生クリエイターの担当箇所・
 
 ## 起動
 
+プロジェクト直下の `.env` に管理画面用パスワードを設定します。
+
+```dotenv
+TGS_ADMIN_PASSWORD=ローカル管理画面用のパスワード
+```
+
 ```powershell
 php -S localhost:8000 -t public
 ```
 
-`http://localhost:8000` を開いてください。
+公開サイトは `http://localhost:8000`、管理画面は
+`http://localhost:8000/admin.php` を開いてください。`.env` はローカル環境でのみ
+自動的に読み込まれ、Webサーバー側ですでに設定されている環境変数は上書きしません。
 
 ページ内リンクとアセットURLは実行中の公開パスから自動判定されます。同じファイル一式で、ローカルの `/` とFTP公開先の `/it-work/TGS_Scout/` の両方に対応します。
 
@@ -42,7 +50,7 @@ php -S localhost:8000 -t public
 - `/teams.php` 出展作品一覧
 - `/team_detail.php?id=t01` 作品詳細（QRコード遷移先）
 - `/students.php` 学生一覧・絞り込み
-- `/student_detail.php?id=s001` 学生プロフィール
+- `/student_detail.php?id=1` 学生プロフィール
 - `/contact.php` 問い合わせUI（デモ版のため送信なし）
 - `/api/scouts.php` 公開中の学生JSON
 
