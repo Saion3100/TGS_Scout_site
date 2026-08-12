@@ -42,6 +42,7 @@
 /* Home page value proposition and curated student entry point. */
 .brand-group{display:flex;align-items:center}
 .school-logo-link{display:flex;align-items:center}
+.global-nav a{white-space:nowrap}
 .school-logo-link:focus-visible,.official-label:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .official-label{align-self:flex-start;margin:0 0 12px;padding:7px 11px;background:var(--ink);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em}
 .official-label span{margin-left:5px;color:#fff}
@@ -139,6 +140,26 @@
 .filters[data-filter-root] .filter-row{grid-column:1/-1}
 .filters[data-filter-root] .filter-selects{width:100%}
 .filters .search-box{width:100%}
+.filters[data-team-filter-root] .search-box{
+    align-self:flex-end;
+    height:40px;
+}
+.filters[data-team-filter-root] .search-box input{
+    height:100%;
+    padding:7px 10px;
+}
+
+/* Switch to the menu before the header labels become cramped or wrap. */
+@media(max-width:760px){
+    .site-header{height:68px;padding:0 20px}
+    .brand-logo{width:42px;height:42px;margin-right:9px}
+    .nav-toggle{display:block}
+    .global-nav{display:none;position:absolute;top:68px;left:0;right:0;height:auto;max-height:calc(100vh - 68px);overflow-y:auto;background:#fff;padding:18px 20px 25px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line)}
+    .global-nav.is-open{display:flex}
+    .global-nav a{min-height:52px}
+    .global-nav a.is-current:after{display:none}
+    .global-nav .nav-contact{justify-content:center}
+}
 
 @media(max-width:900px){
     .filters[data-filter-root],
