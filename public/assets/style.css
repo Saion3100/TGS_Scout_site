@@ -43,6 +43,8 @@
 .brand-group{display:flex;align-items:center}
 .school-logo-link{display:flex;align-items:center}
 .global-nav a{white-space:nowrap}
+.student-card{transition:transform .2s,box-shadow .2s}
+.student-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(0,0,0,.08)}
 .school-logo-link:focus-visible,.official-label:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .official-label{align-self:flex-start;margin:0 0 12px;padding:7px 11px;background:var(--ink);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em}
 .official-label span{margin-left:5px;color:#fff}
