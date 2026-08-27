@@ -189,7 +189,7 @@ function renderHeader(string $title = '', string $current = ''): void
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow,noarchive">
-    <meta name="theme-color" content="#e60012">
+    <meta name="theme-color" content="#ffffff">
     <title><?= e($fullTitle) ?></title>
     <link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>">
 </head>
