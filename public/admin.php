@@ -16,15 +16,15 @@ function renderAdminStart(string $title = 'データ管理'): void
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#111111">
 <title><?= e($title) ?> | TGS SCOUT ADMIN</title>
-<link rel="stylesheet" href="<?= e(url('assets/style.css')) ?>">
-<link rel="stylesheet" href="<?= e(url('assets/qr-admin.css')) ?>">
+<link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>">
+<link rel="stylesheet" href="<?= e(assetUrl('qr-admin.css')) ?>">
 </head><body class="admin-body"><main class="admin-main">
 <?php
 }
 
 function renderAdminEnd(): void
 {
-    ?><script src="<?= e(url('assets/vendor/qrcode.min.js')) ?>"></script><script src="<?= e(url('assets/qr-admin.js')) ?>"></script></main></body></html><?php
+    ?><script src="<?= e(assetUrl('vendor/qrcode.min.js')) ?>"></script><script src="<?= e(assetUrl('qr-admin.js')) ?>"></script></main></body></html><?php
 }
 
 function adminText(string $name): string

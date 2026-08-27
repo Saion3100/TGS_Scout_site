@@ -61,6 +61,16 @@ function data(string $name): array
     return $cache[$name];
 }
 
+function assetUrl(string $path): string
+{
+    $relativePath = ltrim($path, '/');
+    $localPath = dirname(__DIR__) . '/public/assets/' . $relativePath;
+    $serverPath = dirname(__DIR__) . '/assets/' . $relativePath;
+    $filePath = is_file($localPath) ? $localPath : $serverPath;
+    $version = is_file($filePath) ? (string) filemtime($filePath) : '1';
+    return url('assets/' . $relativePath) . '?v=' . rawurlencode($version);
+}
+
 function e($value): string
 {
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -181,7 +191,7 @@ function renderHeader(string $title = '', string $current = ''): void
     <meta name="robots" content="noindex,nofollow,noarchive">
     <meta name="theme-color" content="#e60012">
     <title><?= e($fullTitle) ?></title>
-    <link rel="stylesheet" href="<?= e(url('assets/style.css')) ?>">
+    <link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>">
 </head>
 <body>
 <header class="site-header">
@@ -223,7 +233,7 @@ function renderFooter(): void
     </div>
     <small>© 2026 TGS SCOUT PROJECT</small>
 </footer>
-<script src="<?= e(url('assets/app.js')) ?>"></script>
+<script src="<?= e(assetUrl('app.js')) ?>"></script>
 </body>
 </html>
 <?php
