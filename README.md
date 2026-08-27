@@ -53,6 +53,8 @@ php -S localhost:8000 -t public
 - `/student_detail.php?id=1` 学生プロフィール
 - `/contact.php` 問い合わせUI（デモ版のため送信なし）
 - `/api/scouts.php` 公開中の学生JSON
+- `/teams_admin.php` 作品情報の更新と作品QRコードの自動作成
+- `/qr.php?code=...` 管理QRの固定リダイレクトURL
 
 ## データ更新
 

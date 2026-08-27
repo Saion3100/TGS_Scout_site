@@ -68,10 +68,42 @@ function e($value): string
 
 function repository(string $name): JsonRepository
 {
-    if (!in_array($name, ['students', 'teams', 'featured_students'], true)) {
+    if (!in_array($name, ['students', 'teams', 'featured_students', 'qr_codes'], true)) {
         throw new InvalidArgumentException('Unsupported data type.');
     }
     return new JsonRepository(DATA_DIR . '/' . $name . '.json');
+}
+
+function absoluteUrl(string $path, array $query = []): string
+{
+    $configuredBaseUrl = trim((string) getenv('TGS_PUBLIC_BASE_URL'));
+    $baseUrl = $configuredBaseUrl !== ''
+        ? rtrim($configuredBaseUrl, '/')
+        : 'https://r1u2.v2011.coreserver.jp/it-work/TGS_Scout';
+    return $baseUrl . '/' . ltrim($path, '/') . ($query ? '?' . http_build_query($query) : '');
+}
+
+function syncManagedQr(string $id, string $label, string $targetUrl, bool $isActive): void
+{
+    $repo = repository('qr_codes');
+    $items = $repo->all();
+    $record = ['id' => $id, 'label' => $label, 'target_url' => $targetUrl, 'is_active' => $isActive, 'updated_at' => date(DATE_ATOM)];
+    foreach ($items as $index => $item) {
+        if ((string) ($item['id'] ?? '') === $id) {
+            $items[$index] = $record;
+            $repo->replaceAll($items);
+            return;
+        }
+    }
+    if ($isActive) {
+        $items[] = $record;
+        $repo->replaceAll($items);
+    }
+}
+
+function managedQrUrl(string $id): string
+{
+    return absoluteUrl('qr.php', ['code' => $id]);
 }
 
 function firstCharacter(string $value): string

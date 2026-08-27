@@ -17,13 +17,14 @@ function renderAdminStart(string $title = 'データ管理'): void
 <meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#111111">
 <title><?= e($title) ?> | TGS SCOUT ADMIN</title>
 <link rel="stylesheet" href="<?= e(url('assets/style.css')) ?>">
+<link rel="stylesheet" href="<?= e(url('assets/qr-admin.css')) ?>">
 </head><body class="admin-body"><main class="admin-main">
 <?php
 }
 
 function renderAdminEnd(): void
 {
-    ?></main></body></html><?php
+    ?><script src="<?= e(url('assets/vendor/qrcode.min.js')) ?>"></script><script src="<?= e(url('assets/qr-admin.js')) ?>"></script></main></body></html><?php
 }
 
 function adminText(string $name): string
@@ -189,7 +190,7 @@ if ($section === 'featured') {
     ?>
     <section class="admin-shell">
       <div class="admin-toolbar"><div><p class="section-number">TGS SCOUT ADMIN</p><h1>注目学生管理</h1><p class="admin-lead">トップページに掲載する学生と教員コメント</p></div><div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ戻る</a><form method="post"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div></div>
-      <nav class="admin-tabs" aria-label="管理データ"><a href="<?= e(url('admin.php')) ?>">学生</a><a class="is-active" href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><span>作品 <small>準備中</small></span><span>所属関係 <small>準備中</small></span></nav>
+      <nav class="admin-tabs" aria-label="管理データ"><a href="<?= e(url('admin.php')) ?>">学生</a><a class="is-active" href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><a href="<?= e(url('teams_admin.php')) ?>">作品</a><span>所属関係 <small>準備中</small></span></nav>
       <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
       <div class="admin-grid"><aside class="admin-list"><div class="admin-list-head"><strong>掲載中</strong><span><?= count($featuredItems) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?section=featured&new=1">＋ 注目学生を追加</a>
       <?php foreach ($featuredItems as $item): $listedStudent = findById($students, (string) $item['student_id']); ?><a class="<?= !$isFeaturedNew && $selectedStudentId === (string) $item['student_id'] ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?section=featured&student_id=<?= e($item['student_id']) ?>"><span><strong><?= e($listedStudent['name'] ?? '不明な学生') ?></strong><small><?= e($item['focus'] ?? '') ?></small></span><span class="admin-order"><?= e($item['order'] ?? '') ?></span></a><?php endforeach; ?></aside>
@@ -218,6 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
         $studentId = $isNew ? nextStudentId($students) : $originalId;
         $student = studentFromPost($studentId);
         repository('students')->saveById($student, $isNew);
+        syncManagedQr('student-' . $studentId, '学生：' . $student['name'], absoluteUrl('student_detail.php', ['id' => $studentId]), !empty($student['is_active']));
         header('Location: ' . url('admin.php') . '?id=' . rawurlencode($student['id']) . '&saved=1');
         exit;
     } catch (Throwable $exception) {
@@ -246,7 +248,7 @@ renderAdminStart('学生データ管理');
 ?>
 <section class="admin-shell">
   <div class="admin-toolbar"><div><p class="section-number">TGS SCOUT ADMIN</p><h1>学生データ管理</h1><p class="admin-lead">学生プロフィールの登録・更新</p></div><div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ戻る</a><form method="post"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div></div>
-  <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" href="<?= e(url('admin.php')) ?>">学生</a><a href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><span title="今後対応予定">作品 <small>準備中</small></span><span title="今後対応予定">所属関係 <small>準備中</small></span></nav>
+  <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" href="<?= e(url('admin.php')) ?>">学生</a><a href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><a href="<?= e(url('teams_admin.php')) ?>">作品</a><span title="今後対応予定">所属関係 <small>準備中</small></span></nav>
   <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
   <div class="admin-grid">
     <aside class="admin-list"><div class="admin-list-head"><strong>登録学生</strong><span><?= count($students) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?new=1">＋ 新しい学生を追加</a><?php foreach ($students as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?id=<?= e($item['id'] ?? '') ?>"><span><strong><?= e($item['name'] ?? '(氏名なし)') ?></strong><small><?= e($item['role'] ?? '') ?></small></span><span class="admin-status <?= !empty($item['is_active']) ? 'is-public' : '' ?>"><?= !empty($item['is_active']) ? '公開' : '非公開' ?></span></a><?php endforeach; ?></aside>
@@ -280,6 +282,9 @@ renderAdminStart('学生データ管理');
           <label><input type="checkbox" name="internship_interest" value="1" <?= !empty($student['internship_interest']) ? 'checked' : '' ?>><span><strong>インターン希望</strong><small>インターンを希望している</small></span></label>
           <label><input type="checkbox" name="is_active" value="1" <?= !empty($student['is_active']) ? 'checked' : '' ?>><span><strong>プロフィールを公開</strong><small>一覧と公開APIに表示する</small></span></label>
         </div></fieldset>
+        <?php if (!$isNew && !empty($student['is_active'])): $studentQrUrl = managedQrUrl('student-' . (string) ($student['id'] ?? '')); ?>
+        <fieldset><legend><span>05</span>プロフィールQRコード</legend><div class="qr-preview-grid"><div data-qr-value="<?= e($studentQrUrl) ?>"></div><div><label>固定URL<input value="<?= e($studentQrUrl) ?>" readonly></label><p class="form-note">公開プロフィール用のQRコードです。プロフィールを変更しても再印刷は不要です。</p><button type="button" class="button button-outline" data-qr-download>PNGをダウンロード</button><button type="button" class="button button-outline" data-qr-print>印刷する</button></div></div></fieldset>
+        <?php endif; ?>
         <div class="admin-form-actions"><p>保存するとJSONへ変換され、公開サイトへ即時反映されます。</p><button class="button button-primary" name="save_student" value="1"><?= $isNew ? '学生を追加する' : '変更を保存する' ?> <span>→</span></button></div>
       </form>
       <?php else: ?><div class="admin-empty"><span>STUDENT DATA</span><h2>編集する学生を選択</h2><p>左の一覧から学生を選ぶか、新しい学生を追加してください。</p></div><?php endif; ?>
