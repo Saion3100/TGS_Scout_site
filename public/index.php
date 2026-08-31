@@ -19,9 +19,9 @@ renderHeader();
 <section class="home-hero">
     <div class="hero-copy">
         <a class="official-label" href="https://www.itc.ac.jp/" target="_blank" rel="noopener noreferrer">国際理工カレッジ公式 <span>↗</span></a>
-        <p class="kicker"><span></span>TGS2026 企業関係者向け 学生紹介サイト</p>
-        <h1>未来をつくる学生と、<br><em>今、つながる。</em></h1>
-        <p class="lead">国際理工カレッジが、TGS2026出展作品とその制作学生を企業関係者向けにご紹介します。作品、担当箇所、技術、ポートフォリオをご覧いただけます。</p>
+        <p class="kicker"><span></span>TGS SCOUT 2026</p>
+        <h1>国際理工カレッジ<br><em>関係者向け学生紹介サイト</em></h1>
+        <p class="lead">国際理工カレッジのTGS2026出展作品とその制作学生、当日出展はできなかった作品を企業関係者向けにご紹介します。作品、担当箇所、技術、ポートフォリオをご覧いただけます。</p>
         <div class="hero-actions">
             <a class="button button-primary" href="#featured-students">注目学生を見る <span>↓</span></a>
             <a class="text-link" href="<?= e(url('teams.php')) ?>">TGS出展作品を見る <span>→</span></a>
@@ -62,21 +62,10 @@ renderHeader();
     </div>
 </section>
 
-<section class="intro section-pad">
-    <p class="section-number">02 — CONCEPT</p>
-    <div class="intro-grid">
-        <h2>つくったゲームから、<br><em>つくった人</em>へ。</h2>
-        <div>
-            <p>試遊で感じた「おもしろい」の先にいる、一人ひとりの力を見る。TGS SCOUTは、展示ゲームを起点に学生の担当箇所や技術、ポートフォリオへつながるサイトです。</p>
-            <p>気になる学生へのご連絡は学校が窓口となり、面談・採用・インターンのご相談をおつなぎします。</p>
-        </div>
-    </div>
-</section>
-
 <section id="featured-students" class="people featured-students section-pad">
     <div class="section-head">
         <div>
-            <p class="section-number">03 — TEACHER'S PICK</p>
+            <p class="section-number">02 — TEACHER'S PICK</p>
             <h2>まずは、この学生から。</h2>
             <p class="section-description">教員が制作への取り組みと今後の成長に注目する、28卒・29卒の学生クリエイターです。</p>
         </div>
@@ -98,7 +87,7 @@ renderHeader();
 
 <section class="featured section-pad">
     <div class="section-head">
-        <div><p class="section-number">04 — FEATURED GAMES</p><h2>TGS出展作品</h2></div>
+        <div><p class="section-number">03 — FEATURED GAMES</p><h2>TGS出展作品</h2></div>
         <a class="text-link" href="<?= e(url('teams.php')) ?>">すべての作品を見る <span>→</span></a>
     </div>
     <div class="team-grid">
@@ -122,7 +111,7 @@ renderHeader();
 <section class="student-search-cta section-pad">
     <div class="section-head">
         <div>
-            <p class="section-number">05 — FIND CREATORS</p>
+            <p class="section-number">04 — FIND CREATORS</p>
             <h2>求める職種・技術から、<br>学生を探す。</h2>
         </div>
         <div class="search-cta-copy">

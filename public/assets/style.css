@@ -50,16 +50,24 @@
 .official-label span{margin-left:5px;color:#fff}
 .home-hero .lead{max-width:640px}
 .value-section{background:var(--ink);color:#fff}
+.home-hero + .value-section{padding-top:58px;padding-bottom:58px}
 .value-heading{align-items:end}
+.value-heading{margin-bottom:28px}
 .value-heading>p{max-width:500px;margin:0;color:#bbb;line-height:2}
 .value-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #444;border-left:1px solid #444}
-.value-grid article{min-height:270px;padding:38px;border-right:1px solid #444;border-bottom:1px solid #444}
+.value-grid article{min-height:190px;padding:28px 32px;border-right:1px solid #444;border-bottom:1px solid #444}
 .value-grid article>span,.teacher-note>span{color:var(--red);font-size:12px;font-weight:800;letter-spacing:.1em}
-.value-grid h3{margin:42px 0 15px;font-size:25px}
+.value-grid h3{margin:24px 0 10px;font-size:23px}
 .value-grid p{margin:0;color:#bbb;line-height:2}
 .intro-grid h2 em{color:var(--red);font-style:normal}
 .section-description{max-width:650px;margin:15px 0 0;color:var(--muted);line-height:1.9}
 .featured-student-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.featured-students,.featured{position:relative}
+.featured-students:before,.featured:before{position:absolute;right:max(28px,calc((100vw - var(--max))/2));top:58px;color:rgba(230,0,18,.1);font-size:clamp(84px,12vw,170px);font-weight:900;line-height:1;letter-spacing:-.08em;pointer-events:none}
+.featured-students:before{content:"03"}
+.featured:before{content:"04"}
+.featured-students .section-head,.featured .section-head,.featured-student-grid,.featured .team-grid{position:relative;z-index:1}
+.featured-students .section-number,.featured .section-number{display:inline-flex;align-items:center;min-height:30px;padding:4px 10px;background:var(--red);color:#fff}
 .featured-student{display:flex;min-width:0;flex-direction:column}
 .featured-student .student-card{flex:1}
 .teacher-note{padding:24px;background:var(--ink);color:#fff;min-height:210px}
@@ -82,6 +90,8 @@
     .value-grid article{padding:28px}
     .value-grid h3{margin-top:28px}
     .teacher-note{min-height:0}
+    .home-hero + .value-section{padding-top:48px;padding-bottom:48px}
+    .featured-students:before,.featured:before{top:35px;font-size:90px}
 }
 
 /* Small labels remain readable on desktop and mobile. */
