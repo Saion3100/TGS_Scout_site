@@ -41,6 +41,8 @@
 
 /* Home page value proposition and curated student entry point. */
 .brand-group{display:flex;align-items:center}
+.brand-stack{display:flex;flex-direction:column;justify-content:center;gap:4px;line-height:1}
+.brand-audience{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--muted);white-space:nowrap}
 .school-logo-link{display:flex;align-items:center}
 .global-nav a{white-space:nowrap}
 .student-card{transition:transform .2s,box-shadow .2s}
@@ -87,6 +89,8 @@
 }
 @media(max-width:640px){
     .official-label{font-size:11px}
+    .brand-stack{gap:3px}
+    .brand-audience{font-size:8px;letter-spacing:.04em}
     .home-hero h1{font-size:43px}
     .value-grid article{padding:28px}
     .value-grid h3{margin-top:28px}
