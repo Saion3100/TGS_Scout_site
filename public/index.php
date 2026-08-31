@@ -14,6 +14,13 @@ foreach ($featuredEntries as $entry) {
         $featuredStudents[] = $student;
     }
 }
+$heroSlides = [];
+foreach (array_slice($featuredStudents ?: $students, 0, 2) as $student) {
+    $heroSlides[] = ['type' => 'student', 'eyebrow' => 'FEATURED STUDENT', 'title' => $student['name'], 'meta' => $student['role'] . ' / ' . ($student['graduation_year'] ?? ''), 'label' => firstCharacter($student['name']), 'image' => $student['photo_url'] ?? '', 'href' => url('student_detail.php') . '?id=' . rawurlencode((string) $student['id']), 'theme' => 'red'];
+}
+foreach (array_slice($teams, 0, 3) as $team) {
+    $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => $team['genre'] . ' / BOOTH ' . $team['booth_no'], 'label' => $team['game_name'], 'image' => $team['screenshots'][0] ?? '', 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
+}
 renderHeader();
 ?>
 <section class="home-hero">
@@ -27,10 +34,24 @@ renderHeader();
             <a class="text-link" href="<?= e(url('teams.php')) ?>">TGS出展作品を見る <span>→</span></a>
         </div>
     </div>
-    <div class="hero-visual" aria-label="TGS出展学生作品">
-        <div class="visual-type">PLAY<br><span>MEET</span><br>CREATE</div>
+    <div class="hero-carousel" data-hero-carousel aria-roledescription="カルーセル" aria-label="注目学生とTGS出展作品">
+        <div class="hero-carousel-track">
+            <?php foreach ($heroSlides as $index => $slide): ?>
+            <a class="hero-slide theme-<?= e($slide['theme']) ?><?= $index === 0 ? ' is-active' : '' ?>" href="<?= e($slide['href']) ?>" data-hero-slide aria-hidden="<?= $index === 0 ? 'false' : 'true' ?>" tabindex="<?= $index === 0 ? '0' : '-1' ?>">
+                <div class="hero-slide-media">
+                    <?php if ($slide['image'] !== ''): ?><img src="<?= e($slide['image']) ?>" alt=""><?php else: ?><span class="hero-slide-placeholder hero-slide-placeholder-<?= e($slide['type']) ?>"><?= e($slide['label']) ?></span><?php endif; ?>
+                </div>
+                <div class="hero-slide-copy"><span><?= e($slide['eyebrow']) ?></span><strong><?= e($slide['title']) ?></strong><small><?= e($slide['meta']) ?></small><b aria-hidden="true">VIEW ↗</b></div>
+            </a>
+            <?php endforeach; ?>
+        </div>
         <span class="visual-badge">TGS<br>2026</span>
-        <div class="visual-caption">STUDENT GAME CREATORS<br>PORTFOLIO DIRECTORY</div>
+        <div class="hero-carousel-controls">
+            <button type="button" data-hero-prev aria-label="前のスライド">←</button>
+            <div class="hero-carousel-dots" aria-label="スライドを選択"><?php foreach ($heroSlides as $index => $slide): ?><button type="button" class="<?= $index === 0 ? 'is-active' : '' ?>" data-hero-dot="<?= $index ?>" aria-label="<?= $index + 1 ?>枚目を表示" aria-current="<?= $index === 0 ? 'true' : 'false' ?>"></button><?php endforeach; ?></div>
+            <button type="button" data-hero-next aria-label="次のスライド">→</button>
+        </div>
+        <div class="hero-carousel-progress" aria-hidden="true"><span></span></div>
     </div>
     <div class="scroll-cue">SCROLL <span>→</span></div>
 </section>
@@ -72,7 +93,7 @@ renderHeader();
         <a class="text-link" href="<?= e(url('students.php')) ?>">すべての学生を見る <span>→</span></a>
     </div>
     <div class="featured-student-grid">
-        <?php foreach (array_slice($featuredStudents, 0, 3) as $student): ?>
+        <?php foreach (array_slice($featuredStudents, 0, 2) as $student): ?>
         <article class="featured-student">
             <?php studentCard($student); ?>
             <div class="teacher-note">

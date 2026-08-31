@@ -198,6 +198,40 @@
     .filters .filter-selects{grid-template-columns:1fr}
 }
 
+/* Home hero carousel for featured students and exhibition works. */
+.hero-carousel{position:relative;min-width:0;overflow:hidden;background:var(--ink);color:#fff}
+.hero-carousel-track,.hero-slide{position:absolute;inset:0}
+.hero-slide{display:grid;grid-template-rows:minmax(0,1fr) auto;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .65s ease,transform .8s ease,visibility .65s}
+.hero-slide.is-active{opacity:1;visibility:visible;transform:scale(1);z-index:1}
+.hero-slide-media{position:relative;min-height:0;overflow:hidden;background:var(--red)}
+.hero-slide-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.26))}
+.hero-slide-media img{width:100%;height:100%;display:block;object-fit:cover}
+.hero-slide-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:clamp(70px,8vw,145px);font-weight:900;line-height:.82;letter-spacing:-.09em;text-align:center}
+.hero-slide-placeholder:before,.hero-slide-placeholder:after{content:"";position:absolute;width:60%;aspect-ratio:1;border:45px solid rgba(255,255,255,.14);transform:rotate(35deg)}
+.hero-slide-placeholder:after{width:90%;border-width:1px;border-radius:50%}
+.hero-slide-placeholder-student{font-size:clamp(180px,23vw,370px);align-items:flex-end;color:rgba(255,255,255,.88);transform:translateY(8%)}
+.hero-slide.theme-navy .hero-slide-media{background:#15243b}
+.hero-slide.theme-yellow .hero-slide-media{background:#f1b800;color:var(--ink)}
+.hero-slide-copy{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;padding:24px 28px 30px;background:var(--ink);z-index:2}
+.hero-slide-copy>span,.hero-slide-copy>small{grid-column:1;font-size:11px;letter-spacing:.12em}
+.hero-slide-copy>span{color:#ff5a67;font-weight:800}
+.hero-slide-copy>strong{grid-column:1;margin:4px 0;font-size:clamp(25px,3vw,42px);line-height:1.1;letter-spacing:-.06em}
+.hero-slide-copy>small{color:#bbb}
+.hero-slide-copy>b{grid-column:2;grid-row:1/4;color:#fff;font-size:11px;letter-spacing:.12em}
+.hero-carousel .visual-badge{z-index:3}
+.hero-carousel-controls{position:absolute;left:28px;bottom:126px;z-index:4;display:flex;align-items:center;gap:12px}
+.hero-carousel-controls>button{width:38px;height:38px;border:1px solid rgba(255,255,255,.55);background:rgba(0,0,0,.25);color:#fff;cursor:pointer}
+.hero-carousel-dots{display:flex;gap:7px}
+.hero-carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:width .2s,background .2s}
+.hero-carousel-dots button.is-active{width:24px;border-radius:5px;background:#fff}
+.hero-carousel-progress{position:absolute;right:0;bottom:0;left:0;height:3px;z-index:4;background:rgba(255,255,255,.2)}
+.hero-carousel-progress span{display:block;width:100%;height:100%;background:var(--red);transform-origin:left;animation:hero-progress 5s linear infinite}
+.hero-carousel:hover .hero-carousel-progress span,.hero-carousel:focus-within .hero-carousel-progress span{animation-play-state:paused}
+@keyframes hero-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(max-width:900px){.hero-carousel{min-height:520px}}
+@media(max-width:640px){.hero-carousel{min-height:500px}.hero-carousel-controls{bottom:124px}.hero-slide-copy{padding:20px 22px 26px}.hero-slide-copy>b{display:none}}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:none}.hero-carousel-progress span{animation:none}}
+
 /* The administration area is independent from the public site chrome. */
 .admin-body{margin:0;background:#f6f6f4;color:var(--ink)}
 .admin-main{min-height:100vh}

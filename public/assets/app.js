@@ -6,6 +6,33 @@ navToggle?.addEventListener('click', () => {
   nav?.classList.toggle('is-open', !open);
 });
 
+const heroCarousel = document.querySelector('[data-hero-carousel]');
+if (heroCarousel) {
+  const slides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
+  const dots = [...heroCarousel.querySelectorAll('[data-hero-dot]')];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = 0;
+  let timer;
+  let touchStartX = 0;
+  const showSlide = index => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => { const active = i === current; slide.classList.toggle('is-active', active); slide.setAttribute('aria-hidden', String(!active)); slide.tabIndex = active ? 0 : -1; });
+    dots.forEach((dot, i) => { const active = i === current; dot.classList.toggle('is-active', active); dot.setAttribute('aria-current', String(active)); });
+  };
+  const stop = () => window.clearInterval(timer);
+  const start = () => { stop(); if (!reduceMotion && slides.length > 1) timer = window.setInterval(() => showSlide(current + 1), 5000); };
+  heroCarousel.querySelector('[data-hero-prev]')?.addEventListener('click', () => { showSlide(current - 1); start(); });
+  heroCarousel.querySelector('[data-hero-next]')?.addEventListener('click', () => { showSlide(current + 1); start(); });
+  dots.forEach(dot => dot.addEventListener('click', () => { showSlide(Number(dot.dataset.heroDot)); start(); }));
+  heroCarousel.addEventListener('mouseenter', stop);
+  heroCarousel.addEventListener('mouseleave', start);
+  heroCarousel.addEventListener('focusin', stop);
+  heroCarousel.addEventListener('focusout', start);
+  heroCarousel.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+  heroCarousel.addEventListener('touchend', event => { const distance = event.changedTouches[0].clientX - touchStartX; if (Math.abs(distance) > 45) showSlide(current + (distance < 0 ? 1 : -1)); start(); }, { passive: true });
+  start();
+}
+
 const filterRoot = document.querySelector('[data-filter-root]');
 if (filterRoot) {
   const buttons = [...filterRoot.querySelectorAll('[data-role]')];
