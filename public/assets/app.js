@@ -33,6 +33,53 @@ if (heroCarousel) {
   start();
 }
 
+const featuredSlider = document.querySelector('[data-featured-slider]');
+if (featuredSlider) {
+  const track = featuredSlider.querySelector('[data-featured-track]');
+  const cards = [...track.children];
+  const currentLabel = featuredSlider.querySelector('[data-featured-current]');
+  const updateFeaturedSlider = () => {
+    const overflowing = track.scrollWidth > track.clientWidth + 2;
+    featuredSlider.classList.toggle('is-overflowing', overflowing);
+    if (!overflowing || !cards.length) return;
+    const positions = cards.map(card => card.offsetLeft - track.offsetLeft);
+    const current = positions.reduce((nearest, position, index) => Math.abs(position - track.scrollLeft) < Math.abs(positions[nearest] - track.scrollLeft) ? index : nearest, 0);
+    if (currentLabel) currentLabel.textContent = String(current + 1);
+  };
+  const moveFeaturedSlider = direction => {
+    const card = cards[0];
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+  };
+  featuredSlider.querySelector('[data-featured-prev]')?.addEventListener('click', () => moveFeaturedSlider(-1));
+  featuredSlider.querySelector('[data-featured-next]')?.addEventListener('click', () => moveFeaturedSlider(1));
+  track.addEventListener('scroll', updateFeaturedSlider, { passive: true });
+  window.addEventListener('resize', updateFeaturedSlider);
+  updateFeaturedSlider();
+}
+
+const workSlider = document.querySelector('[data-work-slider]');
+if (workSlider) {
+  const track = workSlider.querySelector('[data-work-track]');
+  const currentLabel = workSlider.querySelector('[data-work-current]');
+  const totalLabel = workSlider.querySelector('[data-work-total]');
+  const updateWorkSlider = () => {
+    const overflowing = track.scrollWidth > track.clientWidth + 2;
+    const pages = Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
+    const current = Math.min(pages, Math.round(track.scrollLeft / track.clientWidth) + 1);
+    workSlider.classList.toggle('is-overflowing', overflowing);
+    if (currentLabel) currentLabel.textContent = String(current);
+    if (totalLabel) totalLabel.textContent = String(pages);
+  };
+  const moveWorkSlider = direction => track.scrollBy({ left: direction * track.clientWidth, behavior: 'smooth' });
+  workSlider.querySelector('[data-work-prev]')?.addEventListener('click', () => moveWorkSlider(-1));
+  workSlider.querySelector('[data-work-next]')?.addEventListener('click', () => moveWorkSlider(1));
+  track.addEventListener('scroll', updateWorkSlider, { passive: true });
+  window.addEventListener('resize', updateWorkSlider);
+  updateWorkSlider();
+}
+
 const filterRoot = document.querySelector('[data-filter-root]');
 if (filterRoot) {
   const buttons = [...filterRoot.querySelectorAll('[data-role]')];

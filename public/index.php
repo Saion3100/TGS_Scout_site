@@ -92,17 +92,26 @@ renderHeader();
         </div>
         <a class="text-link" href="<?= e(url('students.php')) ?>">すべての学生を見る <span>→</span></a>
     </div>
-    <div class="featured-student-grid">
-        <?php foreach (array_slice($featuredStudents, 0, 2) as $student): ?>
-        <article class="featured-student">
-            <?php studentCard($student); ?>
-            <div class="teacher-note">
-                <span>TEACHER'S NOTE</span>
-                <strong><?= e($student['featured_focus']) ?></strong>
-                <p><?= e($student['teacher_comment']) ?></p>
-            </div>
-        </article>
-        <?php endforeach; ?>
+    <div class="featured-student-slider" data-featured-slider>
+        <div class="featured-student-grid" data-featured-track>
+            <?php foreach ($featuredStudents as $student): ?>
+            <article class="featured-student">
+                <?php studentCard($student); ?>
+                <div class="teacher-note">
+                    <span>TEACHER'S NOTE</span>
+                    <strong><?= e($student['featured_focus']) ?></strong>
+                    <p><?= e($student['teacher_comment']) ?></p>
+                </div>
+            </article>
+            <?php endforeach; ?>
+        </div>
+        <?php if (count($featuredStudents) > 1): ?>
+        <div class="featured-slider-controls" data-featured-controls aria-label="注目学生のスライド操作">
+            <button type="button" data-featured-prev aria-label="前の学生を表示">←</button>
+            <span><b data-featured-current>1</b> / <?= count($featuredStudents) ?></span>
+            <button type="button" data-featured-next aria-label="次の学生を表示">→</button>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -111,21 +120,30 @@ renderHeader();
         <div><p class="section-number">03 — FEATURED GAMES</p><h2>TGS出展作品</h2></div>
         <a class="text-link" href="<?= e(url('teams.php')) ?>">すべての作品を見る <span>→</span></a>
     </div>
-    <div class="team-grid">
-        <?php foreach ($teams as $i => $team): ?>
-        <a class="team-card theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
-            <div class="game-art">
-                <span class="game-number">0<?= $i + 1 ?></span>
-                <strong><?= e($team['game_name']) ?></strong>
-            </div>
-            <div class="team-card-body">
-                <span><?= e($team['genre']) ?></span>
-                <h3><?= e($team['game_name']) ?></h3>
-                <p><?= e($team['catchcopy']) ?></p>
-                <small>BOOTH <?= e($team['booth_no']) ?></small>
-            </div>
-        </a>
-        <?php endforeach; ?>
+    <div class="featured-work-slider" data-work-slider>
+        <div class="team-grid featured-work-grid" data-work-track>
+            <?php foreach ($teams as $i => $team): ?>
+            <a class="team-card theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
+                <div class="game-art">
+                    <span class="game-number"><?= e(str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                    <strong><?= e($team['game_name']) ?></strong>
+                </div>
+                <div class="team-card-body">
+                    <span><?= e($team['genre']) ?></span>
+                    <h3><?= e($team['game_name']) ?></h3>
+                    <p><?= e($team['catchcopy']) ?></p>
+                    <small>BOOTH <?= e($team['booth_no']) ?></small>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+        <?php if (count($teams) > 1): ?>
+        <div class="featured-slider-controls work-slider-controls" data-work-controls aria-label="出展作品のスライド操作">
+            <button type="button" data-work-prev aria-label="前の作品を表示">←</button>
+            <span><b data-work-current>1</b> / <i data-work-total>1</i></span>
+            <button type="button" data-work-next aria-label="次の作品を表示">→</button>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 

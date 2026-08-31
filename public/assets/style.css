@@ -63,7 +63,21 @@
 .value-grid p{margin:0;color:#bbb;line-height:2}
 .intro-grid h2 em{color:var(--red);font-style:normal}
 .section-description{max-width:650px;margin:15px 0 0;color:var(--muted);line-height:1.9}
-.featured-student-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.featured-student-slider{min-width:0}
+.featured-student-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 44px)/3);grid-template-columns:none;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}
+.featured-student-grid::-webkit-scrollbar{display:none}
+.featured-student{scroll-snap-align:start}
+.featured-slider-controls{display:none;align-items:center;justify-content:flex-end;gap:14px;margin-top:24px}
+.featured-student-slider.is-overflowing .featured-slider-controls{display:flex}
+.featured-slider-controls button{width:44px;height:44px;border:1px solid var(--ink);background:#fff;color:var(--ink);font-weight:800;cursor:pointer}
+.featured-slider-controls span{min-width:54px;text-align:center;font-size:12px;letter-spacing:.1em}
+.featured-slider-controls b{color:var(--red)}
+.featured-slider-controls i{font-style:normal}
+.featured-work-slider{min-width:0}
+.featured-work-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}
+.featured-work-grid::-webkit-scrollbar{display:none}
+.featured-work-grid .team-card{scroll-snap-align:start}
+.featured-work-slider.is-overflowing .work-slider-controls{display:flex}
 .featured-students,.featured{position:relative}
 .featured-students:before,.featured:before{position:absolute;right:max(28px,calc((100vw - var(--max))/2));top:58px;color:rgba(230,0,18,.1);font-size:clamp(84px,12vw,170px);font-weight:900;line-height:1;letter-spacing:-.08em;pointer-events:none}
 .featured-students:before{content:"02"}
@@ -83,7 +97,8 @@
 @media(max-width:900px){
     .value-heading{align-items:flex-start;gap:30px}
     .value-grid{grid-template-columns:1fr}
-    .featured-student-grid{grid-template-columns:repeat(2,1fr)}
+    .featured-student-grid{grid-auto-columns:calc((100% - 22px)/2)}
+    .featured-work-grid{grid-template-rows:repeat(2,auto);grid-auto-columns:calc((100% - 24px)/2)}
     .value-grid article{min-height:0}
     .student-search-cta .section-head{align-items:flex-start}
 }
@@ -95,7 +110,8 @@
     .value-grid article{padding:28px}
     .value-grid h3{margin-top:28px}
     .teacher-note{min-height:0}
-    .featured-student-grid{grid-template-columns:1fr}
+    .featured-student-grid{grid-auto-columns:100%}
+    .featured-work-grid{grid-template-rows:none;grid-auto-columns:100%}
     .home-hero + .value-section{padding-top:48px;padding-bottom:48px}
     .featured-students:before,.featured:before{top:35px;font-size:90px}
 }

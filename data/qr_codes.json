@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "id": "student-5",
+        "label": "学生：千葉 ひかり",
+        "target_url": "https:\/\/r1u2.v2011.coreserver.jp\/it-work\/TGS_Scout\/student_detail.php?id=5",
+        "is_active": true,
+        "updated_at": "2026-08-31T14:31:37+00:00"
+    }
+]
