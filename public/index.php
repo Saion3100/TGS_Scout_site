@@ -88,7 +88,7 @@ renderHeader();
         <div>
             <p class="section-number">02 — TEACHER'S PICK</p>
             <h2>まずは、この学生から。</h2>
-            <p class="section-description">教員が制作への取り組みと今後の成長に注目する、28卒・29卒の学生クリエイターです。</p>
+            <p class="section-description">教員が制作への取り組みと今後の成長に注目する、学生クリエイターです。</p>
         </div>
         <a class="text-link" href="<?= e(url('students.php')) ?>">すべての学生を見る <span>→</span></a>
     </div>

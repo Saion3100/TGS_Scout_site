@@ -64,8 +64,8 @@
 .featured-student-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .featured-students,.featured{position:relative}
 .featured-students:before,.featured:before{position:absolute;right:max(28px,calc((100vw - var(--max))/2));top:58px;color:rgba(230,0,18,.1);font-size:clamp(84px,12vw,170px);font-weight:900;line-height:1;letter-spacing:-.08em;pointer-events:none}
-.featured-students:before{content:"03"}
-.featured:before{content:"04"}
+.featured-students:before{content:"02"}
+.featured:before{content:"03"}
 .featured-students .section-head,.featured .section-head,.featured-student-grid,.featured .team-grid{position:relative;z-index:1}
 .featured-students .section-number,.featured .section-number{display:inline-flex;align-items:center;min-height:30px;padding:4px 10px;background:var(--red);color:#fff}
 .featured-student{display:flex;min-width:0;flex-direction:column}
@@ -80,7 +80,8 @@
 
 @media(max-width:900px){
     .value-heading{align-items:flex-start;gap:30px}
-    .value-grid,.featured-student-grid{grid-template-columns:1fr}
+    .value-grid{grid-template-columns:1fr}
+    .featured-student-grid{grid-template-columns:repeat(2,1fr)}
     .value-grid article{min-height:0}
     .student-search-cta .section-head{align-items:flex-start}
 }
@@ -90,6 +91,7 @@
     .value-grid article{padding:28px}
     .value-grid h3{margin-top:28px}
     .teacher-note{min-height:0}
+    .featured-student-grid{grid-template-columns:1fr}
     .home-hero + .value-section{padding-top:48px;padding-bottom:48px}
     .featured-students:before,.featured:before{top:35px;font-size:90px}
 }
