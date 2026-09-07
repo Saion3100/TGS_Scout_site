@@ -1,4 +1,9 @@
 const navToggle = document.querySelector('.nav-toggle');
+document.querySelectorAll('.student-photo').forEach(image => {
+  const hideFailedImage = () => { image.hidden = true; };
+  image.addEventListener('error', hideFailedImage);
+  if (image.complete && image.naturalWidth === 0) hideFailedImage();
+});
 const nav = document.querySelector('.global-nav');
 navToggle?.addEventListener('click', () => {
   const open = navToggle.getAttribute('aria-expanded') === 'true';

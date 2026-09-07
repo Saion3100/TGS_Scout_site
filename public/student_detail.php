@@ -13,7 +13,7 @@ renderHeader($student['name'], 'students');
 <section class="profile-hero">
     <div class="breadcrumbs"><a href="<?= e(url()) ?>">HOME</a><span>/</span><a href="<?= e(url('students.php')) ?>">CREATORS</a><span>/</span><?= e($student['name']) ?></div>
     <div class="profile-hero-grid">
-        <div class="profile-portrait"><span><?= e(firstCharacter($student['name'])) ?></span><small>CREATOR PROFILE</small></div>
+        <div class="profile-portrait"><span><?= e(firstCharacter($student['name'])) ?></span><small>CREATOR PROFILE</small><?php if (studentImageUrl($student) !== ''): ?><img class="student-photo" src="<?= e(studentImageUrl($student)) ?>" alt="<?= e($student['name']) ?>" referrerpolicy="no-referrer"><?php endif; ?></div>
         <div class="profile-title">
             <span class="role-label"><?= e($student['role']) ?></span>
             <h1><?= e($student['name']) ?></h1>

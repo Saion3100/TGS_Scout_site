@@ -183,6 +183,23 @@ function studentTeams(string $studentId): array
     return $result;
 }
 
+function studentImageUrl(array $student): string
+{
+    $source = trim((string) ($student['photo_url'] ?? $student['icon_url'] ?? ''));
+    $parts = parse_url($source);
+    if (($parts['host'] ?? '') === 'drive.google.com') {
+        parse_str($parts['query'] ?? '', $query);
+        $id = $query['id'] ?? '';
+        if (preg_match('~^/file/d/([A-Za-z0-9_-]+)~', $parts['path'] ?? '', $matches)) {
+            $id = $matches[1];
+        }
+        return is_string($id) && preg_match('/^[A-Za-z0-9_-]+$/D', $id)
+            ? 'https://drive.google.com/thumbnail?id=' . rawurlencode($id) . '&sz=w800'
+            : '';
+    }
+    return $source;
+}
+
 function googleDrivePreviewUrl(string $url): string
 {
     if (preg_match('~drive\.google\.com/file/d/([^/]+)~', $url, $matches) !== 1) {
@@ -259,8 +276,7 @@ function studentCard(array $student): void
     if (!isStudentPublic($student)) return;
     ?>
 <a class="student-card" href="<?= e(url('student_detail.php')) ?>?id=<?= e($student['id']) ?>">
-    <span class="card-index"><?= e(str_pad((string) (array_search($student, data('students'), true) + 1), 2, '0', STR_PAD_LEFT)) ?></span>
-    <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span></div>
+    <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span><?php if (studentImageUrl($student) !== ''): ?><img class="student-photo" src="<?= e(studentImageUrl($student)) ?>" alt="" loading="lazy" referrerpolicy="no-referrer"><?php endif; ?></div>
     <div class="student-card-body">
         <span class="role-label"><?= e($student['role']) ?></span>
         <h3><?= e($student['name']) ?></h3>
