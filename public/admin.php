@@ -18,7 +18,7 @@ function renderAdminStart(string $title = 'データ管理'): void
 <title><?= e($title) ?> | TGS SCOUT ADMIN</title>
 <link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>">
 <link rel="stylesheet" href="<?= e(assetUrl('qr-admin.css')) ?>">
-</head><body class="admin-body"><main class="admin-main">
+</head><body id="page-top" class="admin-body"><?php renderBackToTop(); ?><main class="admin-main">
 <?php
 }
 

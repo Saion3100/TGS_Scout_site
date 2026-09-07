@@ -256,6 +256,13 @@ function googleDrivePreviewUrl(string $url): string
     return 'https://drive.google.com/file/d/' . rawurlencode($matches[1]) . '/preview';
 }
 
+function renderBackToTop(): void
+{
+    ?>
+    <a class="back-to-top" href="#page-top"><span aria-hidden="true">↑</span> ページトップへ</a>
+    <?php
+}
+
 function renderHeader(string $title = '', string $current = ''): void
 {
     $fullTitle = $title ? $title . ' | TGS SCOUT 2026' : 'TGS SCOUT 2026';
@@ -270,7 +277,8 @@ function renderHeader(string $title = '', string $current = ''): void
     <title><?= e($fullTitle) ?></title>
     <link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>">
 </head>
-<body>
+<body id="page-top">
+<?php renderBackToTop(); ?>
 <header class="site-header">
     <div class="brand-group">
         <a class="school-logo-link" href="https://www.itc.ac.jp/" target="_blank" rel="noopener noreferrer" aria-label="国際理工カレッジ公式サイト（新しいタブで開く）">
