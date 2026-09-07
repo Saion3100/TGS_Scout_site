@@ -96,8 +96,11 @@ function listText($value): string
 function teamDevelopmentPeriod(array $team): string
 {
     $format = static function (string $value): string {
+        if (preg_match('/^\d{4}$/', $value)) return $value . '年';
+        $month = DateTimeImmutable::createFromFormat('!Y-m', $value);
+        if ($month && $month->format('Y-m') === $value) return $month->format('Y年n月');
         $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
-        return $date && $date->format('Y-m-d') === $value ? $date->format('Y年n月j日') : '';
+        return $date && $date->format('Y-m-d') === $value ? $date->format('Y年n月j日') : $value;
     };
     $start = $format(trim((string) ($team['development_start_date'] ?? '')));
     $endValue = trim((string) ($team['development_end_date'] ?? ''));
