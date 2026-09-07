@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
-$teams = data('teams');
+$teams = array_values(array_filter(data('teams'), static fn(array $team): bool => trim((string) ($team['booth_no'] ?? '')) !== ''));
+usort($teams, static fn(array $a, array $b): int => strnatcmp(trim((string) $a['booth_no']), trim((string) $b['booth_no'])) ?: strcmp((string) $a['id'], (string) $b['id']));
 $students = publicStudents();
 $featuredEntries = data('featured_students');
 usort($featuredEntries, fn(array $a, array $b): int => $a['order'] <=> $b['order']);
