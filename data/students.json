@@ -3,19 +3,21 @@
     "id": "1",
     "name": "鷲見 隆斗",
     "name_kana": "わしみ たかと",
-    "name_en": "Washimi Takato",
-    "graduation_year": "2028年卒",
+    "name_en": "Takato Washimi",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "諦めずにやり遂げる所",
     "bio": "私の得意なことは、試行錯誤を重ねながら問題を解決していくことです。制作では、ただ動くものを作るだけでなく、操作する人にとって分かりやすく、遊びやすいものにすることを大切にしています。今後はUnityやC#の知識をさらに深め、ゲーム制作で培った経験を活かしながら、幅広い分野で活躍できるプログラマーを目指していきたいです。",
     "skills": [
       "C++",
       "Unity",
-      "C＃"
+      "C#"
     ],
     "fields": [
       "ゲームプレイ",
@@ -24,23 +26,29 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1XaPDyapslEC4TdwxtuQ_XJETumT8v44F",
-    "portfolio_url": "https://docs.google.com/presentation/d/144LixwOPu6X8PnIBQHiY2O9Kl3QnszhAgdfW1CpYRQo/edit?usp=sharing",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/144LixwOPu6X8PnIBQHiY2O9Kl3QnszhAgdfW1CpYRQo/edit?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1XaPDyapslEC4TdwxtuQ_XJETumT8v44F",
     "is_active": true
   },
   {
     "id": "2",
     "name": "TAY CHUN WEE",
     "name_kana": "て ちゅん うい",
-    "name_en": "Tay Chun Wee",
-    "graduation_year": "2028年卒",
+    "name_en": "Chun Wee Tay",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー",
+      "プログラマー"
+    ],
     "desired_roles": [
       "プランナー",
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "アイデアを、AIと検証で遊べる形にする",
     "bio": "企画から実装、テスト、改善まで一貫して取り組み、アイデアを実際に遊べる形へ仕上げることを大切にしています。AIを活用しながら、操作感や画面の分かりやすさを繰り返し検証し、最後まで完成度を高めます。今後はUnityやC#の基礎を身につけ、自分で判断・修正できる範囲を広げたいです。",
@@ -57,20 +65,25 @@
     ],
     "interview_available": false,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1_LVnVTEBgWmOQ9aGmmMpDROHAaLMFTqr",
-    "portfolio_url": "https://drive.google.com/file/d/1NMD7mbaarOqB_EU5qxB0AG0GPH5iWvcD/view?usp=drive_link",
-    "source_code_url": "https://iron-duel-2d.weiwei2010441.workers.dev/",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1NMD7mbaarOqB_EU5qxB0AG0GPH5iWvcD/view?usp=drive_link",
+    "portfolio_site_url": "https://tay-chun-wee-portfolio.ovollovo.chatgpt.site/ja",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "https://iron-duel-2d.weiwei2010441.workers.dev/",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1_LVnVTEBgWmOQ9aGmmMpDROHAaLMFTqr",
     "is_active": true
   },
   {
     "id": "3",
     "name": "及川 修斗",
     "name_kana": "おいかわ しゅうと",
-    "name_en": "Oikawa Shuuto",
-    "graduation_year": "2028年卒",
+    "name_en": "Shuto Oikawa",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー"
+    ],
     "desired_roles": [
       "プランナー"
     ],
@@ -78,8 +91,8 @@
     "bio": "人にない考えができること、ほかの人では考えつかないようなテーマの企画を出すことができる",
     "skills": [
       "C++",
-      "unity",
-      "Javascript"
+      "Unity",
+      "JavaScript"
     ],
     "fields": [
       "ゲームデザイン",
@@ -88,59 +101,70 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1Ss4LPaIGF0PjQ4yCttySlkUZFjP-Oxcp",
-    "portfolio_url": "https://drive.google.com/drive/folders/1E2uQDY4vuNHYyTQKYBbJffTcuJoxnt2s?usp=drive_link",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1IAzpPMfsAcgL-itQKaMpGP58B7NZQ21B/view?usp=drive_link",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1Ss4LPaIGF0PjQ4yCttySlkUZFjP-Oxcp",
     "is_active": true
   },
   {
     "id": "4",
-    "name": "花島響輝",
-    "name_kana": "はなしまひびき",
-    "name_en": "Hanashima Hibiki",
-    "graduation_year": "2028年卒",
+    "name": "花島 響輝",
+    "name_kana": "はなしま ひびき",
+    "name_en": "Hibiki Hanashima",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "想像を現実に変える",
     "bio": "今はまだそんなにプログラミングをめちゃくちゃできているというわけではないので細かなミスをまずはなくしていきたいというところもありますしAIを活用したゲームや関数を利用しながらの製作に取り組んでいくことがこれからの人生にとても影響してくるんじゃないかと思いました。",
     "skills": [
-      "unity"
+      "Unity"
     ],
     "fields": [
       "ゲームプレイ"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1-bqN06IDKam1ux0kFAXGVnkvMnwokjeL",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1-bqN06IDKam1ux0kFAXGVnkvMnwokjeL",
     "is_active": true
   },
   {
     "id": "5",
     "name": "舘崎 慶",
-    "name_kana": "たてざき{eき",
-    "name_en": "Tatezaki Kei",
-    "graduation_year": "2028年卒",
+    "name_kana": "たてざき けい",
+    "name_en": "Kei Tatezaki",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー",
+      "プログラマー"
+    ],
     "desired_roles": [
       "プランナー",
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "『なんで』と疑問を持ちわかるまで調べる能力。使ったことない言語でも構造と名前でコードを理解できる。AIを駆使して3Dアクションゲームを一人で作れる。",
-    "bio": "3Dアクションゲームを一人で企画して、売るまでできます。AIでできることとできないことを判断して、同時に複数のタスクをこなし少ない時間で何倍もの作業結果を出せる。キャラクターデザインやモデル作りは自分ではできないので仕様や世界観、どんな見た目かを仕様書として見せてデザイナーに作ってもらったり、自分の企画、仕様でおかしいとこはないか生徒や教員に聞きそれを参考にしたりなどAIにはできないことを得意にしようと日々取り組んでおります。",
+    "bio": "AIでできることとできないことを判断して、同時に複数のタスクをこなし少ない時間で何倍もの作業結果を出せる。キャラクターデザインやモデル作りは自分ではできないので仕様や世界観、どんな見た目かを仕様書として見せてデザイナーに作ってもらったり、自分の企画、仕様でおかしいとこはないか生徒や教員に聞きそれを参考にしたりなどAIにはできないことを得意にしようと日々取り組んでおります。",
     "skills": [
       "Unity",
-      "blender",
+      "Blender",
       "Claude",
       "Cursor",
-      "Github"
+      "GitHub"
     ],
     "fields": [
       "プロジェクト管理",
@@ -149,23 +173,29 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1_OTsSipsyfEqNBp7okbXIK2ItL49qUf-",
-    "portfolio_url": "https://noiseless-colt-463.notion.site/28-2026-09-01-3ce0ed41e90180528d0fcd00463edfff?source=copy_link",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "https://noiseless-colt-463.notion.site/28-2026-09-01-3ce0ed41e90180528d0fcd00463edfff?source=copy_link",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "https://store.steampowered.com/app/4859690/DIMAZE/",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1_OTsSipsyfEqNBp7okbXIK2ItL49qUf-",
     "is_active": true
   },
   {
     "id": "6",
     "name": "比連﨑 光希",
     "name_kana": "ひれんざき こうき",
-    "name_en": "Hirenzaki Kouki",
-    "graduation_year": "2028年卒",
+    "name_en": "Koki Hirenzaki",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー",
+      "デバッガー"
+    ],
     "desired_roles": [
-      "プログラマ",
-      "デバッカー"
+      "プログラマー",
+      "デバッガー"
     ],
     "headline": "遊びを設計し、最後まで形にする",
     "bio": "ゲーム制作では、プレイヤーが遊んでいて「楽しい」と感じられる体験を大切にしています。ゲームの操作感やUI、演出などを実際にプレイしながら改善し、遊びやすさと面白さの両方を高めることを意識して制作していきたいです。",
@@ -180,20 +210,25 @@
     ],
     "interview_available": false,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1suuEQtt4CS3_TD3R8yAK7eq5Kf-m6wbQ",
-    "portfolio_url": "https://docs.google.com/presentation/d/193wlsK-62EMElK8CQP3V3XZ3kKCsno0skzHz9DR0PXU/edit?usp=sharing",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/193wlsK-62EMElK8CQP3V3XZ3kKCsno0skzHz9DR0PXU/edit?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1suuEQtt4CS3_TD3R8yAK7eq5Kf-m6wbQ",
     "is_active": true
   },
   {
     "id": "7",
     "name": "川野 晴菜",
     "name_kana": "かわの はるな",
-    "name_en": "Kawano Haruna",
-    "graduation_year": "2028年卒",
+    "name_en": "Haruna Kawano",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー"
+    ],
     "desired_roles": [
       "プランナー"
     ],
@@ -212,22 +247,27 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1CW6oFplfi7okIwAU9OKgnG00Jm1gVMpm",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/1sHBKT7oll1uNsuYpWAo5K9oy3DCNRI15j5yy21zRFRM/edit?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "https://docs.google.com/presentation/d/1TJU5FvHiL7H0oOrk5uXtQwyif6QxuFKkPA2C4FqD3IA/edit?usp=sharing",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1CW6oFplfi7okIwAU9OKgnG00Jm1gVMpm",
     "is_active": true
   },
   {
     "id": "8",
     "name": "粂内 僚太",
     "name_kana": "くめうち りょうた",
-    "name_en": "Kumeuchi Ryouta",
-    "graduation_year": "2028年卒",
+    "name_en": "Ryota Kumeuchi",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "拡張性の高いコードを目指す",
     "bio": "今制作するうえで大切にしていることは、人が見やすく、拡張性の高いコードを書くことです。チーム開発では数人で行いプログラムを書く箇所も分けているのでこれを石木氏ています。今後はオンライン対戦のゲームをつくってみたいです。",
@@ -239,35 +279,42 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=13BorgyaWz6er5HzDEhneI5OI5bz-7hU6",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=13BorgyaWz6er5HzDEhneI5OI5bz-7hU6",
     "is_active": true
   },
   {
     "id": "9",
     "name": "棕澤 蒼太",
     "name_kana": "たらさわ そうた",
-    "name_en": "Tarasawa Souta",
-    "graduation_year": "2028年卒",
+    "name_en": "Sota Tarasawa",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー",
+      "ITエンジニア"
+    ],
     "desired_roles": [
-      "プログラマ",
+      "プログラマー",
       "ITエンジニア"
     ],
     "headline": "あら探しの目で、遊びを磨いています",
     "bio": "自分の強みは、企画書の意図を正確に読み取り、ブレなく形にできることです。ゼロから発想するタイプではありませんが、決められた仕様を高精度で実装し、期待を裏切らない安定感には自信があります。今後は企画者の意図をより深く汲み取れるよう、発想の背景を理解する力も伸ばしていきたいです。",
     "skills": [
-      "Unity / C#",
+      "Unity",
+      "C#",
       "C++",
-      "Github",
+      "GitHub",
       "WWS.js",
       "Git",
-      "UnrealEngine5（少し）",
-      "Java(学習中)",
-      "PHP（学習中）"
+      "Unreal Engine 5",
+      "Java",
+      "PHP"
     ],
     "fields": [
       "デバッグ",
@@ -276,93 +323,108 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1EpVrS4iK51QhVtNiQygbysqzScKUp34k",
-    "portfolio_url": "https://drive.google.com/file/d/1ZQF_s6k3Zpt8GUSgId68s-UySdCdhk5E/view?usp=drive_link",
-    "source_code_url": "https://github.com/tarachan0828",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1ZQF_s6k3Zpt8GUSgId68s-UySdCdhk5E/view?usp=drive_link",
+    "portfolio_site_url": "https://app.notion.com/p/38f9ab696647809ead3ce2ed29cc3968",
+    "source_code_drive_url": "",
+    "source_code_site_url": "https://github.com/tarachan0828",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1EpVrS4iK51QhVtNiQygbysqzScKUp34k",
     "is_active": true
   },
   {
     "id": "10",
     "name": "小堀 旬",
     "name_kana": "こぼり しゅん",
-    "name_en": "Kobori Shun",
-    "graduation_year": "2028年卒",
+    "name_en": "Shun Kobori",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "低レイヤーからでも作れる、コーディング力",
     "bio": "ヒットストップやカメラの揺れなどのゲームの手触り感を大事にし、かつプログラムの軽さも大事にしています。また汎用的に使えるプログラムを目指し、ほかのプロジェクトにも流用できるような物を作っています",
     "skills": [
       "C++",
       "C#",
-      "UneralEngine",
+      "Unreal Engine",
       "Unity",
       "Git",
       "DirectX",
       "OpenGL",
-      "VisualStudio"
+      "Visual Studio"
     ],
     "fields": [
-      "エンジン開発",
-      "ゲームプログラム",
-      "クラス設計"
+      "C++のプログラミング",
+      "低レイヤーからのゲーム開発",
+      "エンジンを使用したゲーム開発"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1DpyoB5NwrQ4_oetYCyrpXIpf7kCr9IBL",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/1UluMvENDZ5RTDzK7J5DvSbs8hz2UkLPmF3P51dHhaJk/edit?usp=drivesdk",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "https://drive.google.com/drive/folders/15LNO3wJuhG_l-DgTKzU6UKUCPzx2kEhy",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1DpyoB5NwrQ4_oetYCyrpXIpf7kCr9IBL",
     "is_active": true
   },
   {
     "id": "11",
-    "name": "龍元大輝",
+    "name": "龍元 大輝",
     "name_kana": "りゅうげん だいき",
-    "name_en": "Ryuugen Daiki",
-    "graduation_year": "2028年卒",
+    "name_en": "Daiki Ryugen",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["テクニカルアーティスト"],
+    "role": [
+      "テクニカルアーティスト"
+    ],
     "desired_roles": [
       "テクニカルアーティスト"
     ],
     "headline": "Unreal Engineが得意で、ゲームメカニクスから3Dモデル制作、VFXエフェクトの構築まで一貫して手掛けられる幅広い表現力",
     "bio": "Unreal Engineを用いたゲームメカニクスの実装から3Dモデル制作、VFX構築まで幅広く手掛けられる点が強みです。制作ではプレイした瞬間の気持ちよさと見た目を追求しています。\n今後は技術力と表現力をさらに磨いていきたいと思っています",
     "skills": [
-      "c++",
-      "c#",
-      "UnrealEngine5",
+      "C++",
+      "C#",
+      "Unreal Engine 5",
       "Unity",
       "Blender",
       "Maya",
-      "SubstancePainter"
+      "Substance Painter"
     ],
     "fields": [
-      "UE5",
+      "Unreal Engine 5",
       "Blender",
       "ツール作成"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1sa1zWp0QmaRsUJ7AzT8IeT1tBf0PYHn6",
-    "portfolio_url": "https://www.vivivit.com/nyarugakuruga?tab=works",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "https://www.vivivit.com/nyarugakuruga?tab=works",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1sa1zWp0QmaRsUJ7AzT8IeT1tBf0PYHn6",
     "is_active": true
   },
   {
     "id": "12",
-    "name": "中村奏太",
+    "name": "中村 奏太",
     "name_kana": "なかむら かなた",
-    "name_en": "Nakamura Kanata",
-    "graduation_year": "2028年卒",
+    "name_en": "Kanata Nakamura",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "チーム開発の経験から誰でも見やすくコードを書くこと。",
     "bio": "チーム開発ではUnityを取り扱っていました。製作では、チームが見やすいようにコードきれいに書くことを心掛けていました。今後はAIを活用して、C#やC++の勉強に取り組んでいきたいです。",
@@ -374,25 +436,30 @@
     ],
     "fields": [
       "ゲームプレイ",
-      "unity",
-      "c++"
+      "Unity",
+      "C++"
     ],
     "interview_available": false,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1WZHkwj5nNBKBdOEG7RkCeZipfa5HzmwL",
-    "portfolio_url": "https://drive.google.com/file/d/1TCzdsS9pdKLXtI9ZqAwmUY_t6E7b8hvR/view?usp=drive_link",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1TCzdsS9pdKLXtI9ZqAwmUY_t6E7b8hvR/view?usp=drive_link",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1WZHkwj5nNBKBdOEG7RkCeZipfa5HzmwL",
     "is_active": true
   },
   {
     "id": "13",
     "name": "五木田 望",
     "name_kana": "ごきた のぞむ",
-    "name_en": "Gokita Nozomu",
-    "graduation_year": "2027年卒",
+    "name_en": "Nozomu Gokita",
+    "graduation_year": "27卒",
     "course": "ゲームクリエイター科",
-    "role": ["デザイナー"],
+    "role": [
+      "デザイナー"
+    ],
     "desired_roles": [
       "デザイナー"
     ],
@@ -400,12 +467,12 @@
     "bio": "現在はモックアップ動画を作成し、チーム全体のイメージ統一をしています。キャラクターを魅力的にゲームに載せることを目標にモデリングからセットアップ、アニメーションまでを手がけています。",
     "skills": [
       "Maya",
-      "SubstancePainter",
-      "PhotoShop",
-      "Zbrush",
-      "aftereffects",
+      "Substance Painter",
+      "Photoshop",
+      "ZBrush",
+      "After Effects",
       "Unity",
-      "UnrealEngine"
+      "Unreal Engine"
     ],
     "fields": [
       "キャラモデル",
@@ -414,25 +481,30 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1EYFWLYQ38MVrYv6WhoWyoTD3qqLMJBl7",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1UEGQaaIMJBCk8bU62A7vZQYKdRKPtibA/view?usp=drivesdk",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "https://drive.google.com/file/d/13nGQidIWjblHPDuLGLz3quGdzEO0foit/view?usp=drivesdk",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1EYFWLYQ38MVrYv6WhoWyoTD3qqLMJBl7",
     "is_active": true
   },
   {
     "id": "14",
     "name": "庄司 一葉",
     "name_kana": "しょうじ かずは",
-    "name_en": "Shouji Kazuha",
-    "graduation_year": "2028年卒",
+    "name_en": "Kazuha Shoji",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "一つひとつの機能を着実に形にする",
-    "bio": "一つひとつの機能を着実に形にする幅広いジャンルのゲーム制作に挑戦し、それぞれの作品ごとに異なる遊びや仕組みを取り入れてきました。プレイヤーに作品ごとの楽しさを感じてもらえるよう、ゲーム性や操作性を意識しながら制作しています。今後もさまざまなジャンルに挑戦し、より完成度の高いゲーム制作を目指していきます。",
+    "bio": "幅広いジャンルのゲーム制作に挑戦し、それぞれの作品ごとに異なる遊びや仕組みを取り入れてきました。プレイヤーに作品ごとの楽しさを感じてもらえるよう、ゲーム性や操作性を意識しながら制作しています。今後もさまざまなジャンルに挑戦し、より完成度の高いゲーム制作を目指していきます。",
     "skills": [
       "C++",
       "C#",
@@ -440,26 +512,29 @@
       "Visual Studio"
     ],
     "fields": [
-      "ゲームプレイ",
-      "UI実装",
-      "ゲームシステム"
+      "一つひとつの機能を着実に形にする"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1zi1Vsw0Wyo0aFw_yMT60tdQMhX22iR-O",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1zi1Vsw0Wyo0aFw_yMT60tdQMhX22iR-O",
     "is_active": true
   },
   {
     "id": "15",
     "name": "植田 毬鈴",
     "name_kana": "うえだ まりん",
-    "name_en": "Ueda Marin",
-    "graduation_year": "2028年卒",
+    "name_en": "Marin Ueda",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科デザインコース",
-    "role": ["デザイナー"],
+    "role": [
+      "デザイナー"
+    ],
     "desired_roles": [
       "デザイナー"
     ],
@@ -478,22 +553,27 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=19bAdPURUIOfRmBGkoPgoPlv8NOZdy7M2",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "https://vivivit.com/ble29vb53uv2ksvmqtb7",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=19bAdPURUIOfRmBGkoPgoPlv8NOZdy7M2",
     "is_active": true
   },
   {
     "id": "16",
-    "name": "大田紘生",
+    "name": "大田 紘生",
     "name_kana": "おおた ひろき",
-    "name_en": "Oota Hiroki",
-    "graduation_year": "2028年卒",
+    "name_en": "Hiroki Ota",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "最後まであきらめないでゲーム開発に望めるところ",
     "bio": "得意なことは、継承やシングルトン、UnityのScriptableObjectを使用した、実装を楽にするコードを書くこと、制作で大切にしていることは、チーム制作だと仲間とのコミュニケーションで、個人製作だと、後から見てもわかるようにコメントアウトをしっかりとすること。今後取り組みたいことは、見やすいコードを書くこと。",
@@ -509,22 +589,27 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=19YbckjJF9PZX4UTmcZlEmCKwUlyXlprw",
-    "portfolio_url": "https://docs.google.com/presentation/d/1jh3eb8kVHVkOK9I34zHCpVBJ284I2Dpl5HhkqscBFDc/edit?usp=sharing",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/1jh3eb8kVHVkOK9I34zHCpVBJ284I2Dpl5HhkqscBFDc/edit?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=19YbckjJF9PZX4UTmcZlEmCKwUlyXlprw",
     "is_active": true
   },
   {
     "id": "17",
     "name": "池永 雄一",
     "name_kana": "いけなが ゆういち",
-    "name_en": "Ikenaga Yuuichi",
-    "graduation_year": "2028年卒",
+    "name_en": "Yuichi Ikenaga",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "新しいことは挑戦する",
     "bio": "得意なことはUnityでゲームシステムを実装すること\n制作で大切にしていることは遊ぶ人のことを考えて、面白いかやどう思うかなどプレイヤー目線で考えることです。\n今後はUnreal Engineを使ったゲーム開発やクラス設計を意識したコーディングをしていきます。",
@@ -538,20 +623,25 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1o-tpC-82n95ePR0NGpdo3SPRTtsRbdWf",
-    "portfolio_url": "https://docs.google.com/presentation/d/1QSQnHT8ahHKPrrLJTAdkWWFIz0r5Yry10lcIxKrZgpk/edit?slide=id.g3d5a9c9d306_0_881#slide=id.g3d5a9c9d306_0_881",
-    "source_code_url": "https://github.com/yu7734",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/1QSQnHT8ahHKPrrLJTAdkWWFIz0r5Yry10lcIxKrZgpk/edit?slide=id.g3d5a9c9d306_0_881#slide=id.g3d5a9c9d306_0_881",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "https://github.com/yu7734",
+    "public_work_url": "https://unityroom.com/users/r1pma2et5lnfscy06igu",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1o-tpC-82n95ePR0NGpdo3SPRTtsRbdWf",
     "is_active": true
   },
   {
     "id": "18",
     "name": "上田 路美生",
     "name_kana": "うえだ ろみお",
-    "name_en": "Ueda Romio",
-    "graduation_year": "2028年卒",
+    "name_en": "Romio Ueda",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科デザインコース",
-    "role": ["デザイナー"],
+    "role": [
+      "デザイナー"
+    ],
     "desired_roles": [
       "デザイナー"
     ],
@@ -560,7 +650,7 @@
     "skills": [
       "Maya",
       "Photoshop",
-      "substancepainter",
+      "Substance Painter",
       "Illustrator"
     ],
     "fields": [
@@ -570,31 +660,36 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1zDU-YUOpMA_mSI4PoYuK2cR7uosyYIbV",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1P_T6WMHTefPmvGy9i-sUU3s8EuZdPk54/view?usp=drive_link",
+    "portfolio_site_url": "https://www.vivivit.com/portfolio_ueda",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1zDU-YUOpMA_mSI4PoYuK2cR7uosyYIbV",
     "is_active": true
   },
   {
     "id": "19",
     "name": "前田 清斗",
     "name_kana": "まえだ きよと",
-    "name_en": "Maeda Kiyoto",
-    "graduation_year": "2028年卒",
+    "name_en": "Kiyoto Maeda",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "機能の実装に必要な要素を明確にし、実現する力があります。",
-    "bio": "得意なことは\n人から言われた指示やアイデアを曖昧な状態から形にすること。\n\n制作で大切にしていることは\n発見されたバグや問題をすぐに分析し、優先順位をつけて効率的に解決すること。\n機能を実装するときは行き当たりばったりに作るのではなく、要件をしっかりと考え、あとあとの仕様変更に強くなるように設計してから作ること。\n\n今後取り組みたいこと\nUnrealEngineでのゲーム開発。\nUnityで自作のツールを使用したゲーム開発。",
+    "bio": "得意なことは\n 人から言われた指示やアイデアを曖昧な状態から形にすること。\n\n制作で大切にしていることは\n 発見されたバグや問題をすぐに分析し、優先順位をつけて効率的に解決すること。\n 機能を実装するときは行き当たりばったりに作るのではなく、要件をしっかりと考え、あとあとの仕様変更に強くなるように設計してから作ること。\n\n今後取り組みたいこと\n Unreal Engineでのゲーム開発。\n Unityで自作のツールを使用したゲーム開発。",
     "skills": [
       "C",
       "C++",
       "C#",
       "JavaScript",
-      "Unity6",
+      "Unity 6",
       "GitHub"
     ],
     "fields": [
@@ -604,22 +699,27 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1SHt0-ymT-S9Qf5e5PUwmCa-Vswjm6yux",
-    "portfolio_url": "https://drive.google.com/file/d/1vJgHtD2SNUrV48cR9EhnILh_f_q4HYcG/view?usp=drive_link",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1vJgHtD2SNUrV48cR9EhnILh_f_q4HYcG/view?usp=drive_link",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "https://github.com/kiyochann",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1SHt0-ymT-S9Qf5e5PUwmCa-Vswjm6yux",
     "is_active": true
   },
   {
     "id": "20",
     "name": "菅 真栄",
     "name_kana": "すが まさえい",
-    "name_en": "Suga Masaei",
-    "graduation_year": "2027年卒",
+    "name_en": "Masaei Suga",
+    "graduation_year": "27卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "\"遊ぶ\"と\"創る\"を重ねてきた経験から​、アイデアを実装する",
     "bio": "作る、加える、組み替えるなどして、アイデアを実際の形にしていくことが得意です。試行錯誤を繰り返しながら、見た目や使いやすさを意識し、コードの構成にもこだわって制作しています。",
@@ -635,30 +735,36 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1ejNSTxwF0feBKmKGAuethvRaEctxn4pS",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://drive.google.com/file/d/1mXeNVmQklQ-FxABhG3tfF2yIlvMJFsIc/view?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "https://drive.google.com/file/d/1Ty67_0rxOyO_nEJPzPML70C21chE11Y6/view?usp=sharing",
+    "source_code_site_url": "",
+    "public_work_url": "https://drive.google.com/file/d/1C9w30MG0GzAskUgTF6-jJmU-oGNhwwSf/view?usp=sharing",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1ejNSTxwF0feBKmKGAuethvRaEctxn4pS",
     "is_active": true
   },
   {
     "id": "21",
     "name": "工藤 颯太",
     "name_kana": "くどう そうた",
-    "name_en": "Kudou Souta",
-    "graduation_year": "2028年卒",
+    "name_en": "Sota Kudo",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "発想をいち早く形にする。",
     "bio": "他人が呼んでも見やすいコードを意識して制作しています！",
     "skills": [
       "C#",
       "Unity",
-      "Git/SourceTree",
-      "Playfab"
+      "Git",
+      "SourceTree",
+      "PlayFab"
     ],
     "fields": [
       "ツール開発",
@@ -667,49 +773,62 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1yYr-6CiWQHtzoiIQdqlr_SJ-tjKMj6w2",
-    "portfolio_url": "https://docs.google.com/presentation/d/1wQhT353vIO6QjvLlDpH9_Cw3zJhzORzcBHoFMsHDUD0/edit?usp=sharing",
-    "source_code_url": "https://github.com/Siotou/PF_RuneArchemist",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/1wQhT353vIO6QjvLlDpH9_Cw3zJhzORzcBHoFMsHDUD0/edit?usp=sharing",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "https://github.com/Siotou/PF_RuneArchemist",
+    "public_work_url": "https://www.chibakogyo-bank-games.com/game/CrayonChibaCorgi10",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1yYr-6CiWQHtzoiIQdqlr_SJ-tjKMj6w2",
     "is_active": true
   },
   {
     "id": "22",
     "name": "髙橋 楓絆",
     "name_kana": "たかはし かずき",
-    "name_en": "Takahashi Kazuki",
-    "graduation_year": "2028年卒",
+    "name_en": "Kazuki Takahashi",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー",
+      "プログラマー"
+    ],
     "desired_roles": [
       "プランナー",
-      "プログラマ"
+      "プログラマー"
     ],
-    "headline": "需要に合わせた「システム・ツール」の発明、ツール開発、マージ",
-    "bio": "そのゲームに欲しい要素を見つけだし、挑戦的なシステムの開発を好む面白くないゲームを面白くするのが得意です。ゲームの面白さはコンセプトで決まるわけではありません、制作陣の3つのあいで面白決まります。1つ目は目（アイ）、2つ目にアイディア、3つ目は愛です。",
+    "headline": "そのゲームに欲しい要素を見つけだし、挑戦的なシステムの開発を好む",
+    "bio": "面白くないゲームを面白くするのが得意です。ゲームの面白さはコンセプトで決まるわけではありません、制作陣の3つのあいで面白決まります。1つ目は目（アイ）、2つ目にアイディア、3つ目は愛です。",
     "skills": [
       "Unity",
       "C++"
     ],
     "fields": [
-      "ゲームプレイプログラマー"
+      "需要に合わせた「システム・ツール」の発明",
+      "ツール開発",
+      "マージ"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1bzFHT0gy8joCd1kBmjlDRubVI2txkiyp",
-    "portfolio_url": "https://groovy-vision-15a.notion.site/3cdfc21dcfa080e690d7c8349926520c?source=copy_link",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "https://groovy-vision-15a.notion.site/3cdfc21dcfa080e690d7c8349926520c?source=copy_link",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1bzFHT0gy8joCd1kBmjlDRubVI2txkiyp",
     "is_active": true
   },
   {
     "id": "23",
     "name": "山川 蓮司",
     "name_kana": "やまかわ れんじ",
-    "name_en": "Yamakawa Renji",
-    "graduation_year": "2028年卒",
+    "name_en": "Renji Yamakawa",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プランナー"],
+    "role": [
+      "プランナー"
+    ],
     "desired_roles": [
       "プランナー"
     ],
@@ -721,63 +840,72 @@
       "Git",
       "Aseprite",
       "Excel",
-      "power point"
+      "PowerPoint"
     ],
     "fields": [
       "グラフィックス",
-      "AIでの開発",
-      "ゲームアイディア"
+      "AIコーディング",
+      "企画設計"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1JGxgJsMmt-LUj8kRD57J_5mEOdOzCbh9",
-    "portfolio_url": "",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/13Xet6Sx7Y8T-Tm2AVCNOx2XKbwzkJ3b_/edit?usp=drive_link&ouid=103404796514003698382&rtpof=true&sd=true",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "https://drive.google.com/drive/folders/1irh1I7XbJoEEGPdoniRsqW0gbxaGmBOs?usp=drive_link",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1JGxgJsMmt-LUj8kRD57J_5mEOdOzCbh9",
     "is_active": true
   },
   {
     "id": "24",
-    "name": "高橋勁吾",
+    "name": "高橋 勁吾",
     "name_kana": "たかはし けいご",
-    "name_en": "Takahashi Keigo",
-    "graduation_year": "2028年卒",
+    "name_en": "Keigo Takahashi",
+    "graduation_year": "28卒",
     "course": "ゲームクリエイター科",
-    "role": ["デザイナー"],
+    "role": [
+      "デザイナー"
+    ],
     "desired_roles": [
       "デザイナー"
     ],
-    "headline": "キャラの魅力を観察し造形で成立させられる、書籍 「技術を自分で調べて使え、ゲームとしての見え方まで考えられます。",
-    "bio": "私は技術的な問題を自力で調べて解決することが得意です。\n\n造形やデザインでも細部を観察し、キャラクターの比率や表情の良し悪しを判断できる点も強みです。\n\nさらに、ゲーム体験を踏まえて、キャラクターがゲーム内でどのように見えるかまで考えて制作や改善に活かせると思います。",
+    "headline": "キャラの魅力を観察し造形で成立させられる、そして 「技術を自分で調べて使え、ゲームとしての見え方まで考えられます。",
+    "bio": "私は技術的な問題を自力で調べて\n解決することが得意です。\n\n造形やデザインでも細部を観察し、キャラクターの比率や表情の良し悪しを\n判断できる点も強みです。\n\nさらに、ゲーム体験を踏まえて、キャラクターがゲーム内でどのように見えるかまで\n考えて制作や改善に活かせると思います。",
     "skills": [
       "Maya",
-      "SubstancePainter",
+      "Substance Painter",
       "CLIP STUDIO PAINT"
     ],
     "fields": [
-      "バグ探し",
-      "UIのモック作成",
+      "ゲームプレイ",
       "モデリング",
       "企画のアイデア出し"
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1CL5e-i-bCtmgn1lm_6LYqLpPfzPbBUms",
-    "portfolio_url": "https://www.vivivit.com/tk222priv?tab=works",
-    "source_code_url": "",
+    "portfolio_drive_url": "",
+    "portfolio_site_url": "https://www.vivivit.com/tk222priv?tab=works",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1CL5e-i-bCtmgn1lm_6LYqLpPfzPbBUms",
     "is_active": true
   },
   {
     "id": "25",
     "name": "村石 裕音",
     "name_kana": "むらいし ゆうと",
-    "name_en": "Muraishi Yuuto",
-    "graduation_year": "2027年卒",
+    "name_en": "Yuto Muraishi",
+    "graduation_year": "27卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": ["プログラマー"],
+    "role": [
+      "プログラマー"
+    ],
     "desired_roles": [
-      "プログラマ"
+      "プログラマー"
     ],
     "headline": "アルゴリズムで、 遊びの面白さを形にするプログラマー。",
     "bio": "私の強みは、チャレンジ精神と探究心です。制作では、未知の技術でも自ら調べ、実際に実装して理解を深めることを大切にしています。将棋AIでは探索アルゴリズムを学び、処理の最適化まで取り組みました。今後は幅広い技術を吸収し、ゲームの面白さを技術面から支えられるプログラマーを目指します。",
@@ -796,10 +924,87 @@
     ],
     "interview_available": true,
     "internship_interest": true,
-    "photo_url": "https://drive.google.com/open?id=1Ej9KRdNgBHwGnjMDBBInSO5-aCaVtPlG",
-    "portfolio_url": "https://docs.google.com/presentation/d/11tHu_XddIDycfcXOa1eMRN7IaMpt0fVPC4AxSMrS3xA/edit?slide=id.g3945a4b2ede_0_134#slide=id.g3945a4b2ede_0_134",
-    "source_code_url": "",
+    "portfolio_drive_url": "https://docs.google.com/presentation/d/11tHu_XddIDycfcXOa1eMRN7IaMpt0fVPC4AxSMrS3xA/edit?slide=id.g3945a4b2ede_0_134#slide=id.g3945a4b2ede_0_134",
+    "portfolio_site_url": "https://vivivit.com/sbp3yrp8lsaociehyi2h",
+    "source_code_drive_url": "",
+    "source_code_site_url": "https://github.com/muraisi0330/HomemadeShogi",
+    "public_work_url": "https://github.com/muraisi0330/JapaneseViburnum",
     "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1Ej9KRdNgBHwGnjMDBBInSO5-aCaVtPlG",
+    "is_active": true
+  },
+  {
+    "id": "26",
+    "name": "飛留間 一吹",
+    "name_kana": "ひるま いぶき",
+    "name_en": "Ibuki Hiruma",
+    "graduation_year": "28卒",
+    "course": "ゲームクリエイター科プログラミングコース",
+    "role": [
+      "プログラマー"
+    ],
+    "desired_roles": [
+      "プログラマー"
+    ],
+    "headline": "Unity6年目のプログラマー(高校から愛用)",
+    "bio": "暇があればデバッグ画面を充実させたり、ステージエディタを作ったりする。\n欲しい機能が検索しても見つからなかったら、自力で実装する。\n高校生の頃からUnityで開発し続けているため、実装スピードが速い(当者比)。\nこういうプログラマーです。",
+    "skills": [
+      "C++",
+      "Unity",
+      "GitHub",
+      "JavaScript",
+      "Photon Engine"
+    ],
+    "fields": [
+      "Unity（エディタ拡張、ScriptableObjectによるデータ管理、2Dゲームの開発）"
+    ],
+    "interview_available": true,
+    "internship_interest": true,
+    "portfolio_drive_url": "https://drive.google.com/file/d/1lsjA05rl-Pzzki4HoOrlGi8NR2r47Yh3/view?usp=drive_link",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
+    "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1JYFZkmpECR9D9z0-ZcJKB9sNNR1BNE1v",
+    "is_active": true
+  },
+  {
+    "id": "27",
+    "name": "原田 深月",
+    "name_kana": "はらだ みつき",
+    "name_en": "Mitsuki Harada",
+    "graduation_year": "28卒",
+    "course": "ゲームクリエイター科プログラミングコース",
+    "role": [
+      "プログラマー"
+    ],
+    "desired_roles": [
+      "プログラマー"
+    ],
+    "headline": "UIの感触をツールやコードでゲームに合わせる。",
+    "bio": "制作で大切にしていること：プレイ画面の見やすさを大切にしています。\n得意なこと：新しく覚えた機能の反復\n今後取り組みたいこと：授業や友達と関わらないで３か月でゲームを二本作りたい。\n軽めのモデリング、LMMSを使ったBGM制作、自作のUI制作、AIを未使用で初代マリオを作る。",
+    "skills": [
+      "C++",
+      "C#",
+      "Unity",
+      "GitHub",
+      "Visual Studio Code"
+    ],
+    "fields": [
+      "UI",
+      "UX",
+      "ゲームプレイ"
+    ],
+    "interview_available": true,
+    "internship_interest": true,
+    "portfolio_drive_url": "https://drive.google.com/file/d/1T0HPUSh7VXqRE3utyjDsKWRtGaI5e_yO/view?usp=drive_link",
+    "portfolio_site_url": "",
+    "source_code_drive_url": "",
+    "source_code_site_url": "",
+    "public_work_url": "",
+    "video_url": "",
+    "photo_url": "https://drive.google.com/open?id=1q0OGk5y1rEdzjh4JiZ0YRzk2p0irFERi",
     "is_active": true
   }
 ]

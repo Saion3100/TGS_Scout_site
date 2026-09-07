@@ -1,963 +1,886 @@
 [
-    {
-        "id": "t01",
-        "team_name": "ニトロカルボナーラ",
-        "game_name": "よろず屋の品定め",
-        "genre": [
-            "シミュレーション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-05-13",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "武器を掃除する！武器を鑑定する！！道具を売る！！現実的なよろず屋シミュレーション",
-        "description": "「掃除・鑑定・販売」の3本柱で店を切り盛りする、リアルな質感のよろず屋シミュレーション！泥や錆をこそぎ取る『掃除』、本物か偽物か、呪われていないかを見抜く『武器の鑑定』、仕入れた道具の『販売』というよろず屋ならではの店舗経営サイクルを深く楽しめます。独特なレトロファンタジーUIとボクセル3Dデザインが融合した味のあるグラフィックが魅力。とある国のギルド施設『よろず屋』で働きつつ変わる国の情勢。病みつきになる店主生活があなたを待っています！",
-        "highlights": [
-            "世界観を引き立てる「独特なレトロファンタジーデザイン」"
-        ],
-        "controls": [
-            "クリックで基本操作可能"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1bMn7m1mE4Pzm9rf8sshEqkYzSCvdeV25",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/huge_guppy3445\/portal"
-    },
-    {
-        "id": "t02",
-        "team_name": "スパークゲームズ",
-        "game_name": "帰路（かえりみち）",
-        "genre": [
-            "ホラー",
-            "２Dローグライクホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2025-11-16",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "貴方の判断で脱出を目指せ",
-        "description": "封印された森を舞台に、付喪神となった人形が家族の元へ帰るため脱出を目指す2Dローグライクホラー。 道を塞ぐ障害物は“残滓”と呼ばれる死霊に協力してもらうことで開けられるが、そのたび危険度が上昇し、100に達すると森の浄化作用で消滅してしまう。 選択が探索ルートや危険度に直結し、祭壇・倉庫・墓場など多彩なランダムエリアを進みながら、脱出口出現後のパニックフェーズを素早く突破する緊張感が特徴。",
-        "highlights": [
-            "可愛らしいビジュアル、レトロなホラー探索"
-        ],
-        "controls": [
-            "WASD：移動、Space：ダッシュ（WASDと同時押し）、Fキー：決定、マウス：会話進行、Bキー：インベントリ開く、ESC：終了（３秒長押し）"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1-hecYp9UsXGiGgpUka8-FKAOXH67hac3",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/merry_stork5189"
-    },
-    {
-        "id": "t03",
-        "team_name": "おじちゃ",
-        "game_name": "禁足の森",
-        "genre": [
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "夜の森で、時間だけが進んでいく。",
-        "description": "深夜2時、配信者である主人公は「禁足の森」と呼ばれる危険な場所へ実況配信に向かう。探索中、画面に流れる視聴者コメントには、森で起きている異変を示す謎の情報が次々と投稿されていく。コメントをヒントに森を探索し、チェックポイントを進みながら出口を目指す一方、物語が進むにつれてコメントの中にはプレイヤーを惑わせる偽情報も混ざり始める。プレイヤー自身がコメントの真偽を判断しながら探索することで、「何を信じればいいのか」という不安と緊張感を演出する、探索ホラーゲーム。",
-        "highlights": [
-            "怪異の姿"
-        ],
-        "controls": [
-            "WASD、マウス：視点移動、左クリック"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1gbqT080Q8TjCd09YD2gC7yp6l9jIWpH0",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/noble_ojitya"
-    },
-    {
-        "id": "t04",
-        "team_name": "いつ面",
-        "game_name": "Repair Frame",
-        "genre": [
-            "パズル"
-        ],
-        "players": "3人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-20",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "人の目には映らない異常をカメラに捉えること",
-        "description": "本作は、空間の中に存在する「異常」を特殊なカメラで発見し、撮影することで修復していく探索型ゲームです。プレイヤーは通常の視点と特殊なカメラを切り替えながら周囲を観察し、普段とは異なる場所や物を見つけ出します。異常を発見したら、カメラで撮影することで修復することができます。また、プレイヤーの移動にはWASD、視点操作にはマウスを使用し、直感的に探索できるようにしています。ステージ内にあるすべての異常を修復するとクリアとなり、次のステージへ進むことができます。通常の視点では見つけにくい異常を、特殊なカメラを使って探すことが本作の特徴です。",
-        "highlights": [
-            "通常視点と特殊カメラの違い、観察力が試される探索"
-        ],
-        "controls": [
-            "WASD：移動、マウス：視点操作"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1YFA9lm3lUnFvoh7G1bLXYQtVpc14Otrw",
-        "storage_url": "",
-        "note_url": ""
-    },
-    {
-        "id": "t05",
-        "team_name": "思い思いのこの想い",
-        "game_name": "焼き鳥シュミレーター",
-        "genre": [
-            "シミュレーション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC",
-            "Switch"
-        ],
-        "engine": [
-            "Unity 2021.3.29f1"
-        ],
-        "development_start_date": "2026-04-21",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "手首のひねりが、魂に火を灯す。――君は、伝説の焼き鳥職人になれるか？",
-        "description": "手元にあるのは一本の串……ではなく、一台のジョイコン！本作は、Joy-Conのジャイロ機能をフル活用した、直感操作の本格焼き鳥職人シミュレーションゲームです。\n制限時間は1分間。プレイヤーはジョイコンを本物の串のように握り、ZRボタンを押しながら手首をひねることで、画面内の焼き鳥を180度パタンと「反転」させます。火力の中心を見極める左右のポジショニングや、焦げを防ぐために串を持ち上げる挙動など、繊細な熱量コントロールが勝利の鍵。\n肉の色がリアルに変化し、耳をくすぐる「ジュワーッ」というシズル音の中で、表裏の焼き加減を完璧な100％へと導く緊張感と快感が楽しめます。複数本の同時焼きをこなし、最高の一本を提供してハイスコアを叩き出しましょう。熟練の技を磨き、リザルト画面で「伝説の称号」を掴み取れ！",
-        "highlights": [
-            "ジョイコンが「串」に変わる、圧倒的な一体感",
-            "五感を刺激する「シズル感」の追求",
-            "「火力を読む」戦略的なポジショニング",
-            "職人の「こだわり」を数値化する緊張感"
-        ],
-        "controls": [
-            "AD\/x\/b\/space"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1oqdnnnBvUjK9PAqyvBx5PES8qcs2ySYP",
-        "storage_url": "https:\/\/github.com\/Yuta-0824\/YakitoriProject",
-        "note_url": "https:\/\/note.com\/fairy_engel"
-    },
-    {
-        "id": "t06",
-        "team_name": "A*",
-        "game_name": "ガマズミ",
-        "genre": [
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "鳥居の先では、音を立てるな。",
-        "description": "山奥にある廃村「鎌澄村」。行方不明になった恋人を探すため、主人公は村の奥にある古びた神社へ足を踏み入れる。そこには、音に反応して襲いかかる怪異が潜んでいた。境内に隠された謎を解きながら進むには、声や物音を利用しなければならない。しかし、音を立てれば怪異に居場所を知られてしまう。隠れるか、逃げるか、それとも音を利用して怪異を誘導するか。静寂と恐怖の中で、恋人の行方と村に隠された真実を追う、ステルス和風ホラーゲーム。",
-        "highlights": [
-            "マイクを使っている、モデルが丁寧"
-        ],
-        "controls": [
-            "WASD：移動",
-            "Shift：ダッシュ（スタミナが残っている場合）",
-            "Eキー：ライトつける",
-            "マウス：視点移動",
-            "左クリック：アイテム取得、決定（メニュー時、スマホ起動時のみ）",
-            "右クリック：スマホ起動、スマホ閉じる",
-            "Esc：メニューを開く"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=19KhjtQgisOQ9k9Z-oTyFzybYbwyWxLy",
-        "storage_url": "https:\/\/drive.google.com\/drive\/folders\/1Id4vcz0MVSGBGjlIokiS_J-ld_nuk6nD?usp=drive_link",
-        "note_url": "https:\/\/note.com\/takoshia_rikou"
-    },
-    {
-        "id": "t07",
-        "team_name": "ovo)b",
-        "game_name": "Iron Duel",
-        "genre": [
-            "アクション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC",
-            "スマートフォン"
-        ],
-        "engine": [
-            "独自実装（HTML5 Canvas・JavaScript）"
-        ],
-        "development_start_date": "2026-07-16",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "生成AIを活用し、アイデアを遊べるゲームへ",
-        "description": "「IronDuel」は、左右に分かれた足場で戦車を操作し、移動・通常攻撃・スキルを組み合わせて戦う、1対1のブラウザ2D対戦ゲームです。A・Dキーで移動し、停止すると自動で通常攻撃を行います。攻撃するために立ち止まるか、相手の砲弾を避けるために動くかという判断が戦闘の中心です。現在は、性能と専用能力が異なる4種類の戦車と、攻撃・防御・回復・妨害など16種類の共通スキルを実装しています。5つのスキルを自由に選べるため、同じ戦車でも異なる戦い方ができます。オンラインではマッチング対戦とルーム番号を使ったプライベート対戦に対応し、座標・命中・ダメージなどをサーバー側で判定します。対戦後は命中率やダメージ内訳を確認でき、記録したフレームとイベントから対局を再現するリプレイ機能も用意しました。さらに、戦車やスキルを調整するコンテンツ編集画面と、ユーザー情報・権限・BAN・戦績を管理する専用ツールも制作しています。",
-        "highlights": [
-            "シンプルな左右移動と、多彩なスキルを組み合わせた読み合いのある1対1戦車バトル。"
-        ],
-        "controls": [
-            "A・D：左右移動",
-            "数字キー（1～6）またはスキルアイコンのクリック：スキル使用",
-            "停止中：通常攻撃（自動）"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1bBOii53WlRTy46jNq3sJxqBltOjoWY_",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/1Vc9xytpEP_zdFFPY2P5G6vujDNc7yNqm\/view?usp=drive_link",
-        "note_url": "https:\/\/note.com\/ovollovo"
-    },
-    {
-        "id": "t08",
-        "team_name": "ドラムーブ",
-        "game_name": "ドラムーブ",
-        "genre": [
-            "アクション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC",
-            "電子ドラム"
-        ],
-        "engine": [
-            "unity"
-        ],
-        "development_start_date": "2026-04-15",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "体を動かすことが、そのままゲームの楽しさにつながる体験",
-        "description": "『Drumove』は、電子ドラムを実際に叩いてキャラクターを操作し、街中を進みながら「♪」を集めるポイント収集アクションゲームです。\n\nプレイヤーは自動で進むキャラクターを4レーンのドラム操作で移動させ、歩行者や車などの障害物を避けながら、制限時間内にできるだけ多くの「♪」を集めます。\n\n本作では、電子ドラムを単なるコントローラーとして扱うのではなく、**「叩く → 動く → ♪を獲得する」という操作と結果のつながりを重視しました。特に、ドラムを叩いた結果として「♪」を獲得する瞬間を本作の大きな魅力と捉え、音やエフェクトなどのフィードバックによって、「叩いて操作する楽しさ」**を感じられるゲームを目指して制作しています。",
-        "highlights": [
-            "移動などの全ての操作を ”ドラムを叩いて” 行う"
-        ],
-        "controls": [
-            "電子ドラムを叩く"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=11Csc6SnBbK4PsTQ_AeYRn5YDUAraYpKn",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/drmome\/n\/n001da8d755d8"
-    },
-    {
-        "id": "t09",
-        "team_name": "new27",
-        "game_name": "トレジャーRPG",
-        "genre": [
-            "アクション",
-            "RPG"
-        ],
-        "players": "1人",
-        "platforms": [
-            "ｐｃ"
-        ],
-        "engine": [
-            "unity"
-        ],
-        "development_start_date": "2026-04-16",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "レベル上げと敵を倒したときの爽快感",
-        "description": "『トレジャーRPG ～失われた秘宝～』は、懐かしいドット絵で描かれた王道ファンタジーの世界を冒険する2Dロールプレイングゲームです。プレイヤーは、何者かに奪われてしまった伝説の「秘宝」を取り戻すため、広大な世界へと旅立ちます。\nゲームは、建物やフィールドを探索するアドベンチャーパートと、遭遇した敵と戦うコマンド選択式のバトルパートで構成されています。戦闘ではスライムなどのモンスターを相手に、「たたかう」や「にげる」といった戦略を使い分けて勝利を目指します。敵を倒すと経験値（EXP）やゴールドを獲得でき、レベルアップすることでキャラクターを強化していく育成の醍醐味も味わえます。\nUnityで制作された本作は、シンプルで直感的な操作性と、レトロゲームのような温かみのあるグラフィックが特徴です。失われた秘宝を求めて、あなただけの冒険の旅に出かけましょう。",
-        "highlights": [
-            "シンプルだけど面白いデザイン"
-        ],
-        "controls": [
-            "十字キー、スペースキー"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1z5wgRDFB3H9EyeBhEwSP3ptMgm1Tnu40",
-        "storage_url": "未完成",
-        "note_url": "未完成"
-    },
-    {
-        "id": "t10",
-        "team_name": "MKYS",
-        "game_name": "ダンジョンエンジニア",
-        "genre": [
-            "シミュレーション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC",
-            "スマホ"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-15",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "魔王視点",
-        "description": "本作は、魔王の視点で迫りくる勇者から魔王城を守るタワーディフェンスゲームです。プレイヤーは魔王となり、勇者の進行ルートを確認しながら、さまざまなモンスターやトラップを戦略的に配置して侵攻を阻止します。モンスターにはそれぞれ異なる攻撃方法や能力があり、トラップも設置場所によって効果が変化するため、状況に応じた配置が重要になります。勇者を倒して得られる資源を活用して戦力を強化し、より強力な勇者の侵攻に備えます。限られた資源と配置スペースを上手く活用し、魔王城を最後まで守り抜くことを目指すゲームです。",
-        "highlights": [
-            "斬新な視点"
-        ],
-        "controls": [
-            "Tで敵配置 スペースで次のフェーズ"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1VZzpewSc1d514icidqT_oPswMjsH3j2b",
-        "storage_url": "",
-        "note_url": ""
-    },
-    {
-        "id": "t11",
-        "team_name": "棒さん",
-        "game_name": "CONSUMED",
-        "genre": [
-            "アクション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "UE5"
-        ],
-        "development_start_date": "2026-01-15",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "ハイスピードの剣戟アクション",
-        "description": "CONSUMEDは、闘技場を舞台に巨体を持つ強大な異形の怪獣と一対一で対峙する3Dハイスピード剣戟アクションゲームです。\n\nプレイヤーは剣士となり、水面に影を映す美しくも重厚なフィールドで、敵の激しい猛攻を間一髪で回避しながら華麗な斬撃を叩き込みます。攻撃や回避、ジャストアクションによってゲージを溜め、スタイリッシュなモーションと視覚効果が生み出す圧倒的な爽快感、そして一瞬の油断が命取りとなる緊張感あふれるバトルを楽しめます。",
-        "highlights": [
-            "残像を伴うハイスピードな回避、水面を疾走する残光エフェクト、ダイナミックな画面歪みを生む一閃攻撃、水面に反射する美しいグラフィック、巨大なボスとの緊張感あふれる一対一の剣戟"
-        ],
-        "controls": [
-            "WASD or Lスティック：移動",
-            "マウス or Rスティック：視点操作",
-            "ShiftKey or Xボタン：回避",
-            "左クリック or R2ボタン：攻撃(コンボ)",
-            "右クリック or L1ボタン：カウンター"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1vxs-p3wepFiYdxsCUvaDD-4W4TsuRaIq",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/lucid_coot3859\/n\/n439306d8de95"
-    },
-    {
-        "id": "t12",
-        "team_name": "がんばる",
-        "game_name": "TIMETRAVEL SHOOTING",
-        "genre": [
-            "シューティング"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "C#(Unity)"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "2026-09-04",
-        "booth_no": "",
-        "catchcopy": "過去の自分と協力しながら攻略！",
-        "description": "基本的には既存のシューティングゲームと同じだが、このゲームは自機が死んだらスタート地点に戻り再スタートする。その時過去の自分（ゴースト）が生成され、障害物を破壊してくれたり、敵も一緒に倒してくれる。そのような流れでボスを倒したらゲームクリア。",
-        "highlights": [
-            "ゴーストと協力、敵の攻撃"
-        ],
-        "controls": [
-            "WSPC"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=11xCoMEegOuVZJeRCo-P16EigkVfT3gZ8",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/notesAriceOverLoad"
-    },
-    {
-        "id": "t13",
-        "team_name": "6爺5時",
-        "game_name": "OverLoad",
-        "genre": [
-            "シミュレーション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity(2022.3.47f1)"
-        ],
-        "development_start_date": "2025-12-16",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "考えた戦術でロボットを動かせ。",
-        "description": "プレイヤーはノードを接続してロボットの行動プログラムを構築する。自分のターンでロボットを行動させ、敵のターンで変化した戦況を確認する。その後、次のターンに向けてノードを再構築し、敵ロボットの撃破やミッション達成を目指す。",
-        "highlights": [
-            "同じロボットでも設定しているノードによる動きや戦い方が大きく変化するところ、相手のロボットも別の行動をしてくるところ"
-        ],
-        "controls": [
-            "画面の指示に従い、マウスクリック"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1lLzlOloqZzQzEXpGJWr8fL3YMQgpwS2c",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/6oldman5mini"
-    },
-    {
-        "id": "t14",
-        "team_name": "ユメガキ",
-        "game_name": "thDIMAZE",
-        "genre": [
-            "アクション",
-            "ローグライト"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2025-03-10",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "奪い続けろ、息絶えるその時まで",
-        "description": "無限のインフレ成長と、無限に高まる難易度\n本作は、失敗（死）をしない限りキャラクターの能力が文字通り「無限」に強化され続ける、圧倒的なインフレ体験を特徴とした3Dアクション・ローグライクです。塔を登るたびに手に入るスキルは相乗効果を生み、あなたの殲滅力は指数関数的に膨れ上がります。しかし、それに呼応して塔の難易度も際限なく上昇します。\n\n失敗は即「死」を意味する、極限の回避アクション\n本作には「レベルが上がればHPが増える」という救済はありません。キャラクターは常に一撃で崩れ去る脆さを抱えています。頼れるのは己のドレインホールと回避のみ。攻撃を範囲を光らせる記号的な演出を排した硬派な戦闘の中で、敵のわずかなモーションを見極め、致命的なノックバック（ハハメ）を回避する本能的な緊張感を追求しました。\n\n世界を塗り替える「血の戦歴」\n敵を屠るたびに弾け飛ぶのは、鮮烈な「ピンクのインク」。この汚れは、プレイヤーが消そうとしない限り、世界に刻まれ続けます。",
-        "highlights": [
-            "少し難易度は高いが敵のスキルを奪って気持ちよくなってほしい。"
-        ],
-        "controls": [
-            "WASD：移動",
-            "Space：回避",
-            "マウス：視点操作",
-            "R：スキル１（ドレインホール）",
-            "1～0：アイテム",
-            "V：スキル",
-            "TAB：バックパック",
-            "ESC：メニュー"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1SmTmgUbSGMYIksjy0xg6h9PdF_EcH9b",
-        "storage_url": "",
-        "note_url": ""
-    },
-    {
-        "id": "t15",
-        "team_name": "らいふはっく",
-        "game_name": "something in the back",
-        "genre": [
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-15",
-        "development_end_date": "2026-04-15",
-        "booth_no": "",
-        "catchcopy": "見るな。",
-        "description": "このゲームは制限時間内に鍵を見つけ研究所からの脱出を目指すホラーアクションゲームです。研究所には怪物(鬼)が出現し、プレイヤーに迫ります。怪物に捕まってしまっり、時間内に脱出することができないとゲームオーバーになります。また、怪物の仕様としてだるまさんが転んだの要領で追われている時など、プレイヤーが怪物を視認する事で怪物は動きを止めます。しかし、止めると次に視線を逸らした時には姿を消し、怪物は体長が変化し、強化されます。なので、できる限り怪物を見ることなく限られた時間の中で鍵を見つけ脱出するというのがこのゲームの核となります。",
-        "highlights": [
-            "制限時間内に鍵を見つけなければいけないという緊張感、だるまさんが転んだを少し取り入れた鬼の仕様、視認すれば鬼の動きを止めることができるが鬼がその分だけ強くなってしまうというプレイヤーに選択を迫る点"
-        ],
-        "controls": [
-            "WASD：移動",
-            "Shift：ダッシュ",
-            "E：インタラクト",
-            "F：ライトON\/OFF",
-            "マウス：視点操作"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1gEAc95X3I36AHuTT0tv2--nFSPbCKHQc",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/1xXTIoc-9cax4O1mE7aCW5FlGJ6WKLWMr\/view?usp=sharing",
-        "note_url": "https:\/\/note.com\/taro_025\/n\/n77750af9102a"
-    },
-    {
-        "id": "t16",
-        "team_name": "Smashboom制作チーム",
-        "game_name": "Smashboom",
-        "genre": [
-            "アクション",
-            "シューティング"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unreal Engine"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "撃って、弾いて、欺き倒せ。極限のハイスピード・ラリーシューティング",
-        "description": "『Smashboom』は、飛んでくる弾を反射し、フェイクを駆使して相手の隙を突くハイスピード3D対戦シューティングです。ただ撃ち合うだけでなく、テニスの超高速ラリーや格闘ゲームのような緊迫した読み合いが展開。相手の意表を突くスマッシュを叩き込み、ライバルを撃ち倒せ！",
-        "highlights": [
-            "弾を反射する、建物の破壊"
-        ],
-        "controls": [
-            "WASD:移動",
-            "マウス：視点操作",
-            "Space：ジャンプショット",
-            "右クリック:ショット",
-            "Eキー:リフレクト",
-            "マウスホイール押し込み:フェイクショット",
-            "Lスティック:移動",
-            "Rスティック:視点操作",
-            "Bボタン:ジャンプショット",
-            "L2:ショット",
-            "R1:リフレクト",
-            "L1:フェイクショット"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=11AiyOHF28OvYeWeX8B2vTKpJ_LcKvzr5",
-        "storage_url": "https:\/\/drive.google.com\/drive\/folders\/1SGHnrBJTGOL-anuCxp0174u6NR5J7wZT",
-        "note_url": "https:\/\/note.com\/super_dunlin2796"
-    },
-    {
-        "id": "t17",
-        "team_name": "愚の衆",
-        "game_name": "HillsCry",
-        "genre": [
-            "アドベンチャー",
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "踏む血と散る血、迫る狂気",
-        "description": "『Hill's Cry』は、ジャングルを舞台にした、レトログラフィックのサイコロジカルホラー・ローグライト探索ゲームです。\n救助ヘリを呼ぶための「通信機のパーツ」を集めることが、クリア条件です。\n\nジャングルはマス目で構成されており、大まかに安全マスとSAN減少マス、イベントマスの3種に分かれています。マスの配置はゲーム開始と同時に毎回ランダムで生成されます。\n\nプレイヤーが一マス進むごとに日数が消費され、SAN減少マスを踏んでしまえばあなたのSAN値が削られます。日数が尽きるか、SAN値がゼロになれば、待ち受けるのは残酷な最期です。\n\nSAN値がピンチな時、日数の消費とともに睡眠をとってSAN値を全回復することができます。しかし、目覚めた時にはマス配置は完全にシャッフルされます。\n\nイベントマスを踏んだ時、プレイヤーには様々なミニゲーム的タスクが課されます。例としては、一定時間敵の猛攻をかいくぐる、配線をつなぐ、隠れた敵を見つけるものがあります。このタスクの成功可否によって、SANの減少が行われます。",
-        "highlights": [
-            "マスシャッフルとSANリソースによる緊張感。",
-            "心臓をつかまれる程のホラー演出。",
-            "多彩なミニゲーム。"
-        ],
-        "controls": [
-            "WASD：移動、マウス：視点操作やUI・ミニゲーム操作"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1TlC2SuRVjDRAYZ894-1bMnkcVxNslyRy",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/mute_swan3311"
-    },
-    {
-        "id": "t18",
-        "team_name": "Smashboom制作",
-        "game_name": "Smashboom",
-        "genre": [
-            "アクション",
-            "シミュレーション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unreal Engine"
-        ],
-        "development_start_date": "2026-04-07",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "撃って、弾いて、欺き倒せ。極限のハイスピード・ラリーシューティング",
-        "description": "『Smashboom』は、飛んでくる弾を反射し、フェイクを駆使して相手の隙を突くハイスピード3D対戦シューティングです。ただ撃ち合うだけでなく、テニスの超高速ラリーや格闘ゲームのような緊迫した読み合いが展開。相手の意表を突くスマッシュを叩き込み、ライバルを撃ち倒せ！",
-        "highlights": [
-            "弾を跳ね返す、建物の破壊"
-        ],
-        "controls": [
-            "WASD：移動、マウス：視点操作、Space：ジャンプショット、Eキー:リフレクト、マウスホイール押し込み:フェイクショット"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1MVRDupf54uNRL772ROvouNdo-2aRCdw-",
-        "storage_url": "https:\/\/drive.google.com\/drive\/folders\/1SGHnrBJTGOL-anuCxp0174u6NR5J7wZT",
-        "note_url": "https:\/\/note.com\/super_dunlin2796"
-    },
-    {
-        "id": "t19",
-        "team_name": "M.M.I",
-        "game_name": "Chrono-Step",
-        "genre": [
-            "アクション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "pc"
-        ],
-        "engine": [
-            "Unity6"
-        ],
-        "development_start_date": "2026-04-23",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "回避の爽快感を堪能せよ",
-        "description": "回避を主体としたローグライクアクションゲームです\nランダムで生成されるマップを選択してダンジョンを構築、攻略をして自分を強化するレリックを集め、ボスを倒そう",
-        "highlights": [
-            "回避のエフェクト"
-        ],
-        "controls": [
-            "WASD:移動、左クリック:攻撃、左スティック:移動、Xボタン:攻撃、Aボタン:回避"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1oELO0zg98AHqGSsUgJb1uUi237x0ofl0",
-        "storage_url": "https:\/\/drive.google.com\/drive\/folders\/1tXhGzbtcWimRo8scTlZWJhIeo9SHlrxs?usp=sharing",
-        "note_url": "https:\/\/note.com\/mmigames"
-    },
-    {
-        "id": "t20",
-        "team_name": "ドッヘンアイア",
-        "game_name": "十二支レース",
-        "genre": [
-            "育成レースゲーム"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC(Windows10)"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-30",
-        "development_end_date": "2026-09-20",
-        "booth_no": "",
-        "catchcopy": "十二支の動物、無限の戦略",
-        "description": "十二支レースは、マリオカートとウマ娘の融合をコンセプトとした、育成レースゲームです。\nマリオカートからは、アイテムによる逆転要素を、レース中のスキルとして取り入れました。一方でウマ娘からは、育成によるステータス強化での戦略性を、ほぼそのまま取り入れました。これにより、両方のゲームのいいとこどりをしたレースゲームが完成しました。\n十二支レースは、神様から十二支の順番を決めなおすと告げられ、十二支の動物たちが1着を目指してレースをする設定です。まず、プレイヤーは十二支の動物のうち1匹選び、トレーニングを行います。トレーニングでは、最高速度や加速力など、5つのステータスを強化します。次にレース中で有利にはたらくスキルを4つセットします。スキルは、5つのステータスにバフをかけることができます。最後にレースに出て、1着を目指します。ステータスの1つであるスタミナが0になると、リタイアとなりゲームオーバーです。スタミナが尽きないように、スキルで回復しながら走りまょう。ゴールやリタイアでレースが終了しても、リトライやキャラクター選択に戻ることができます。何度も挑戦しましょう。\n十二支の動物、無限の戦略。是非プレイしてみてください。",
-        "highlights": [
-            "爽快感があるコース最後の直線"
-        ],
-        "controls": [
-            "Nintendo Switch付属『Joy-Con』で操作する場合は、Joy-Conを横持ちにしてください",
-            "育成パート：",
-            "カーソル操作：",
-            "Joycon：スティック",
-            "Xboxコントローラー：左スティック",
-            "マウス：マウス移動",
-            "決定：",
-            "Joycon：右ボタン",
-            "Xboxコントローラー：A",
-            "マウス：左クリック",
-            "レースパート：",
-            "移動：",
-            "Joycon：横持ちで傾ける",
-            "Xboxコントローラー：左スティック",
-            "キーボード：WASD(左：W、上：A、下：S、右：D)",
-            "スキル使用：",
-            "Joycon：位置に対応した十字ボタン",
-            "Xboxコントローラー：上：Y、右：B、下：A、左：X",
-            "キーボード：上：U、右：K、下：J、左：H",
-            "ゲーム説明を開く：",
-            "Joycon：SR",
-            "Xboxコントローラー：RB",
-            "マウス：左上の『i』ボタンを左クリック",
-            "※タイトルシーン、レース終了時はゲーム説明は開けない仕様です"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1pEb8se3WQvvQ1-RBKyMOx0rloLM5aET5",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/1PyqCldKoU-YovttwE0vhoHmQ35Bub4Pf\/view?usp=sharing",
-        "note_url": "https:\/\/note.com\/firm_cougar9882"
-    },
-    {
-        "id": "t21",
-        "team_name": "GBOX",
-        "game_name": "Space Phantom",
-        "genre": [
-            "シューティング"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC(Windows)"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-21",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "最後まで生き残れ！",
-        "description": "制限時間までに生き残る3Dシューティングゲームです。\nプレイヤーは自機を操作して敵の攻撃を掻い潜りながら時間が0になるまで生き残り続けるのが目的です。\n敵を倒したり、敵の攻撃をタイミングよく回避すると経験値が溜まり、レベルが上がります。レベルが上がると最大HPが上がると同時にランダムで3つの選択肢から強化アイテムを選び、その強化アイテムを自機に装備してパワーアップすることができます。\nレベルを上げて、自機をパワーアップして時間まで生き残る。そのようなゲームとなります。",
-        "highlights": [
-            "数々と襲ってくる敵、ギリギリを攻めて回避する、自機のパワーアップアイテムの装備"
-        ],
-        "controls": [
-            "キーボード ",
-            "WASD：移動、Space：回避、Enter or 左クリック：弾を発射、Shift：自動発射モード切替",
-            "コントローラー（XBOX） ",
-            "左スティック：移動、Aボタン：回避、Xボタン：弾を発射、RBボタン：自動発射モード切替"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1HFUE4-CieosyWY9he5mAoMUvii1TZa8l",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/14Txr9eLuFM6T4PXiP_XSmQHYIalBezMg\/view?usp=sharing",
-        "note_url": "https:\/\/note.com\/gbox\/n\/n381b12b47fa3"
-    },
-    {
-        "id": "t22",
-        "team_name": "shimaenaga4",
-        "game_name": "Void Ripple",
-        "genre": [
-            "アクション",
-            "リズム"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-28",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "リズムを覚えて跳ね返そう！",
-        "description": "『VoidRipple』は、敵が奏でるリズムを記憶し、同じタイミングで入力を返す「リズム×パリィアクションゲーム」です。敵の演奏を聞いてリズムを覚えた後、流れてくる譜面に合わせてW・A・S・Dによる方向入力や、Spaceによる回避を行います。さらに敵の特殊攻撃には、タイミングを見極めてパリィで反撃。正確な入力ほど高い評価とスコアを獲得できます。「聴く・覚える・返す」リズムゲームの記憶要素と、瞬間的な判断を求めるアクションを組み合わせ、高スコアを目指すゲームです。",
-        "highlights": [
-            "ビジュアル、爽快感、世界観、ゲーム性"
-        ],
-        "controls": [
-            "WASD：ノーツ判定、space：長押しノーツ、単押し、マウス：パリィ"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1lWsM2lwFMb5tAqy4f6VU55_cDN-MS29c",
-        "storage_url": "https:\/\/drive.google.com\/drive\/u\/0\/folders\/1SFfZaTzHIFTS-_BMNMldXRz4p4HoW1Lq",
-        "note_url": "https:\/\/note.com\/settings\/account"
-    },
-    {
-        "id": "t23",
-        "team_name": "徹夜部",
-        "game_name": "Vinus",
-        "genre": [
-            "アクション",
-            "パズル"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-21",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "クリアできないステージをいじる、パソコンのようなゲーム",
-        "description": "クリアできないステージを触って弄ってステージをクリアするパズルアクションゲーム。\nステージギミックやソフトを使った編集で到達できないゴールまで目指そう！",
-        "highlights": [
-            "シンプルでシンプルじゃないパズルアクション"
-        ],
-        "controls": [
-            "マウス:クリック",
-            "キーボード:",
-            "移動AD",
-            "SPACEジャンプ"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1Og2WbjxDcIUUGTJrwO1z8H_LpopRbqx1",
-        "storage_url": "",
-        "note_url": ""
-    },
-    {
-        "id": "t24",
-        "team_name": "SMC財団KRC支部",
-        "game_name": "Souls Make Chains",
-        "genre": [
-            "アクション"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC(Windows)"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-14",
-        "development_end_date": "",
-        "booth_no": "",
-        "catchcopy": "チェーンで縛り、ソウルをシフト。一網打尽の2Dプラットフォームアクション",
-        "description": "『Souls Make Chains』は、3名のキャラクターを場面に応じて適宜切り替えながら、立ちはだかる様々な障壁を突破し、ステージの攻略を目指す2Dプラットフォームアクションです。キャラクターには「体属性」「地属性」「霊属性」の三種類の属性が存在し、同じ属性の敵に攻撃を当てることで、キャラクターと敵がチェーンで繋がります。継続的に同じ敵に攻撃を続けていくと、周囲の同じ属性の敵にチェーンが伸びていきます。この時、キャラクターを切り替えると敵のもとへ瞬間移動し、強襲を仕掛ける「チェーンブレイク」が発生します。チェーンブレイクを駆使することで、敵に大ダメージを与えたり、壁の向こう側へ移動することもできます。連続でチェーンブレイクを発生させ、敵を纏めて一掃しましょう。",
-        "highlights": [
-            "敵を繋げて纏めて倒す「チェーンブレイク」の爽快感、効果音や操作感が後押しする動かしているだけで楽しい良質なプレイフィール、可愛らしいキャラクターのアニメーション"
-        ],
-        "controls": [
-            "キーボードマウス：AD：移動、S+SPACE：足場から降りる、SPACE：ジャンプ (長押しで高く飛べる)、E \/ Q：キャラクターチェンジR：スキル、マウス左クリック：攻撃、マウス右クリック：回避、マウス右長押し：ダッシュ",
-            "コントローラー(箱コン基準)：A:ジャンプ、B:回避、押しっぱなしでダッシュ、X:攻撃、Y:スキル、LT:キャラクターチェンジ(左)、RT:キャラクターチェンジ(右)、LB:ロックオン解除、RB:回避・ダッシュ"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1JajQ8FU_8UAfUG5M4s5PLVeJeZsezXA1",
-        "storage_url": "",
-        "note_url": "https:\/\/note.com\/clear_quince2396\/portal"
-    },
-    {
-        "id": "t25",
-        "team_name": "SB(SexyBrothers)",
-        "game_name": "きもかわホラー（怖さ控えめ）",
-        "genre": [
-            "アクション",
-            "RPG",
-            "シューティング",
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-01",
-        "development_end_date": "2026-09-30",
-        "booth_no": "",
-        "catchcopy": "きもかわ達と変わった世界から脱出",
-        "description": "本作は、隔離された世界からの脱出を目指す箱庭型アクションゲームです。\n\nプレイヤーはマップ内を探索しながら、脱出に必要なダイナマイトを集めていきます。世界の中央には巨大な扉が存在し、一定数のダイナマイトを集めることで扉を破壊し、外の世界へ脱出することができます。\n\nプレイヤーには「キモカワ」と呼ばれる不思議な生き物が同行します。キモカワは探索や攻略を支える存在であり、プレイヤーと協力しながら危険な隔離世界を進んでいきます。\n\n箱庭空間を自由に探索し、ダイナマイトを集めて中央扉の突破を目指すことが本作の目的です。",
-        "highlights": [
-            "きもかわの表情の変化を見ていただけると、更にきもわのことがわかります。"
-        ],
-        "controls": [
-            "WASD：移動",
-            "Space：ジャンプ",
-            "マウス：視点操作",
-            "F：インタラクト",
-            "最低限これができれば、クリアできます。"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1ABsPGZpOiU-PB3PyRRx_u3VA_ZB-fxyq",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/1dpD034Pq9jSL027I9V5Eq3-ob9yeP1Ax\/view?usp=drive_link",
-        "note_url": "https:\/\/note.com\/glad_quoll1838"
-    },
-    {
-        "id": "t26",
-        "team_name": "monolithic×chromium",
-        "game_name": "Fluffolia",
-        "genre": [
-            "シミュレーション",
-            "パズル"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "unity"
-        ],
-        "development_start_date": "2026-04-24",
-        "development_end_date": "2026-10-16",
-        "booth_no": "",
-        "catchcopy": "どうぶつたちと、ちょこっとパズル！",
-        "description": "本作は、かわいい動物たちを操作してゴールを目指す2Dパズルアクションゲームです。プレイヤーはステージ内にある地形やギミックを利用し、動物たちの特徴を活かしながら進んでいきます。動物を増やすことで行動の幅が広がり、それぞれの動物をどのように動かすかを考えることが攻略のポイントになります。シンプルで直感的な操作と、試行錯誤しながら答えを見つけるパズル要素を組み合わせ、かわいらしい見た目と遊びやすさを重視したゲームを目指しています。",
-        "highlights": [
-            "かわいい動物たちを操作するパズルアクション",
-            "動物の特徴を活かしたステージ攻略",
-            "地形やギミックを利用したひらめき重視のパズル"
-        ],
-        "controls": [
-            "マウスクリック、ドラッグ、ESCキー"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1bg8_D5RHcoksRwvJnI11Nv_ngXaDN5n3",
-        "storage_url": "https:\/\/drive.google.com\/file\/d\/1nt3RSet_W2QAnkkbtVK1fcL7vcpaFtqR\/view?usp=drivesdk",
-        "note_url": "https:\/\/note.com\/monoxchro\/portal"
-    },
-    {
-        "id": "t27",
-        "team_name": "√",
-        "game_name": "影喰いの家",
-        "genre": [
-            "アドベンチャー",
-            "ホラー"
-        ],
-        "players": "1人",
-        "platforms": [
-            "PC"
-        ],
-        "engine": [
-            "Unity"
-        ],
-        "development_start_date": "2026-04-24",
-        "development_end_date": "",
-        "booth_no": "0",
-        "catchcopy": "どんな闇も、光で暴け。",
-        "description": "＜ストーリー＞\r\nある日、目を覚ますとそこは知らない館だった。\r\n明かりのない真っ暗な館、そこに現れる影喰いという化け物。\r\nここはどこなのか、自分がなぜこんなところにいるのか、\r\n自分は誰なのか、大事なことがあったはずなのに思い出せない。\r\nあなたはここから出るため、懐中電灯一本でこの不思議な館の\r\n謎を解いて先に進んでいく。その道先に何があるのか、\r\n自分は何者なのか、どんな結末を迎えるか、その目で刮目せよ。",
-        "highlights": [
-            "ライトのみで主なアクションを担わせることで感覚でプレイできるホラーゲーム"
-        ],
-        "controls": [
-            "WASD・矢印キー：移動",
-            "Q：ライトON\/OFF",
-            "Space：フラッシュ",
-            "左クリック：調べる",
-            "右クリック：ライトカラー変更",
-            "マウスカーソル：視点移動など"
-        ],
-        "screenshots": [],
-        "theme": "red",
-        "video_url": "",
-        "thumbnail": "https:\/\/drive.google.com\/open?id=1i9jmeVZbRMhO-oQYuVymZX5c97214Yxl",
-        "storage_url": "https:\/\/drive.google.com\/drive\/folders\/16_yMnChzNnyjXXT731WcDdCAhqahOubq?usp=sharing",
-        "note_url": "https:\/\/note.com\/lofty_dove7806\/n\/ne6e931c6efdb"
-    }
+  {
+    "id": "t01",
+    "team_name": "ニトロカルボナーラ",
+    "game_name": "よろず屋の品定め",
+    "genre": [
+      "シミュレーション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-05-13",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "武器を掃除する！武器を鑑定する！！道具を売る！！現実的なよろず屋シミュレーション",
+    "description": "「掃除・鑑定・販売」の3本柱で店を切り盛りする、リアルな質感のよろず屋シミュレーション！泥や錆をこそぎ取る『掃除』、本物か偽物か、呪われていないかを見抜く『武器の鑑定』、仕入れた道具の『販売』というよろず屋ならではの店舗経営サイクルを深く楽しめます。独特なレトロファンタジーUIとボクセル3Dデザインが融合した味のあるグラフィックが魅力。とある国のギルド施設『よろず屋』で働きつつ変わる国の情勢。病みつきになる店主生活があなたを待っています！",
+    "highlights": [
+      "世界観を引き立てる「独特なレトロファンタジーデザイン」"
+    ],
+    "controls": [
+      "クリックで基本操作可能"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1bMn7m1mE4Pzm9rf8sshEqkYzSCvdeV25",
+    "storage_url": "",
+    "note_url": "https://note.com/huge_guppy3445/portal"
+  },
+  {
+    "id": "t02",
+    "team_name": "スパークゲームズ",
+    "game_name": "帰路（かえりみち）",
+    "genre": [
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2025-11-16",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "２Dローグライクホラー,貴方の判断で脱出を目指せ",
+    "description": "封印された森を舞台に、付喪神となった人形が家族の元へ帰るため脱出を目指す2Dローグライクホラー。 道を塞ぐ障害物は“残滓”と呼ばれる死霊に協力してもらうことで開けられるが、そのたび危険度が上昇し、100に達すると森の浄化作用で消滅してしまう。 選択が探索ルートや危険度に直結し、祭壇・倉庫・墓場など多彩なランダムエリアを進みながら、脱出口出現後のパニックフェーズを素早く突破する緊張感が特徴。",
+    "highlights": [
+      "可愛らしいビジュアル、レトロなホラー探索"
+    ],
+    "controls": [
+      "WASD：移動、Space：ダッシュ（WASDと同時押し）、Fキー：決定、マウス：会話進行、Bキー：インベントリ開く、ESC：終了（３秒長押し）"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1-hecYp9UsXGiGgpUka8-FKAOXH67hac3",
+    "storage_url": "",
+    "note_url": "https://note.com/merry_stork5189"
+  },
+  {
+    "id": "t03",
+    "team_name": "おじちゃ",
+    "game_name": "禁足の森",
+    "genre": [
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-14",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "夜の森で、時間だけが進んでいく。",
+    "description": "深夜2時、配信者である主人公は「禁足の森」と呼ばれる危険な場所へ実況配信に向かう。探索中、画面に流れる視聴者コメントには、森で起きている異変を示す謎の情報が次々と投稿されていく。コメントをヒントに森を探索し、チェックポイントを進みながら出口を目指す一方、物語が進むにつれてコメントの中にはプレイヤーを惑わせる偽情報も混ざり始める。プレイヤー自身がコメントの真偽を判断しながら探索することで、「何を信じればいいのか」という不安と緊張感を演出する、探索ホラーゲーム。",
+    "highlights": [
+      "怪異の姿"
+    ],
+    "controls": [
+      "WASD、マウス：視点移動、左クリック"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1gbqT080Q8TjCd09YD2gC7yp6l9jIWpH0",
+    "storage_url": "",
+    "note_url": "https://note.com/noble_ojitya"
+  },
+  {
+    "id": "t04",
+    "team_name": "いつ面",
+    "game_name": "Repair Frame",
+    "genre": [
+      "パズル"
+    ],
+    "players": "3人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-20",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "人の目には映らない異常をカメラに捉えること",
+    "description": "本作は、空間の中に存在する「異常」を特殊なカメラで発見し、撮影することで修復していく探索型ゲームです。プレイヤーは通常の視点と特殊なカメラを切り替えながら周囲を観察し、普段とは異なる場所や物を見つけ出します。異常を発見したら、カメラで撮影することで修復することができます。また、プレイヤーの移動にはWASD、視点操作にはマウスを使用し、直感的に探索できるようにしています。ステージ内にあるすべての異常を修復するとクリアとなり、次のステージへ進むことができます。通常の視点では見つけにくい異常を、特殊なカメラを使って探すことが本作の特徴です。",
+    "highlights": [
+      "通常視点と特殊カメラの違い、観察力が試される探索"
+    ],
+    "controls": [
+      "WASD：移動、マウス：視点操作"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1YFA9lm3lUnFvoh7G1bLXYQtVpc14Otrw",
+    "storage_url": "",
+    "note_url": ""
+  },
+  {
+    "id": "t05",
+    "team_name": "思い思いのこの想い",
+    "game_name": "焼き鳥シュミレーター",
+    "genre": [
+      "シミュレーション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC",
+      "Nintendo Switch"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-21",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "手首のひねりが、魂に火を灯す。――君は、伝説の焼き鳥職人になれるか？",
+    "description": "手元にあるのは一本の串……ではなく、一台のジョイコン！本作は、Joy-Conのジャイロ機能をフル活用した、直感操作の本格焼き鳥職人シミュレーションゲームです。\n制限時間は1分間。プレイヤーはジョイコンを本物の串のように握り、ZRボタンを押しながら手首をひねることで、画面内の焼き鳥を180度パタンと「反転」させます。火力の中心を見極める左右のポジショニングや、焦げを防ぐために串を持ち上げる挙動など、繊細な熱量コントロールが勝利の鍵。\n肉の色がリアルに変化し、耳をくすぐる「ジュワーッ」というシズル音の中で、表裏の焼き加減を完璧な100％へと導く緊張感と快感が楽しめます。複数本の同時焼きをこなし、最高の一本を提供してハイスコアを叩き出しましょう。熟練の技を磨き、リザルト画面で「伝説の称号」を掴み取れ！",
+    "highlights": [
+      "ジョイコンが「串」に変わる、圧倒的な一体感",
+      "五感を刺激する「シズル感」の追求",
+      "「火力を読む」戦略的なポジショニング",
+      "職人の「こだわり」を数値化する緊張感"
+    ],
+    "controls": [
+      "AD/x/b/space"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1oqdnnnBvUjK9PAqyvBx5PES8qcs2ySYP",
+    "storage_url": "https://github.com/Yuta-0824/YakitoriProject",
+    "note_url": "https://note.com/fairy_engel"
+  },
+  {
+    "id": "t06",
+    "team_name": "A*",
+    "game_name": "ガマズミ",
+    "genre": [
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-14",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "鳥居の先では、音を立てるな。",
+    "description": "山奥にある廃村「鎌澄村」。行方不明になった恋人を探すため、主人公は村の奥にある古びた神社へ足を踏み入れる。そこには、音に反応して襲いかかる怪異が潜んでいた。境内に隠された謎を解きながら進むには、声や物音を利用しなければならない。しかし、音を立てれば怪異に居場所を知られてしまう。隠れるか、逃げるか、それとも音を利用して怪異を誘導するか。静寂と恐怖の中で、恋人の行方と村に隠された真実を追う、ステルス和風ホラーゲーム。",
+    "highlights": [
+      "マイクを使っている、モデルが丁寧"
+    ],
+    "controls": [
+      "WASD：移動",
+      "Shift：ダッシュ（スタミナが残っている場合）",
+      "Eキー：ライトつける",
+      "マウス：視点移動",
+      "左クリック：アイテム取得、決定（メニュー時、スマホ起動時のみ）",
+      "右クリック：スマホ起動、スマホ閉じる",
+      "Esc：メニューを開く"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=19KhjtQgisOQ9k9Z-oTyFzybYbwyWxLyU",
+    "storage_url": "https://drive.google.com/drive/folders/1Id4vcz0MVSGBGjlIokiS_J-ld_nuk6nD?usp=drive_link",
+    "note_url": "https://note.com/takoshia_rikou"
+  },
+  {
+    "id": "t07",
+    "team_name": "ovo)b",
+    "game_name": "Iron Duel",
+    "genre": [
+      "アクション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC",
+      "スマートフォン"
+    ],
+    "engine": [
+      "独自実装（HTML5 Canvas・JavaScript）"
+    ],
+    "development_start_date": "2026-07-16",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "生成AIを活用し、アイデアを遊べるゲームへ",
+    "description": "「IronDuel」は、左右に分かれた足場で戦車を操作し、移動・通常攻撃・スキルを組み合わせて戦う、1対1のブラウザ2D対戦ゲームです。A・Dキーで移動し、停止すると自動で通常攻撃を行います。攻撃するために立ち止まるか、相手の砲弾を避けるために動くかという判断が戦闘の中心です。現在は、性能と専用能力が異なる4種類の戦車と、攻撃・防御・回復・妨害など16種類の共通スキルを実装しています。5つのスキルを自由に選べるため、同じ戦車でも異なる戦い方ができます。オンラインではマッチング対戦とルーム番号を使ったプライベート対戦に対応し、座標・命中・ダメージなどをサーバー側で判定します。対戦後は命中率やダメージ内訳を確認でき、記録したフレームとイベントから対局を再現するリプレイ機能も用意しました。さらに、戦車やスキルを調整するコンテンツ編集画面と、ユーザー情報・権限・BAN・戦績を管理する専用ツールも制作しています。",
+    "highlights": [
+      "シンプルな左右移動と、多彩なスキルを組み合わせた読み合いのある1対1戦車バトル。"
+    ],
+    "controls": [
+      "A・D：左右移動、数字キー（1～6）またはスキルアイコンのクリック：スキル使用、停止中：通常攻撃（自動）"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1bBOii53WlRTy46jNq3sJxqBltOjoWY_",
+    "storage_url": "https://drive.google.com/file/d/1Vc9xytpEP_zdFFPY2P5G6vujDNc7yNqm/view?usp=drive_link",
+    "note_url": "https://note.com/ovollovo"
+  },
+  {
+    "id": "t08",
+    "team_name": "ドラムーブ",
+    "game_name": "ドラムーブ",
+    "genre": [
+      "アクション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC",
+      "電子ドラム"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-15",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "体を動かすことが、そのままゲームの楽しさにつながる体験",
+    "description": "『Drumove』は、電子ドラムを実際に叩いてキャラクターを操作し、街中を進みながら「♪」を集めるポイント収集アクションゲームです。\n\nプレイヤーは自動で進むキャラクターを4レーンのドラム操作で移動させ、歩行者や車などの障害物を避けながら、制限時間内にできるだけ多くの「♪」を集めます。\n\n本作では、電子ドラムを単なるコントローラーとして扱うのではなく、**「叩く → 動く → ♪を獲得する」という操作と結果のつながりを重視しました。特に、ドラムを叩いた結果として「♪」を獲得する瞬間を本作の大きな魅力と捉え、音やエフェクトなどのフィードバックによって、「叩いて操作する楽しさ」**を感じられるゲームを目指して制作しています。",
+    "highlights": [
+      "移動などの全ての操作を  ”ドラムを叩いて”  行う"
+    ],
+    "controls": [
+      "電子ドラムを叩く"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=11Csc6SnBbK4PsTQ_AeYRn5YDUAraYpKn",
+    "storage_url": "",
+    "note_url": "https://note.com/drmome/n/n001da8d755d8"
+  },
+  {
+    "id": "t09",
+    "team_name": "new27",
+    "game_name": "トレジャーRPG",
+    "genre": [
+      "アクション",
+      "RPG"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-16",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "レベル上げと敵を倒したときの爽快感",
+    "description": "『トレジャーRPG ～失われた秘宝～』は、懐かしいドット絵で描かれた王道ファンタジーの世界を冒険する2Dロールプレイングゲームです。プレイヤーは、何者かに奪われてしまった伝説の「秘宝」を取り戻すため、広大な世界へと旅立ちます。\nゲームは、建物やフィールドを探索するアドベンチャーパートと、遭遇した敵と戦うコマンド選択式のバトルパートで構成されています。戦闘ではスライムなどのモンスターを相手に、「たたかう」や「にげる」といった戦略を使い分けて勝利を目指します。敵を倒すと経験値（EXP）やゴールドを獲得でき、レベルアップすることでキャラクターを強化していく育成の醍醐味も味わえます。\nUnityで制作された本作は、シンプルで直感的な操作性と、レトロゲームのような温かみのあるグラフィックが特徴です。失われた秘宝を求めて、あなただけの冒険の旅に出かけましょう。",
+    "highlights": [
+      "シンプルだけど面白いデザイン"
+    ],
+    "controls": [
+      "十字キー、スペースキー"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1z5wgRDFB3H9EyeBhEwSP3ptMgm1Tnu40",
+    "storage_url": "",
+    "note_url": ""
+  },
+  {
+    "id": "t10",
+    "team_name": "MKYS",
+    "game_name": "ダンジョンエンジニア",
+    "genre": [
+      "シミュレーション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC",
+      "スマートフォン"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-15",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "魔王視点",
+    "description": "本作は、魔王の視点で迫りくる勇者から魔王城を守るタワーディフェンスゲームです。プレイヤーは魔王となり、勇者の進行ルートを確認しながら、さまざまなモンスターやトラップを戦略的に配置して侵攻を阻止します。モンスターにはそれぞれ異なる攻撃方法や能力があり、トラップも設置場所によって効果が変化するため、状況に応じた配置が重要になります。勇者を倒して得られる資源を活用して戦力を強化し、より強力な勇者の侵攻に備えます。限られた資源と配置スペースを上手く活用し、魔王城を最後まで守り抜くことを目指すゲームです。",
+    "highlights": [
+      "斬新な視点"
+    ],
+    "controls": [
+      "Tで敵配置 スペースで次のフェーズ"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1VZzpewSc1d514icidqT_oPswMjsH3j2b",
+    "storage_url": "",
+    "note_url": ""
+  },
+  {
+    "id": "t11",
+    "team_name": "棒さん",
+    "game_name": "CONSUMED",
+    "genre": [
+      "アクション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unreal Engine 5"
+    ],
+    "development_start_date": "2026-01-15",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "ハイスピードの剣戟アクション",
+    "description": "CONSUMEDは、闘技場を舞台に巨体を持つ強大な異形の怪獣と一対一で対峙する3Dハイスピード剣戟アクションゲームです。\n\nプレイヤーは剣士となり、水面に影を映す美しくも重厚なフィールドで、敵の激しい猛攻を間一髪で回避しながら華麗な斬撃を叩き込みます。攻撃や回避、ジャストアクションによってゲージを溜め、スタイリッシュなモーションと視覚効果が生み出す圧倒的な爽快感、そして一瞬の油断が命取りとなる緊張感あふれるバトルを楽しめます。",
+    "highlights": [
+      "残像を伴うハイスピードな回避",
+      "水面を疾走する残光エフェクト",
+      "ダイナミックな画面歪みを生む一閃攻撃",
+      "水面に反射する美しいグラフィック",
+      "巨大なボスとの緊張感あふれる一対一の剣戟"
+    ],
+    "controls": [
+      "WASD or Lスティック：移動",
+      "マウス or Rスティック：視点操作",
+      "ShiftKey or Xボタン：回避",
+      "左クリック or R2ボタン：攻撃(コンボ)",
+      "右クリック or L1ボタン：カウンター"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1vxs-p3wepFiYdxsCUvaDD-4W4TsuRaIq",
+    "storage_url": "",
+    "note_url": "https://note.com/lucid_coot3859/n/n439306d8de95"
+  },
+  {
+    "id": "t12",
+    "team_name": "がんばる",
+    "game_name": "TIMETRAVEL SHOOTING",
+    "genre": [
+      "シューティング"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-14",
+    "development_end_date": "2026-09-04",
+    "booth_no": "",
+    "catchcopy": "過去の自分と協力しながら攻略！",
+    "description": "基本的には既存のシューティングゲームと同じだが、このゲームは自機が死んだらスタート地点に戻り再スタートする。その時過去の自分（ゴースト）が生成され、障害物を破壊してくれたり、敵も一緒に倒してくれる。そのような流れでボスを倒したらゲームクリア。",
+    "highlights": [
+      "ゴーストと協力、敵の攻撃"
+    ],
+    "controls": [
+      "WS"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=11xCoMEegOuVZJeRCo-P16EigkVfT3gZ8",
+    "storage_url": "",
+    "note_url": "https://note.com/notes"
+  },
+  {
+    "id": "t13",
+    "team_name": "6爺5時",
+    "game_name": "AriceOverLoad",
+    "genre": [
+      "シミュレーション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity(2022.3.47f1)"
+    ],
+    "development_start_date": "2025-12-16",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "考えた戦術でロボットを動かせ。",
+    "description": "プレイヤーはノードを接続してロボットの行動プログラムを構築する。自分のターンでロボットを行動させ、敵のターンで変化した戦況を確認する。その後、次のターンに向けてノードを再構築し、敵ロボットの撃破やミッション達成を目指す。",
+    "highlights": [
+      "同じロボットでも設定しているノードによる動きや戦い方が大きく変化するところ、相手のロボットも別の行動をしてくるところ"
+    ],
+    "controls": [
+      "画面の指示に従い、マウスクリック"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1lLzlOloqZzQzEXpGJWr8fL3YMQgpwS2c",
+    "storage_url": "",
+    "note_url": "https://note.com/6oldman5minith"
+  },
+  {
+    "id": "t14",
+    "team_name": "ユメガキ",
+    "game_name": "DIMAZE",
+    "genre": [
+      "アクション",
+      "ローグライト"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2025-03-10",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "奪い続けろ、息絶えるその時まで",
+    "description": "無限のインフレ成長と、無限に高まる難易度\n本作は、失敗（死）をしない限りキャラクターの能力が文字通り「無限」に強化され続ける、圧倒的なインフレ体験を特徴とした3Dアクション・ローグライクです。塔を登るたびに手に入るスキルは相乗効果を生み、あなたの殲滅力は指数関数的に膨れ上がります。しかし、それに呼応して塔の難易度も際限なく上昇します。\n\n失敗は即「死」を意味する、極限の回避アクション\n本作には「レベルが上がればHPが増える」という救済はありません。キャラクターは常に一撃で崩れ去る脆さを抱えています。頼れるのは己のドレインホールと回避のみ。攻撃を範囲を光らせる記号的な演出を排した硬派な戦闘の中で、敵のわずかなモーションを見極め、致命的なノックバック（ハメ）を回避する本能的な緊張感を追求しました。\n\n世界を塗り替える「血の戦歴」\n敵を屠るたびに弾け飛ぶのは、鮮烈な「ピンクのインク」。この汚れは、プレイヤーが消そうとしない限り、世界に刻まれ続けます。",
+    "highlights": [
+      "少し難易度は高いが敵のスキルを奪って気持ちよくなってほしい。"
+    ],
+    "controls": [
+      "WASD：移動、Space：回避、マウス：視点操作、R：スキル１（ドレインホール）、1～0：アイテム、V：スキル、TAB：バックパック、ESC：メニュー"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1SmTmgUbSGMYIksjy0xg6h9PdF_EcH9bb",
+    "storage_url": "",
+    "note_url": ""
+  },
+  {
+    "id": "t15",
+    "team_name": "らいふはっく",
+    "game_name": "something in the back",
+    "genre": [
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-15",
+    "development_end_date": "2026-04-15",
+    "booth_no": "",
+    "catchcopy": "見るな。",
+    "description": "このゲームは制限時間内に鍵を見つけ研究所からの脱出を目指すホラーアクションゲームです。研究所には怪物(鬼)が出現し、プレイヤーに迫ります。怪物に捕まってしまっり、時間内に脱出することができないとゲームオーバーになります。また、怪物の仕様としてだるまさんが転んだの要領で追われている時など、プレイヤーが怪物を視認する事で怪物は動きを止めます。しかし、止めると次に視線を逸らした時には姿を消し、怪物は体長が変化し、強化されます。なので、できる限り怪物を見ることなく限られた時間の中で鍵を見つけ脱出するというのがこのゲームの核となります。",
+    "highlights": [
+      "制限時間内に鍵を見つけなければいけないという緊張感",
+      "だるまさんが転んだを少し取り入れた鬼の仕様",
+      "視認すれば鬼の動きを止めることができるが鬼がその分だけ強くなってしまうというプレイヤーに選択を迫る点"
+    ],
+    "controls": [
+      "WASD：移動",
+      "Shift：ダッシュ",
+      "E：インタラクト",
+      "F：ライトON/OFF",
+      "マウス：視点操作"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1gEAc95X3I36AHuTT0tv2--nFSPbCKHQc",
+    "storage_url": "https://drive.google.com/file/d/1xXTIoc-9cax4O1mE7aCW5FlGJ6WKLWMr/view?usp=sharing",
+    "note_url": "https://note.com/taro_025/n/n77750af9102a"
+  },
+  {
+    "id": "t16",
+    "team_name": "愚の衆",
+    "game_name": "HillsCry",
+    "genre": [
+      "アドベンチャー",
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-14",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "踏む血と散る血、迫る狂気",
+    "description": "『Hill's Cry』は、ジャングルを舞台にした、レトログラフィックのサイコロジカルホラー・ローグライト探索ゲームです。\n救助ヘリを呼ぶための「通信機のパーツ」を集めることが、クリア条件です。\n\nジャングルはマス目で構成されており、大まかに安全マスとSAN減少マス、イベントマスの3種に分かれています。マスの配置はゲーム開始と同時に毎回ランダムで生成されます。\n\nプレイヤーが一マス進むごとに日数が消費され、SAN減少マスを踏んでしまえばあなたのSAN値が削られます。日数が尽きるか、SAN値がゼロになれば、待ち受けるのは残酷な最期です。\n\nSAN値がピンチな時、日数の消費とともに睡眠をとってSAN値を全回復することができます。しかし、目覚めた時にはマス配置は完全にシャッフルされます。\n\nイベントマスを踏んだ時、プレイヤーには様々なミニゲーム的タスクが課されます。例としては、一定時間敵の猛攻をかいくぐる、配線をつなぐ、隠れた敵を見つけるものがあります。このタスクの成功可否によって、SANの減少が行われます。",
+    "highlights": [
+      "マスシャッフルとSANリソースによる緊張感",
+      "心臓をつかまれる程のホラー演出",
+      "多彩なミニゲーム"
+    ],
+    "controls": [
+      "WASD：移動、マウス：視点操作やUI・ミニゲーム操作"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1TlC2SuRVjDRAYZ894-1bMnkcVxNslyRy",
+    "storage_url": "",
+    "note_url": "https://note.com/mute_swan3311"
+  },
+  {
+    "id": "t17",
+    "team_name": "Smashboom制作",
+    "game_name": "Smashboom",
+    "genre": [
+      "アクション",
+      "シミュレーション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unreal Engine"
+    ],
+    "development_start_date": "2026-04-07",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "撃って、弾いて、欺き倒せ。極限のハイスピード・ラリーシューティング",
+    "description": "『Smashboom』は、飛んでくる弾を反射し、フェイクを駆使して相手の隙を突くハイスピード3D対戦シューティングです。ただ撃ち合うだけでなく、テニスの超高速ラリーや格闘ゲームのような緊迫した読み合いが展開。相手の意表を突くスマッシュを叩き込み、ライバルを撃ち倒せ！",
+    "highlights": [
+      "弾を跳ね返す、建物の破壊"
+    ],
+    "controls": [
+      "WASD：移動、マウス：視点操作、Space：ジャンプショット、Eキー:リフレクト、マウスホイール押し込み:フェイクショット"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1MVRDupf54uNRL772ROvouNdo-2aRCdw-",
+    "storage_url": "https://drive.google.com/drive/folders/1SGHnrBJTGOL-anuCxp0174u6NR5J7wZT",
+    "note_url": "https://note.com/super_dunlin2796"
+  },
+  {
+    "id": "t18",
+    "team_name": "M.M.I",
+    "game_name": "Chrono-Step",
+    "genre": [
+      "アクション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-23",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "回避の爽快感を堪能せよ",
+    "description": "回避を主体としたローグライクアクションゲームです\nランダムで生成されるマップを選択してダンジョンを構築、攻略をして自分を強化するレリックを集め、ボスを倒そう",
+    "highlights": [
+      "回避のエフェクト"
+    ],
+    "controls": [
+      "WASD:移動、左クリック:攻撃、左スティック:移動、Xボタン:攻撃、Aボタン:回避"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1oELO0zg98AHqGSsUgJb1uUi237x0ofl0",
+    "storage_url": "https://drive.google.com/drive/folders/1tXhGzbtcWimRo8scTlZWJhIeo9SHlrxs?usp=sharing",
+    "note_url": "https://note.com/mmigames"
+  },
+  {
+    "id": "t19",
+    "team_name": "ドッヘンアイア",
+    "game_name": "十二支レース",
+    "genre": [
+      "育成レースゲーム"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-30",
+    "development_end_date": "2026-09-20",
+    "booth_no": "",
+    "catchcopy": "十二支の動物、無限の戦略",
+    "description": "十二支レースは、マリオカートとウマ娘の融合をコンセプトとした、育成レースゲームです。\nマリオカートからは、アイテムによる逆転要素を、レース中のスキルとして取り入れました。一方でウマ娘からは、育成によるステータス強化での戦略性を、ほぼそのまま取り入れました。これにより、両方のゲームのいいとこどりをしたレースゲームが完成しました。\n十二支レースは、神様から十二支の順番を決めなおすと告げられ、十二支の動物たちが1着を目指してレースをする設定です。まず、プレイヤーは十二支の動物のうち1匹選び、トレーニングを行います。トレーニングでは、最高速度や加速力など、5つのステータスを強化します。次にレース中で有利にはたらくスキルを4つセットします。スキルは、5つのステータスにバフをかけることができます。最後にレースに出て、1着を目指します。ステータスの1つであるスタミナが0になると、リタイアとなりゲームオーバーです。スタミナが尽きないように、スキルで回復しながら走りまょう。ゴールやリタイアでレースが終了しても、リトライやキャラクター選択に戻ることができます。何度も挑戦しましょう。\n十二支の動物、無限の戦略。是非プレイしてみてください。",
+    "highlights": [
+      "爽快感があるコース最後の直線"
+    ],
+    "controls": [
+      "Nintendo Switch付属『Joy-Con』で操作する場合は、Joy-Conを横持ちにしてください\n\n 育成パート：\nカーソル操作：\n Joycon：スティック\n Xboxコントローラー：左スティック\n マウス：マウス移動\n決定：\n Joycon：右ボタン\n Xboxコントローラー：A\n マウス：左クリック\n\n レースパート：\n移動：\n Joycon：横持ちで傾ける\n Xboxコントローラー：左スティック\n キーボード：WASD(左：W、上：A、下：S、右：D)\nスキル使用：\n Joycon：位置に対応した十字ボタン\n Xboxコントローラー：上：Y、右：B、下：A、左：X\n キーボード：上：U、右：K、下：J、左：H\n\nゲーム説明を開く：\n Joycon：SR\n Xboxコントローラー：RB\n マウス：左上の『i』ボタンを左クリック\n ※タイトルシーン、レース終了時はゲーム説明は開けない仕様です"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1pEb8se3WQvvQ1-RBKyMOx0rloLM5aET5",
+    "storage_url": "https://drive.google.com/file/d/1PyqCldKoU-YovttwE0vhoHmQ35Bub4Pf/view?usp=sharing",
+    "note_url": "https://note.com/firm_cougar9882"
+  },
+  {
+    "id": "t20",
+    "team_name": "GBOX",
+    "game_name": "Space Phantom",
+    "genre": [
+      "シューティング"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-21",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "最後まで生き残れ！",
+    "description": "制限時間までに生き残る3Dシューティングゲームです。\nプレイヤーは自機を操作して敵の攻撃を掻い潜りながら時間が0になるまで生き残り続けるのが目的です。\n敵を倒したり、敵の攻撃をタイミングよく回避すると経験値が溜まり、レベルが上がります。レベルが上がると最大HPが上がると同時にランダムで3つの選択肢から強化アイテムを選び、その強化アイテムを自機に装備してパワーアップすることができます。\nレベルを上げて、自機をパワーアップして時間まで生き残る。そのようなゲームとなります。",
+    "highlights": [
+      "数々と襲ってくる敵、ギリギリを攻めて回避する、自機のパワーアップアイテムの装備"
+    ],
+    "controls": [
+      "キーボード WASD：移動、Space：回避、Enter or 左クリック：弾を発射、Shift：自動発射モード切替",
+      "コントローラー（XBOX） 左スティック：移動、Aボタン：回避、Xボタン：弾を発射、RBボタン：自動発射モード切替"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1HFUE4-CieosyWY9he5mAoMUvii1TZa8l",
+    "storage_url": "https://drive.google.com/file/d/14Txr9eLuFM6T4PXiP_XSmQHYIalBezMg/view?usp=sharing",
+    "note_url": "https://note.com/gbox/n/n381b12b47fa3"
+  },
+  {
+    "id": "t21",
+    "team_name": "shimaenaga4",
+    "game_name": "Void Ripple",
+    "genre": [
+      "アクション",
+      "リズム"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-28",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "リズムを覚えて跳ね返そう！",
+    "description": "『VoidRipple』は、敵が奏でるリズムを記憶し、同じタイミングで入力を返す「リズム×パリィアクションゲーム」です。敵の演奏を聞いてリズムを覚えた後、流れてくる譜面に合わせてW・A・S・Dによる方向入力や、Spaceによる回避を行います。さらに敵の特殊攻撃には、タイミングを見極めてパリィで反撃。正確な入力ほど高い評価とスコアを獲得できます。「聴く・覚える・返す」リズムゲームの記憶要素と、瞬間的な判断を求めるアクションを組み合わせ、高スコアを目指すゲームです。",
+    "highlights": [
+      "ビジュアル、爽快感、世界観、ゲーム性"
+    ],
+    "controls": [
+      "WASD：ノーツ判定、space：長押しノーツ、単押し、マウス：パリィ"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1lWsM2lwFMb5tAqy4f6VU55_cDN-MS29c",
+    "storage_url": "https://drive.google.com/drive/u/0/folders/1SFfZaTzHIFTS-_BMNMldXRz4p4HoW1Lq",
+    "note_url": "https://note.com/settings/account"
+  },
+  {
+    "id": "t22",
+    "team_name": "徹夜部",
+    "game_name": "Vinus",
+    "genre": [
+      "アクション",
+      "パズル"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-21",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "クリアできないステージをいじる、パソコンのようなゲーム",
+    "description": "クリアできないステージを触って弄ってステージをクリアするパズルアクションゲーム。\nステージギミックやソフトを使った編集で到達できないゴールまで目指そう！",
+    "highlights": [
+      "シンプルでシンプルじゃないパズルアクション"
+    ],
+    "controls": [
+      "マウス:クリック\nキーボード:\n移動AD\nSPACEジャンプ"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1Og2WbjxDcIUUGTJrwO1z8H_LpopRbqx1",
+    "storage_url": "",
+    "note_url": ""
+  },
+  {
+    "id": "t23",
+    "team_name": "SMC財団KRC支部",
+    "game_name": "Souls Make Chains",
+    "genre": [
+      "アクション"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-14",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "チェーンで縛り、ソウルをシフト。一網打尽の2Dプラットフォームアクション",
+    "description": "『Souls Make Chains』は、3名のキャラクターを場面に応じて適宜切り替えながら、立ちはだかる様々な障壁を突破し、ステージの攻略を目指す2Dプラットフォームアクションです。キャラクターには「体属性」「地属性」「霊属性」の三種類の属性が存在し、同じ属性の敵に攻撃を当てることで、キャラクターと敵がチェーンで繋がります。継続的に同じ敵に攻撃を続けていくと、周囲の同じ属性の敵にチェーンが伸びていきます。この時、キャラクターを切り替えると敵のもとへ瞬間移動し、強襲を仕掛ける「チェーンブレイク」が発生します。チェーンブレイクを駆使することで、敵に大ダメージを与えたり、壁の向こう側へ移動することもできます。連続でチェーンブレイクを発生させ、敵を纏めて一掃しましょう。",
+    "highlights": [
+      "敵を繋げて纏めて倒す「チェーンブレイク」の爽快感、効果音や操作感が後押しする動かしているだけで楽しい良質なプレイフィール、可愛らしいキャラクターのアニメーション"
+    ],
+    "controls": [
+      "キーボードマウス：AD：移動、S+SPACE：足場から降りる、SPACE：ジャンプ (長押しで高く飛べる)、E / Q：キャラクターチェンジR：スキル、マウス左クリック：攻撃、マウス右クリック：回避、マウス右長押し：ダッシュ",
+      "コントローラー(箱コン基準)：A:ジャンプ、B:回避、押しっぱなしでダッシュ、X:攻撃、Y:スキル、LT:キャラクターチェンジ(左)、RT:キャラクターチェンジ(右)、LB:ロックオン解除、RB:回避・ダッシュ"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1JajQ8FU_8UAfUG5M4s5PLVeJeZsezXA1",
+    "storage_url": "",
+    "note_url": "https://note.com/clear_quince2396/portal"
+  },
+  {
+    "id": "t24",
+    "team_name": "SB(SexyBrothers)",
+    "game_name": "きもかわホラー（怖さ控えめ）",
+    "genre": [
+      "アクション",
+      "RPG",
+      "シューティング",
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-01",
+    "development_end_date": "2026-09-30",
+    "booth_no": "",
+    "catchcopy": "きもかわ達と変わった世界から脱出",
+    "description": "本作は、隔離された世界からの脱出を目指す箱庭型アクションゲームです。\n\nプレイヤーはマップ内を探索しながら、脱出に必要なダイナマイトを集めていきます。世界の中央には巨大な扉が存在し、一定数のダイナマイトを集めることで扉を破壊し、外の世界へ脱出することができます。\n\nプレイヤーには「キモカワ」と呼ばれる不思議な生き物が同行します。キモカワは探索や攻略を支える存在であり、プレイヤーと協力しながら危険な隔離世界を進んでいきます。\n\n箱庭空間を自由に探索し、ダイナマイトを集めて中央扉の突破を目指すことが本作の目的です。",
+    "highlights": [
+      "きもかわの表情の変化を見ていただけると、更にきもわのことがわかります。"
+    ],
+    "controls": [
+      "WASD：移動",
+      "Space：ジャンプ",
+      "マウス：視点操作",
+      "F：インタラクト"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1ABsPGZpOiU-PB3PyRRx_u3VA_ZB-fxyq",
+    "storage_url": "https://drive.google.com/file/d/1dpD034Pq9jSL027I9V5Eq3-ob9yeP1Ax/view?usp=drive_link",
+    "note_url": "https://note.com/glad_quoll1838"
+  },
+  {
+    "id": "t25",
+    "team_name": "monolithic×chromium",
+    "game_name": "Fluffolia",
+    "genre": [
+      "シミュレーション",
+      "パズル"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-24",
+    "development_end_date": "2026-10-16",
+    "booth_no": "",
+    "catchcopy": "どうぶつたちと、ちょこっとパズル！",
+    "description": "本作は、かわいい動物たちを操作してゴールを目指す2Dパズルアクションゲームです。プレイヤーはステージ内にある地形やギミックを利用し、動物たちの特徴を活かしながら進んでいきます。動物を増やすことで行動の幅が広がり、それぞれの動物をどのように動かすかを考えることが攻略のポイントになります。シンプルで直感的な操作と、試行錯誤しながら答えを見つけるパズル要素を組み合わせ、かわいらしい見た目と遊びやすさを重視したゲームを目指しています。",
+    "highlights": [
+      "かわいい動物たちを操作するパズルアクション",
+      "動物の特徴を活かしたステージ攻略",
+      "地形やギミックを利用したひらめき重視のパズル"
+    ],
+    "controls": [
+      "マウスクリック、ドラッグ、ESCキー"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1bg8_D5RHcoksRwvJnI11Nv_ngXaDN5n3",
+    "storage_url": "https://drive.google.com/file/d/1nt3RSet_W2QAnkkbtVK1fcL7vcpaFtqR/view?usp=drivesdk",
+    "note_url": "https://note.com/monoxchro/portal"
+  },
+  {
+    "id": "t26",
+    "team_name": "√",
+    "game_name": "影喰いの家",
+    "genre": [
+      "アドベンチャー",
+      "ホラー"
+    ],
+    "players": "1人",
+    "platforms": [
+      "PC"
+    ],
+    "engine": [
+      "Unity"
+    ],
+    "development_start_date": "2026-04-24",
+    "development_end_date": "",
+    "booth_no": "",
+    "catchcopy": "どんな闇も、光で暴け。",
+    "description": "＜ストーリー＞\nある日、目を覚ますとそこは知らない館だった。\n明かりのない真っ暗な館、そこに現れる影喰いという化け物。\nここはどこなのか、自分がなぜこんなところにいるのか、\n自分は誰なのか、大事なことがあったはずなのに思い出せない。\nあなたはここから出るため、懐中電灯一本でこの不思議な館の\n謎を解いて先に進んでいく。その道先に何があるのか、\n自分は何者なのか、どんな結末を迎えるか、その目で刮目せよ。",
+    "highlights": [
+      "ライトのみで主なアクションを担わせることで感覚でプレイできるホラーゲーム"
+    ],
+    "controls": [
+      "WASD・矢印キー：移動",
+      "Q:ライトON/OFF",
+      "Space：フラッシュ",
+      "左クリック：調べる",
+      "右クリック：ライトカラー変更",
+      "マウスカーソル：視点移動"
+    ],
+    "screenshots": [],
+    "theme": "red",
+    "video_url": "",
+    "thumbnail": "https://drive.google.com/open?id=1i9jmeVZbRMhO-oQYuVymZX5c97214Yxl",
+    "storage_url": "https://drive.google.com/drive/folders/16_yMnChzNnyjXXT731WcDdCAhqahOubq?usp=sharing",
+    "note_url": "https://note.com/lofty_dove7806/n/ne6e931c6efdb"
+  }
 ]
