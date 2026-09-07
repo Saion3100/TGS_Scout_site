@@ -28,7 +28,7 @@ renderHeader();
         <a class="official-label" href="https://www.itc.ac.jp/" target="_blank" rel="noopener noreferrer">国際理工カレッジ公式 <span>↗</span></a>
         <p class="kicker"><span></span>TGS SCOUT 2026</p>
         <h1>国際理工カレッジ<br><em>関係者向け学生紹介サイト</em></h1>
-        <p class="lead">国際理工カレッジのTGS2026出展作品とその制作学生、当日出展はできなかった作品を企業関係者向けにご紹介します。作品、担当箇所、技術、ポートフォリオをご覧いただけます。</p>
+        <p class="lead">国際理工カレッジのTGS2026出展作品とその制作学生、当日出展はできなかった作品を企業関係者向けにご紹介します。作品、技術、ポートフォリオをご覧いただけます。</p>
         <div class="hero-actions">
             <a class="button button-primary" href="#featured-students">注目学生を見る <span>↓</span></a>
             <a class="text-link" href="<?= e(url('teams.php')) ?>">TGS出展作品を見る <span>→</span></a>

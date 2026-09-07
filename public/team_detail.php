@@ -52,8 +52,7 @@ renderHeader($team['game_name'], 'teams');
     <div class="student-grid team-member-grid">
         <?php foreach ($members as $member): ?>
         <div class="team-member-item">
-            <p class="member-role"><?= e($member['team_role_group']) ?> / <?= e($member['team_role']) ?></p>
-            <p class="member-duty"><?= e($member['team_responsibility']) ?></p>
+            <p class="member-role"><?= e($member['team_role']) ?></p>
             <?php studentCard($member); ?>
         </div>
         <?php endforeach; ?>

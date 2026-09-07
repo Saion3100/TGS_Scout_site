@@ -78,7 +78,7 @@ function e($value): string
 
 function repository(string $name): JsonRepository
 {
-    if (!in_array($name, ['students', 'teams', 'featured_students', 'qr_codes'], true)) {
+    if (!in_array($name, ['students', 'teams', 'featured_students', 'qr_codes', 'mapping'], true)) {
         throw new InvalidArgumentException('Unsupported data type.');
     }
     return new JsonRepository(DATA_DIR . '/' . $name . '.json');

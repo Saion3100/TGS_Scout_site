@@ -1,11 +1,62 @@
 [
-  {"team_id": "t01", "student_id": "1", "role": "リードプログラマー", "role_group": "プログラマー", "responsibility": "プレイヤー挙動・戦闘・シェーダー"},
-  {"team_id": "t01", "student_id": "2", "role": "アートディレクター", "role_group": "デザイナー", "responsibility": "キャラクター・背景・キービジュアル"},
-  {"team_id": "t01", "student_id": "3", "role": "ゲームプランナー", "role_group": "プランナー", "responsibility": "コア企画・レベルデザイン"},
-  {"team_id": "t02", "student_id": "2", "role": "3Dデザイナー", "role_group": "デザイナー", "responsibility": "深海生物・背景モデル"},
-  {"team_id": "t02", "student_id": "4", "role": "システムプログラマー", "role_group": "プログラマー", "responsibility": "探索システム・セーブ機能"},
-  {"team_id": "t02", "student_id": "5", "role": "サウンドデザイナー", "role_group": "サウンド", "responsibility": "環境音・効果音・実装"},
-  {"team_id": "t03", "student_id": "3", "role": "リードプランナー", "role_group": "プランナー", "responsibility": "協力ルール・進行管理"},
-  {"team_id": "t03", "student_id": "4", "role": "リードプログラマー", "role_group": "プログラマー", "responsibility": "協力プレイ・厨房ギミック"},
-  {"team_id": "t03", "student_id": "5", "role": "コンポーザー", "role_group": "サウンド", "responsibility": "BGM・ジングル制作"}
+    {
+        "team_id": "t02",
+        "student_id": "2",
+        "role": "3Dデザイナー",
+        "role_group": "デザイナー",
+        "responsibility": "深海生物・背景モデル"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "4",
+        "role": "システムプログラマー",
+        "role_group": "プログラマー",
+        "responsibility": "探索システム・セーブ機能"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "5",
+        "role": "サウンドデザイナー",
+        "role_group": "サウンド",
+        "responsibility": "環境音・効果音・実装"
+    },
+    {
+        "team_id": "t03",
+        "student_id": "3",
+        "role": "リードプランナー",
+        "role_group": "プランナー",
+        "responsibility": "協力ルール・進行管理"
+    },
+    {
+        "team_id": "t03",
+        "student_id": "4",
+        "role": "リードプログラマー",
+        "role_group": "プログラマー",
+        "responsibility": "協力プレイ・厨房ギミック"
+    },
+    {
+        "team_id": "t03",
+        "student_id": "5",
+        "role": "コンポーザー",
+        "role_group": "サウンド",
+        "responsibility": "BGM・ジングル制作"
+    },
+    {
+        "team_id": "t01",
+        "student_id": "1",
+        "role": "リードプログラマー",
+        "responsibility": "プレイヤー挙動・戦闘・シェーダー"
+    },
+    {
+        "team_id": "t01",
+        "student_id": "2",
+        "role": "アートディレクター",
+        "responsibility": "キャラクター・背景・キービジュアル"
+    },
+    {
+        "team_id": "t01",
+        "student_id": "3",
+        "role": "ゲームプランナー \/ キャラクターデザイナー",
+        "responsibility": "コア企画・レベルデザイン"
+    }
 ]
