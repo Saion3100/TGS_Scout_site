@@ -16,7 +16,6 @@ renderHeader($team['game_name'], 'teams');
             <p class="kicker"><span></span><?= e(listText($team['genre'] ?? [])) ?></p>
             <h1><?= e($team['game_name']) ?></h1>
             <p class="game-catch"><?= e($team['catchcopy']) ?></p>
-            <div class="booth-chip">TGS 2026　BOOTH <strong><?= e($team['booth_no']) ?></strong></div>
         </div>
         <div class="detail-art"><strong><?= e($team['game_name']) ?></strong><span>PLAYABLE AT TGS 2026</span><?php teamThumbnail($team, false); ?></div>
     </div>
@@ -28,7 +27,6 @@ renderHeader($team['game_name'], 'teams');
         <div><span>対応機種</span><strong><?= e(listText($team['platforms'] ?? [])) ?></strong></div>
         <div><span>使用エンジン</span><strong><?= e(listText($team['engine'] ?? [])) ?></strong></div>
         <div><span>制作期間</span><strong><?= e(teamDevelopmentPeriod($team)) ?></strong></div>
-        <div><span>試遊台</span><strong><?= e($team['booth_no']) ?></strong></div>
     </div>
 </section>
 <section class="game-about section-pad">

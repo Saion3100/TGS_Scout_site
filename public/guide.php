@@ -7,7 +7,7 @@ renderHeader('企業の方へ', 'guide');
 <section class="section-pad">
     <p class="section-number">HOW TO USE</p>
     <div class="steps-grid">
-        <article><span>01</span><h2>作品を見る</h2><p>試遊台QRまたは作品一覧から、ゲーム情報と制作メンバーを確認します。</p></article>
+        <article><span>01</span><h2>作品を見る</h2><p>作品QRまたは作品一覧から、ゲーム情報と制作メンバーを確認します。</p></article>
         <article><span>02</span><h2>実績を確認する</h2><p>学生プロフィールで参加作品、技術、ポートフォリオや企画書を確認します。</p></article>
         <article><span>03</span><h2>学校へ相談する</h2><p>気になる学生や作品を指定し、面談・採用・説明会についてお問い合わせください。</p></article>
     </div>
