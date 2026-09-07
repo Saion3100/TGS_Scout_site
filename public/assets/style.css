@@ -250,8 +250,8 @@ body:has(.detail-sticky-cta) .back-to-top{bottom:calc(108px + env(safe-area-inse
 .hero-carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:width .2s,background .2s}
 .hero-carousel-dots button.is-active{width:24px;border-radius:5px;background:#fff}
 .hero-carousel-progress{position:absolute;right:0;bottom:0;left:0;height:3px;z-index:4;background:rgba(255,255,255,.2)}
-.hero-carousel-progress span{display:block;width:100%;height:100%;background:var(--red);transform-origin:left;animation:hero-progress 5s linear infinite}
-.hero-carousel:hover .hero-carousel-progress span,.hero-carousel:focus-within .hero-carousel-progress span{animation-play-state:paused}
+.hero-carousel-progress span{display:block;width:100%;height:100%;background:var(--red);transform-origin:left;transform:scaleX(0);animation:hero-progress 5s linear forwards;animation-play-state:paused}
+.hero-carousel-progress span.is-running{animation-play-state:running}
 @keyframes hero-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(max-width:900px){.hero-carousel{min-height:520px}}
 @media(max-width:640px){.hero-carousel{min-height:500px}.hero-carousel-controls{bottom:124px}.hero-slide-copy{padding:20px 22px 26px}.hero-slide-copy>b{display:none}}
