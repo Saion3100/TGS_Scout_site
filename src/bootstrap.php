@@ -93,6 +93,18 @@ function listText($value): string
     return implode(' / ', valueList($value));
 }
 
+function teamDevelopmentPeriod(array $team): string
+{
+    $format = static function (string $value): string {
+        $date = DateTimeImmutable::createFromFormat('!Y-m-d', $value);
+        return $date && $date->format('Y-m-d') === $value ? $date->format('Y年n月j日') : '';
+    };
+    $start = $format(trim((string) ($team['development_start_date'] ?? '')));
+    $endValue = trim((string) ($team['development_end_date'] ?? ''));
+    $end = $endValue === '' ? '開発中' : $format($endValue);
+    return $start === '' ? $end : $start . '〜' . $end;
+}
+
 function teamFilterOptions(array $teams, string $field): array
 {
     $options = [];
@@ -314,7 +326,7 @@ function studentCard(array $student): void
 <a class="student-card" href="<?= e(url('student_detail.php')) ?>?id=<?= e($student['id']) ?>">
     <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span><?php if (studentImageUrl($student) !== ''): ?><img class="student-photo" src="<?= e(studentImageUrl($student)) ?>" alt="" loading="lazy" referrerpolicy="no-referrer"><?php endif; ?></div>
     <div class="student-card-body">
-        <span class="role-label"><?= e($student['role']) ?></span>
+        <span class="role-label"><?= e(listText($student['role'] ?? [])) ?></span>
         <h3><?= e($student['name']) ?></h3>
         <p class="name-en"><?= e($student['name_en']) ?></p>
         <p class="student-meta"><?= e($student['graduation_year'] ?? '') ?></p>

@@ -15,7 +15,7 @@ renderHeader($student['name'], 'students');
     <div class="profile-hero-grid">
         <div class="profile-portrait"><span><?= e(firstCharacter($student['name'])) ?></span><small>CREATOR PROFILE</small><?php if (studentImageUrl($student) !== ''): ?><img class="student-photo" src="<?= e(studentImageUrl($student)) ?>" alt="<?= e($student['name']) ?>" referrerpolicy="no-referrer"><?php endif; ?></div>
         <div class="profile-title">
-            <span class="role-label"><?= e($student['role']) ?></span>
+            <span class="role-label"><?= e(listText($student['role'] ?? [])) ?></span>
             <h1><?= e($student['name']) ?></h1>
             <p class="name-en"><?= e($student['name_en']) ?></p>
             <p class="profile-meta"><?= e($student['name_kana'] ?? '') ?>　/　<?= e($student['graduation_year'] ?? '') ?><br><?= e($student['course'] ?? '') ?></p>
@@ -31,7 +31,7 @@ renderHeader($student['name'], 'students');
 <section class="profile-facts section-pad">
     <p class="section-number">02 — CAREER INFORMATION</p>
     <div class="facts-grid">
-        <div><span>希望職種</span><strong><?= e(implode(' / ', $student['desired_roles'] ?? [$student['role']])) ?></strong></div>
+        <div><span>希望職種</span><strong><?= e(listText($student['desired_roles'] ?? $student['role'] ?? [])) ?></strong></div>
         <div><span>面談</span><strong><?= !empty($student['interview_available']) ? '相談可能' : '要相談' ?></strong></div>
         <div><span>インターン</span><strong><?= !empty($student['internship_interest']) ? '希望あり' : '要相談' ?></strong></div>
         <div><span>専門分野</span><strong><?= e(implode(' / ', $student['fields'] ?? [])) ?></strong></div>

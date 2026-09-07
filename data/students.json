@@ -6,7 +6,7 @@
     "name_en": "Washimi Takato",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -37,7 +37,7 @@
     "name_en": "Tay Chun Wee",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー",
       "プログラマ"
@@ -70,7 +70,7 @@
     "name_en": "Oikawa Shuuto",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー"
     ],
@@ -101,7 +101,7 @@
     "name_en": "Hanashima Hibiki",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -128,7 +128,7 @@
     "name_en": "Tatezaki Kei",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー",
       "プログラマ"
@@ -162,7 +162,7 @@
     "name_en": "Hirenzaki Kouki",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ",
       "デバッカー"
@@ -193,7 +193,7 @@
     "name_en": "Kawano Haruna",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー"
     ],
@@ -225,7 +225,7 @@
     "name_en": "Kumeuchi Ryouta",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -252,7 +252,7 @@
     "name_en": "Tarasawa Souta",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ",
       "ITエンジニア"
@@ -289,7 +289,7 @@
     "name_en": "Kobori Shun",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -325,7 +325,7 @@
     "name_en": "Ryuugen Daiki",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "テクニカルアーティスト",
+    "role": ["テクニカルアーティスト"],
     "desired_roles": [
       "テクニカルアーティスト"
     ],
@@ -360,7 +360,7 @@
     "name_en": "Nakamura Kanata",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -392,7 +392,7 @@
     "name_en": "Gokita Nozomu",
     "graduation_year": "2027年卒",
     "course": "ゲームクリエイター科",
-    "role": "デザイナー",
+    "role": ["デザイナー"],
     "desired_roles": [
       "デザイナー"
     ],
@@ -427,7 +427,7 @@
     "name_en": "Shouji Kazuha",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -459,7 +459,7 @@
     "name_en": "Ueda Marin",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科デザインコース",
-    "role": "デザイナー",
+    "role": ["デザイナー"],
     "desired_roles": [
       "デザイナー"
     ],
@@ -491,7 +491,7 @@
     "name_en": "Oota Hiroki",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -522,7 +522,7 @@
     "name_en": "Ikenaga Yuuichi",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -551,7 +551,7 @@
     "name_en": "Ueda Romio",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科デザインコース",
-    "role": "デザイナー",
+    "role": ["デザイナー"],
     "desired_roles": [
       "デザイナー"
     ],
@@ -583,7 +583,7 @@
     "name_en": "Maeda Kiyoto",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -617,7 +617,7 @@
     "name_en": "Suga Masaei",
     "graduation_year": "2027年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -648,7 +648,7 @@
     "name_en": "Kudou Souta",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],
@@ -680,7 +680,7 @@
     "name_en": "Takahashi Kazuki",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー",
       "プログラマ"
@@ -709,7 +709,7 @@
     "name_en": "Yamakawa Renji",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プランナー",
+    "role": ["プランナー"],
     "desired_roles": [
       "プランナー"
     ],
@@ -743,7 +743,7 @@
     "name_en": "Takahashi Keigo",
     "graduation_year": "2028年卒",
     "course": "ゲームクリエイター科",
-    "role": "デザイナー",
+    "role": ["デザイナー"],
     "desired_roles": [
       "デザイナー"
     ],
@@ -775,7 +775,7 @@
     "name_en": "Muraishi Yuuto",
     "graduation_year": "2027年卒",
     "course": "ゲームクリエイター科プログラミングコース",
-    "role": "プログラマー",
+    "role": ["プログラマー"],
     "desired_roles": [
       "プログラマ"
     ],

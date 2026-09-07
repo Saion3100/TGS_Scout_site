@@ -11,14 +11,17 @@ renderHeader('出展作品', 'teams');
 </section>
 <section class="listing section-pad">
     <div class="filters" data-team-filter-root>
+        <div class="filter-row" aria-label="ジャンルで絞り込み">
+            <button type="button" class="filter-button is-active" data-team-genre="" aria-pressed="true">すべて</button>
+            <?php foreach (teamFilterOptions($teams, 'genre') as $value): ?><button type="button" class="filter-button" data-team-genre="<?= e($value) ?>" aria-pressed="false"><?= e($value) ?></button><?php endforeach; ?>
+        </div>
         <div class="filter-selects">
-            <label>ジャンル<select data-team-field="genre"><option value="">すべて</option><?php foreach (teamFilterOptions($teams, 'genre') as $value): ?><option><?= e($value) ?></option><?php endforeach; ?></select></label>
             <label>エンジン<select data-team-field="engine"><option value="">すべて</option><?php foreach (teamFilterOptions($teams, 'engine') as $value): ?><option><?= e($value) ?></option><?php endforeach; ?></select></label>
             <label>対応機種<select data-team-field="platform"><option value="">すべて</option><?php foreach (teamFilterOptions($teams, 'platforms') as $value): ?><option><?= e($value) ?></option><?php endforeach; ?></select></label>
         </div>
-        <label class="search-box"><span>⌕</span><input type="search" placeholder="チーム名・ゲーム名・試遊台番号" data-team-search></label>
+        <label class="search-box"><span>⌕</span><input type="search" placeholder="チーム名・ゲーム名・試遊台番号" data-team-search aria-label="チーム名・ゲーム名・試遊台番号で検索"></label>
     </div>
-    <div class="listing-meta"><strong><?= count($teams) ?></strong> GAMES <span>TGS 2026 EXHIBITION</span></div>
+    <div class="listing-meta"><span aria-live="polite"><strong data-team-result-count><?= count($teams) ?></strong> GAMES</span> <span>TGS 2026 EXHIBITION</span></div>
     <div class="team-grid team-grid-large">
         <?php foreach ($teams as $i => $team): ?>
         <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e(json_encode(valueList($team['genre'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-engine="<?= e(json_encode(valueList($team['engine'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-platform="<?= e(json_encode(valueList($team['platforms'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name'] . ' ' . $team['booth_no']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">

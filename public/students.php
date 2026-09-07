@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $students = publicStudents();
-$roles = array_values(array_unique(array_column($students, 'role')));
+$roles = teamFilterOptions($students, 'role');
 $graduationYears = array_values(array_unique(array_column($students, 'graduation_year')));
 renderHeader('学生一覧', 'students');
 ?>
@@ -27,7 +27,7 @@ renderHeader('学生一覧', 'students');
     <div class="student-grid student-grid-list" data-student-grid>
         <?php foreach ($students as $student): ?>
         <?php $studentTeamData = studentTeams($student['id']); ?>
-        <div data-student data-role="<?= e($student['role']) ?>" data-graduation="<?= e($student['graduation_year']) ?>" data-interview="<?= !empty($student['interview_available']) ? '1' : '0' ?>" data-internship="<?= !empty($student['internship_interest']) ? '1' : '0' ?>" data-keywords="<?= e($student['name'] . ' ' . $student['name_kana'] . ' ' . $student['name_en'] . ' ' . implode(' ', $student['skills']) . ' ' . implode(' ', array_column($studentTeamData, 'team_name')) . ' ' . implode(' ', array_column($studentTeamData, 'game_name'))) ?>"><?php studentCard($student); ?></div>
+        <div data-student data-roles="<?= e(json_encode(valueList($student['role'] ?? []), JSON_UNESCAPED_UNICODE)) ?>" data-graduation="<?= e($student['graduation_year']) ?>" data-interview="<?= !empty($student['interview_available']) ? '1' : '0' ?>" data-internship="<?= !empty($student['internship_interest']) ? '1' : '0' ?>" data-keywords="<?= e($student['name'] . ' ' . $student['name_kana'] . ' ' . $student['name_en'] . ' ' . implode(' ', $student['skills']) . ' ' . implode(' ', array_column($studentTeamData, 'team_name')) . ' ' . implode(' ', array_column($studentTeamData, 'game_name'))) ?>"><?php studentCard($student); ?></div>
         <?php endforeach; ?>
     </div>
     <p class="no-results" data-no-results hidden>条件に合う学生が見つかりませんでした。</p>

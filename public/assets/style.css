@@ -164,24 +164,19 @@
     .intro-grid h2{word-break:auto-phrase}
 }
 
-/* Keep student filters spacious instead of squeezing role buttons vertically. */
-.filters[data-filter-root]{
+/* Share the filter layout between student and game listings. */
+.filters[data-filter-root],
+.filters[data-team-filter-root]{
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(300px,390px);
     align-items:end;
     gap:24px 32px;
 }
-.filters[data-filter-root] .filter-row{grid-column:1/-1}
-.filters[data-filter-root] .filter-selects{width:100%}
+.filters[data-filter-root] .filter-row,
+.filters[data-team-filter-root] .filter-row{grid-column:1/-1}
+.filters[data-filter-root] .filter-selects,
+.filters[data-team-filter-root] .filter-selects{width:100%}
 .filters .search-box{width:100%}
-.filters[data-team-filter-root] .search-box{
-    align-self:flex-end;
-    height:40px;
-}
-.filters[data-team-filter-root] .search-box input{
-    height:100%;
-    padding:7px 10px;
-}
 
 /* Switch to the menu before the header labels become cramped or wrap. */
 @media(max-width:760px){

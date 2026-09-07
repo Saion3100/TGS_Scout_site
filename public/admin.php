@@ -67,7 +67,7 @@ function nextStudentId(array $students): string
 /** @return array<string, mixed> */
 function studentFromPost(string $studentId): array
 {
-    $required = ['name' => '氏名', 'name_kana' => 'ふりがな', 'name_en' => '英字氏名', 'graduation_year' => '卒業予定年', 'course' => 'コース', 'role' => '主職種', 'headline' => '見出し', 'bio' => 'プロフィール'];
+    $required = ['name' => '氏名', 'name_kana' => 'ふりがな', 'name_en' => '英字氏名', 'graduation_year' => '卒業予定年', 'course' => 'コース', 'headline' => '見出し', 'bio' => 'プロフィール'];
     $values = [];
     foreach ($required as $key => $label) {
         $values[$key] = adminText($key);
@@ -75,6 +75,8 @@ function studentFromPost(string $studentId): array
             throw new InvalidArgumentException($label . 'を入力してください。');
         }
     }
+    $roles = valueList($_POST['role'] ?? []);
+    if (!$roles) throw new InvalidArgumentException('職種を1つ以上選択してください。');
     return [
         'id' => $studentId,
         'name' => $values['name'],
@@ -82,7 +84,7 @@ function studentFromPost(string $studentId): array
         'name_en' => $values['name_en'],
         'graduation_year' => $values['graduation_year'],
         'course' => $values['course'],
-        'role' => $values['role'],
+        'role' => $roles,
         'desired_roles' => adminList('desired_roles'),
         'headline' => $values['headline'],
         'bio' => $values['bio'],
@@ -200,7 +202,7 @@ if ($section === 'featured') {
       <?php foreach ($featuredItems as $item): $listedStudent = findById($students, (string) $item['student_id']); ?><a class="<?= !$isFeaturedNew && $selectedStudentId === (string) $item['student_id'] ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?section=featured&student_id=<?= e($item['student_id']) ?>"><span><strong><?= e($listedStudent['name'] ?? '不明な学生') ?></strong><small><?= e($item['focus'] ?? '') ?></small></span><span class="admin-order"><?= e($item['order'] ?? '') ?></span></a><?php endforeach; ?></aside>
       <div class="admin-editor"><?php if ($featured !== null): ?><div class="admin-editor-head"><div><p class="section-number"><?= $isFeaturedNew ? 'NEW FEATURED STUDENT' : 'EDIT FEATURED STUDENT' ?></p><h2><?= $isFeaturedNew ? '注目学生を追加' : e((findById($students, (string) ($featured['student_id'] ?? ''))['name'] ?? '注目学生を編集')) ?></h2></div><span>必須項目 <b>*</b></span></div>
       <form method="post" class="admin-student-form"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="section" value="featured"><input type="hidden" name="original_student_id" value="<?= e($isFeaturedNew ? '' : ($featured['student_id'] ?? '')) ?>">
-      <fieldset><legend><span>01</span>掲載内容</legend><div class="admin-form-grid"><label><span>学生 <b>*</b></span><select name="student_id" required><option value="">選択してください</option><?php foreach ($students as $candidate): ?><?php if ($isFeaturedNew && isset($featuredStudentIds[(string) ($candidate['id'] ?? '')])) { continue; } ?><option value="<?= e($candidate['id']) ?>" <?= (string) ($featured['student_id'] ?? '') === (string) $candidate['id'] ? 'selected' : '' ?>><?= e($candidate['name']) ?>（<?= e($candidate['role']) ?>）</option><?php endforeach; ?></select></label><label><span>表示順 <b>*</b></span><input type="number" name="order" min="1" value="<?= e($featured['order'] ?? count($featuredItems) + 1) ?>" required></label><label class="admin-span-2"><span>注目ポイント <b>*</b></span><input name="focus" value="<?= e($featured['focus'] ?? '') ?>" required></label><label class="admin-span-2"><span>教員コメント <b>*</b></span><textarea name="teacher_comment" rows="7" required><?= e($featured['teacher_comment'] ?? '') ?></textarea></label></div></fieldset>
+      <fieldset><legend><span>01</span>掲載内容</legend><div class="admin-form-grid"><label><span>学生 <b>*</b></span><select name="student_id" required><option value="">選択してください</option><?php foreach ($students as $candidate): ?><?php if ($isFeaturedNew && isset($featuredStudentIds[(string) ($candidate['id'] ?? '')])) { continue; } ?><option value="<?= e($candidate['id']) ?>" <?= (string) ($featured['student_id'] ?? '') === (string) $candidate['id'] ? 'selected' : '' ?>><?= e($candidate['name']) ?>（<?= e(listText($candidate['role'] ?? [])) ?>）</option><?php endforeach; ?></select></label><label><span>表示順 <b>*</b></span><input type="number" name="order" min="1" value="<?= e($featured['order'] ?? count($featuredItems) + 1) ?>" required></label><label class="admin-span-2"><span>注目ポイント <b>*</b></span><input name="focus" value="<?= e($featured['focus'] ?? '') ?>" required></label><label class="admin-span-2"><span>教員コメント <b>*</b></span><textarea name="teacher_comment" rows="7" required><?= e($featured['teacher_comment'] ?? '') ?></textarea></label></div></fieldset>
       <div class="admin-form-actions"><p>保存するとトップページの注目学生へ即時反映されます。</p><div class="admin-action-buttons"><?php if (!$isFeaturedNew): ?><button class="button admin-delete-button" name="delete_featured" value="1" formnovalidate onclick="return confirm('この学生を注目学生から削除しますか？')">削除する</button><?php endif; ?><button class="button button-primary" name="save_featured" value="1"><?= $isFeaturedNew ? '追加する' : '変更を保存する' ?> <span>→</span></button></div></div></form>
       <?php else: ?><div class="admin-empty"><span>FEATURED STUDENTS</span><h2>編集する学生を選択</h2><p>左の一覧から選ぶか、注目学生を追加してください。</p></div><?php endif; ?></div></div>
     </section><?php renderAdminEnd(); exit;
@@ -235,9 +237,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
 
 function studentFromPostFallback(): array
 {
-    $fields = ['name','name_kana','name_en','graduation_year','course','role','headline','bio','portfolio_url','source_code_url','video_url'];
+    $fields = ['name','name_kana','name_en','graduation_year','course','headline','bio','portfolio_url','source_code_url','video_url'];
     $student = [];
     foreach ($fields as $field) { $student[$field] = adminText($field); }
+    $student['role'] = valueList($_POST['role'] ?? []);
     $student['id'] = adminText('original_id');
     foreach (['desired_roles','skills','fields'] as $field) { $student[$field] = adminList($field); }
     foreach (['interview_available','internship_interest','is_active'] as $field) { $student[$field] = isset($_POST[$field]); }
@@ -245,7 +248,7 @@ function studentFromPostFallback(): array
 }
 
 if (isset($_GET['saved'])) { $notice = '学生データを保存しました。公開ページにも反映されています。'; }
-$roles = array_values(array_unique(array_filter(array_column($students, 'role'))));
+$roles = array_values(array_unique(array_merge(['プログラマー', 'デザイナー', 'プランナー', 'サウンド', 'その他'], teamFilterOptions($students, 'role'), valueList($student['role'] ?? []))));
 $courses = array_values(array_unique(array_filter(array_column($students, 'course'))));
 $graduationYears = array_values(array_unique(array_filter(array_column($students, 'graduation_year'))));
 renderAdminStart('学生データ管理');
@@ -255,7 +258,7 @@ renderAdminStart('学生データ管理');
   <nav class="admin-tabs" aria-label="管理データ"><a class="is-active" aria-current="page" href="<?= e(url('admin.php')) ?>">学生</a><a href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a><a href="<?= e(url('teams_admin.php')) ?>">作品</a></nav>
   <?php if ($notice): ?><p class="admin-success"><?= e($notice) ?></p><?php endif; ?><?php if ($error): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
   <div class="admin-grid">
-    <aside class="admin-list"><div class="admin-list-head"><strong>登録学生</strong><span><?= count($students) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?new=1">＋ 新しい学生を追加</a><?php foreach ($students as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?id=<?= e($item['id'] ?? '') ?>"><span><strong><?= e($item['name'] ?? '(氏名なし)') ?></strong><small><?= e($item['role'] ?? '') ?></small></span><span class="admin-status <?= !empty($item['is_active']) ? 'is-public' : '' ?>"><?= !empty($item['is_active']) ? '公開' : '非公開' ?></span></a><?php endforeach; ?></aside>
+    <aside class="admin-list"><div class="admin-list-head"><strong>登録学生</strong><span><?= count($students) ?>名</span></div><a class="button button-primary" href="<?= e(url('admin.php')) ?>?new=1">＋ 新しい学生を追加</a><?php foreach ($students as $item): ?><a class="<?= !$isNew && $selectedId === ($item['id'] ?? '') ? 'is-current' : '' ?>" href="<?= e(url('admin.php')) ?>?id=<?= e($item['id'] ?? '') ?>"><span><strong><?= e($item['name'] ?? '(氏名なし)') ?></strong><small><?= e(listText($item['role'] ?? [])) ?></small></span><span class="admin-status <?= !empty($item['is_active']) ? 'is-public' : '' ?>"><?= !empty($item['is_active']) ? '公開' : '非公開' ?></span></a><?php endforeach; ?></aside>
     <div class="admin-editor">
       <?php if ($student !== null): ?>
       <div class="admin-editor-head"><div><p class="section-number"><?= $isNew ? 'NEW STUDENT' : 'EDIT STUDENT' ?></p><h2><?= $isNew ? '学生を新規追加' : e($student['name'] ?? '学生を編集') ?></h2></div><span>必須項目 <b>*</b></span></div>
@@ -267,7 +270,7 @@ renderAdminStart('学生データ管理');
           <label><span>英字氏名 <b>*</b></span><input name="name_en" value="<?= e($student['name_en'] ?? '') ?>" placeholder="Taro Kokusai" required></label>
           <label><span>卒業予定年 <b>*</b></span><select name="graduation_year" required><option value="">選択してください</option><?php foreach ($graduationYears as $value): ?><option value="<?= e($value) ?>" <?= ($student['graduation_year'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
           <label><span>コース <b>*</b></span><select name="course" required><option value="">選択してください</option><?php foreach ($courses as $value): ?><option value="<?= e($value) ?>" <?= ($student['course'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
-          <label><span>主職種 <b>*</b></span><select name="role" required><option value="">選択してください</option><?php foreach ($roles as $value): ?><option value="<?= e($value) ?>" <?= ($student['role'] ?? '') === $value ? 'selected' : '' ?>><?= e($value) ?></option><?php endforeach; ?></select></label>
+          <div class="admin-span-2"><p>職種（複数選択可・1つ以上必須） <b>*</b></p><div class="admin-check-grid"><?php foreach ($roles as $value): ?><label><input type="checkbox" name="role[]" value="<?= e($value) ?>" <?= in_array($value, valueList($student['role'] ?? []), true) ? 'checked' : '' ?>><span><?= e($value) ?></span></label><?php endforeach; ?></div></div>
           <label class="admin-span-2">希望職種<textarea name="desired_roles" rows="3" placeholder="1行に1項目"><?= e(adminListText($student['desired_roles'] ?? [])) ?></textarea></label>
         </div></fieldset>
         <fieldset><legend><span>02</span>プロフィール・スキル</legend><div class="admin-form-grid">

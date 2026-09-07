@@ -96,7 +96,7 @@ if (filterRoot) {
     const query = search.value.trim().toLocaleLowerCase('ja');
     let count = 0;
     cards.forEach(card => {
-      const visible = (role === 'all' || card.dataset.role === role) &&
+      const visible = (role === 'all' || JSON.parse(card.dataset.roles || '[]').includes(role)) &&
         (!query || card.dataset.keywords.toLocaleLowerCase('ja').includes(query)) &&
         selects.every(select => {
           if (!select.value) return true;
@@ -122,20 +122,33 @@ const teamFilterRoot = document.querySelector('[data-team-filter-root]');
 if (teamFilterRoot) {
   const cards = [...document.querySelectorAll('[data-team]')];
   const search = teamFilterRoot.querySelector('[data-team-search]');
+  const genreButtons = [...teamFilterRoot.querySelectorAll('[data-team-genre]')];
+  let genre = '';
   const selects = [...teamFilterRoot.querySelectorAll('[data-team-field]')];
   const updateTeams = () => {
     const query = search.value.trim().toLocaleLowerCase('ja');
     let count = 0;
     cards.forEach(card => {
-      const visible = (!query || card.dataset.keywords.toLocaleLowerCase('ja').includes(query)) &&
+      const visible = (!genre || JSON.parse(card.dataset.genre || '[]').includes(genre)) &&
+        (!query || card.dataset.keywords.toLocaleLowerCase('ja').includes(query)) &&
         selects.every(select => !select.value || JSON.parse(card.dataset[select.dataset.teamField] || '[]').includes(select.value));
       card.hidden = !visible;
       if (visible) count++;
     });
+    document.querySelector('[data-team-result-count]').textContent = count;
     document.querySelector('[data-team-no-results]').hidden = count !== 0;
   };
+  genreButtons.forEach(button => button.addEventListener('click', () => {
+    genre = button.dataset.teamGenre;
+    genreButtons.forEach(item => {
+      item.classList.toggle('is-active', item === button);
+      item.setAttribute('aria-pressed', String(item === button));
+    });
+    updateTeams();
+  }));
   search.addEventListener('input', updateTeams);
   selects.forEach(select => select.addEventListener('change', updateTeams));
+  updateTeams();
 }
 
 const contactForm = document.querySelector('[data-contact-form]');

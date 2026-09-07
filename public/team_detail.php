@@ -27,7 +27,7 @@ renderHeader($team['game_name'], 'teams');
         <div><span>プレイ人数</span><strong><?= e(listText($team['players'] ?? [])) ?></strong></div>
         <div><span>対応機種</span><strong><?= e(listText($team['platforms'] ?? [])) ?></strong></div>
         <div><span>使用エンジン</span><strong><?= e(listText($team['engine'] ?? [])) ?></strong></div>
-        <div><span>制作期間</span><strong><?= e($team['production_period']) ?></strong></div>
+        <div><span>制作期間</span><strong><?= e(teamDevelopmentPeriod($team)) ?></strong></div>
         <div><span>試遊台</span><strong><?= e($team['booth_no']) ?></strong></div>
     </div>
 </section>

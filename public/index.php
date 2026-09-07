@@ -16,7 +16,7 @@ foreach ($featuredEntries as $entry) {
 }
 $heroSlides = [];
 foreach (array_slice($featuredStudents ?: $students, 0, 2) as $student) {
-    $heroSlides[] = ['type' => 'student', 'eyebrow' => 'FEATURED STUDENT', 'title' => $student['name'], 'meta' => $student['role'] . ' / ' . ($student['graduation_year'] ?? ''), 'label' => firstCharacter($student['name']), 'image' => studentImageUrl($student), 'href' => url('student_detail.php') . '?id=' . rawurlencode((string) $student['id']), 'theme' => 'red'];
+    $heroSlides[] = ['type' => 'student', 'eyebrow' => 'FEATURED STUDENT', 'title' => $student['name'], 'meta' => listText($student['role'] ?? []) . ' / ' . ($student['graduation_year'] ?? ''), 'label' => firstCharacter($student['name']), 'image' => studentImageUrl($student), 'href' => url('student_detail.php') . '?id=' . rawurlencode((string) $student['id']), 'theme' => 'red'];
 }
 foreach (array_slice($teams, 0, 3) as $team) {
     $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => listText($team['genre'] ?? []) . ' / BOOTH ' . $team['booth_no'], 'label' => $team['game_name'], 'image' => imageSourceUrl((string) ($team['thumbnail'] ?? '')), 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
