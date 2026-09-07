@@ -51,7 +51,7 @@ php -S localhost:8000 -t public
 - `/team_detail.php?id=t01` 作品詳細（QRコード遷移先）
 - `/students.php` 学生一覧・絞り込み
 - `/student_detail.php?id=1` 学生プロフィール
-- `/contact.php` 問い合わせUI（デモ版のため送信なし）
+- `/contact.php` 問い合わせフォーム（入力→確認→送信→完了）。メール送信設定は `docs/問い合わせ環境設定.md` を参照
 - `/api/scouts.php` 公開中の学生JSON
 - `/teams_admin.php` 作品情報の更新と作品QRコードの自動作成
 - 作品管理の「03 プロジェクトメンバー」で最大8名の学生をプルダウンで選択し、役職を改行区切りで複数入力。「メンバーを保存する」で保存（未選択に戻すと所属解除）

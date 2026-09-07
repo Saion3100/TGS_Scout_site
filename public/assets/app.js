@@ -168,10 +168,11 @@ if (teamFilterRoot) {
   updateTeams();
 }
 
-const contactForm = document.querySelector('[data-contact-form]');
-const dialog = document.querySelector('[data-demo-dialog]');
-contactForm?.addEventListener('submit', event => {
-  event.preventDefault();
-  if (contactForm.reportValidity()) dialog?.showModal();
+// Guard the confirm screen against double submission without blocking the POST itself.
+const confirmForm = document.querySelector('[data-contact-confirm]');
+confirmForm?.addEventListener('submit', () => {
+  const button = confirmForm.querySelector('button[type=submit]');
+  if (!button) return;
+  button.dataset.sending = 'true';
+  setTimeout(() => { button.disabled = true; }, 0);
 });
-document.querySelector('[data-dialog-close]')?.addEventListener('click', () => dialog.close());
