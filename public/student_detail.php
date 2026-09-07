@@ -7,7 +7,7 @@ if (!$student || !isStudentPublic($student)) { http_response_code(404); renderHe
 <section class="empty-state"><p>404</p><h1>学生が見つかりません</h1><a class="button button-primary" href="<?= e(url('students.php')) ?>">学生一覧へ戻る</a></section>
 <?php renderFooter(); exit; }
 $teams = studentTeams($id);
-$portfolioPreviewUrl = googleDrivePreviewUrl($student['portfolio_url'] ?? '');
+$resources = studentResources($student);
 renderHeader($student['name'], 'students');
 ?>
 <section class="profile-hero">
@@ -46,17 +46,31 @@ renderHeader($student['name'], 'students');
         </a>
     <?php endforeach; ?></div>
 </section>
+<?php if ($resources): ?>
 <section class="portfolio section-pad">
-    <p class="section-number">04 — PORTFOLIO</p>
-    <div class="section-head"><h2>ポートフォリオ</h2>
-    <div class="resource-actions">
-    <?php if (!empty($student['portfolio_url'])): ?><a class="button button-primary" href="<?= e($student['portfolio_url']) ?>" target="_blank" rel="noopener">ポートフォリオを見る <span>↗</span></a><?php endif; ?>
-    <?php if (!empty($student['source_code_url'])): ?><a class="button button-outline" href="<?= e($student['source_code_url']) ?>" target="_blank" rel="noopener">ソースコードを見る <span>↗</span></a><?php endif; ?>
+    <p class="section-number">04 — PORTFOLIO &amp; RESOURCES</p>
+    <div class="section-head"><h2>ポートフォリオ・公開資料</h2></div>
+    <div class="resource-groups">
+    <?php foreach (['ポートフォリオ', 'ソースコード', '作品'] as $group):
+        $groupResources = array_filter($resources, static fn(array $resource): bool => $resource['group'] === $group);
+        if (!$groupResources) continue;
+    ?>
+        <div class="resource-group">
+            <h3><?= e($group) ?></h3>
+            <div class="resource-actions">
+            <?php foreach ($groupResources as $resource): ?>
+                <a class="button button-outline" href="<?= e($resource['url']) ?>" target="_blank" rel="noopener noreferrer" aria-label="<?= e($group . '：' . $resource['link_label']) ?>"><?= e($resource['link_label']) ?> <span aria-hidden="true">↗</span></a>
+            <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
     </div>
-    </div>
-    <?php if ($portfolioPreviewUrl !== ''): ?><iframe class="portfolio-frame" src="<?= e($portfolioPreviewUrl) ?>" title="<?= e($student['name']) ?>のポートフォリオ" loading="lazy"></iframe>
-    <?php else: ?><div class="portfolio-placeholder"><span>PORTFOLIO PREVIEW</span><p>公開資料はリンクからご覧ください。</p></div><?php endif; ?>
+    <?php foreach ($resources as $resource): if ($resource['preview'] === '') continue; ?>
+    <iframe class="portfolio-frame" src="<?= e($resource['preview']) ?>" title="<?= e($student['name'] . 'の' . $resource['label']) ?>" loading="lazy" allowfullscreen></iframe>
+    <p class="form-note">プレビューが表示されない場合は、上のリンクから資料をご覧ください。</p>
+    <?php endforeach; ?>
 </section>
+<?php endif; ?>
 <section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
 <a class="detail-sticky-cta" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>" aria-label="<?= e($student['name']) ?>さんについて学校へ相談する">
     <span><small>気になる学生が見つかったら</small>この学生について相談</span><b aria-hidden="true">→</b>

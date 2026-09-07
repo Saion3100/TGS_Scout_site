@@ -64,4 +64,14 @@ php -S localhost:8000 -t public
 - `data/teams.json` 作品情報
 - `data/mapping.json` 学生と作品の所属関係
 
-`portfolio_url` にGoogle DriveのファイルURLを設定すると、学生詳細ページにPDFプレビューが表示されます。VIVIVITなどの外部作品ページも同じ項目を利用します。
+資料URLはすべて任意で、入力済みの項目だけ表示します。全項目が空欄なら資料セクションを非表示にします。
+
+| JSON項目 | 収集項目 |
+| --- | --- |
+| `portfolio_url` | ポートフォリオ（Google Drive URL） |
+| `portfolio_external_url` | ポートフォリオ（外部サイトURL） |
+| `source_code_url` | 公開可能なソースコード（Google Drive URL） |
+| `source_code_external_url` | 公開可能なソースコード（外部サイトURL） |
+| `work_url` | 公開可能な作品のURL |
+
+管理画面から5項目を登録できます。既存の `portfolio_url`・`source_code_url` にある外部URLも継続表示します。Google Driveファイル（PDFなど）とGoogleスライドのポートフォリオはプレビューを表示し、フォルダ・外部サイト・ソースコード・作品URLは別タブで開くリンクを表示します。資料の閲覧権限が必要です。新項目がない既存JSONもそのまま利用できます。

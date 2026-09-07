@@ -250,10 +250,50 @@ function imageSourceUrl(string $source): string
 
 function googleDrivePreviewUrl(string $url): string
 {
-    if (preg_match('~drive\.google\.com/file/d/([^/]+)~', $url, $matches) !== 1) {
-        return '';
+    $parts = parse_url(trim($url));
+    if (!in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true)) return '';
+    $host = strtolower($parts['host'] ?? '');
+    $path = $parts['path'] ?? '';
+    if ($host === 'docs.google.com' && preg_match('~^/presentation/d/([A-Za-z0-9_-]+)(?:/|$)~', $path, $matches)) {
+        return 'https://docs.google.com/presentation/d/' . $matches[1] . '/embed';
     }
-    return 'https://drive.google.com/file/d/' . rawurlencode($matches[1]) . '/preview';
+    if ($host !== 'drive.google.com') return '';
+    parse_str($parts['query'] ?? '', $query);
+    $id = in_array($path, ['/open', '/uc'], true) ? ($query['id'] ?? '') : '';
+    if (preg_match('~^/file/d/([A-Za-z0-9_-]+)(?:/|$)~', $path, $matches)) $id = $matches[1];
+    if (!is_string($id) || !preg_match('/^[A-Za-z0-9_-]+$/D', $id)) return '';
+    $preview = 'https://drive.google.com/file/d/' . $id . '/preview';
+    if (isset($query['resourcekey']) && is_string($query['resourcekey'])) $preview .= '?resourcekey=' . rawurlencode($query['resourcekey']);
+    return $preview;
+}
+
+/** @return array<string, string> */
+function studentResourceFields(): array
+{
+    return [
+        'portfolio_url' => 'ポートフォリオ（Google Drive・既存URL）',
+        'portfolio_external_url' => 'ポートフォリオ（外部サイト）',
+        'source_code_url' => '公開可能なソースコード（Google Drive・既存URL）',
+        'source_code_external_url' => '公開可能なソースコード（外部サイト）',
+        'work_url' => '公開可能な作品',
+    ];
+}
+
+function studentResources(array $student): array
+{
+    $resources = [];
+    foreach (studentResourceFields() as $key => $label) {
+        $url = trim((string) ($student[$key] ?? ''));
+        if (!filter_var($url, FILTER_VALIDATE_URL) || !preg_match('~^https?://~i', $url)) continue;
+        $label = str_replace('Google Drive・既存URL', 'Google Drive', $label);
+        if (in_array($key, ['portfolio_url', 'source_code_url'], true) && !in_array(strtolower(parse_url($url, PHP_URL_HOST) ?: ''), ['drive.google.com', 'docs.google.com'], true)) {
+            $label = str_replace('Google Drive', '外部サイト', $label);
+        }
+        $group = strpos($key, 'portfolio') === 0 ? 'ポートフォリオ' : (strpos($key, 'source_code') === 0 ? 'ソースコード' : '作品');
+        $isGoogleDrive = in_array(strtolower(parse_url($url, PHP_URL_HOST) ?: ''), ['drive.google.com', 'docs.google.com'], true);
+        $resources[] = ['label' => $label, 'group' => $group, 'link_label' => $key === 'work_url' ? '作品を見る' : ($isGoogleDrive ? 'Google Driveで見る' : '外部サイトで見る'), 'url' => $url, 'preview' => strpos($key, 'portfolio') === 0 ? googleDrivePreviewUrl($url) : ''];
+    }
+    return $resources;
 }
 
 function renderBackToTop(): void

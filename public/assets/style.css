@@ -288,3 +288,5 @@ body:has(.detail-sticky-cta) .back-to-top{bottom:calc(108px + env(safe-area-inse
 .student-photo[hidden]{display:none}
 
 .team-thumbnail{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#171717;z-index:2}.team-thumbnail[hidden]{display:none}
+
+.resource-groups{display:flex;flex-wrap:wrap;gap:28px 40px;margin-bottom:32px}.resource-group{min-width:0}.resource-group h3{font-size:16px;margin:0 0 12px}

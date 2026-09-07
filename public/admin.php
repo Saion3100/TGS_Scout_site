@@ -93,6 +93,9 @@ function studentFromPost(string $studentId): array
         'interview_available' => isset($_POST['interview_available']),
         'internship_interest' => isset($_POST['internship_interest']),
         'portfolio_url' => validateAdminUrl(adminText('portfolio_url'), 'ポートフォリオURL'),
+        'portfolio_external_url' => validateAdminUrl(adminText('portfolio_external_url'), 'ポートフォリオ（外部サイト）URL'),
+        'source_code_external_url' => validateAdminUrl(adminText('source_code_external_url'), 'ソースコード（外部サイト）URL'),
+        'work_url' => validateAdminUrl(adminText('work_url'), '公開可能な作品URL'),
         'source_code_url' => validateAdminUrl(adminText('source_code_url'), 'ソースコードURL'),
         'video_url' => validateAdminUrl(adminText('video_url'), '動画URL'),
         'is_active' => isset($_POST['is_active']),
@@ -237,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
 
 function studentFromPostFallback(): array
 {
-    $fields = ['name','name_kana','name_en','graduation_year','course','headline','bio','portfolio_url','source_code_url','video_url'];
+    $fields = ['name','name_kana','name_en','graduation_year','course','headline','bio','portfolio_url','portfolio_external_url','source_code_url','source_code_external_url','work_url','video_url'];
     $student = [];
     foreach ($fields as $field) { $student[$field] = adminText($field); }
     $student['role'] = valueList($_POST['role'] ?? []);
@@ -280,8 +283,10 @@ renderAdminStart('学生データ管理');
           <label>専門分野<textarea name="fields" rows="5" placeholder="ゲームプレイ&#10;グラフィックス"><?= e(adminListText($student['fields'] ?? [])) ?></textarea><small>1行に1項目、またはカンマ区切り</small></label>
         </div></fieldset>
         <fieldset><legend><span>03</span>作品・資料リンク</legend><div class="admin-form-grid admin-url-fields">
-          <label class="admin-span-2">ポートフォリオURL<input type="url" name="portfolio_url" value="<?= e($student['portfolio_url'] ?? '') ?>" placeholder="https://"></label>
-          <label class="admin-span-2">ソースコードURL<input type="url" name="source_code_url" value="<?= e($student['source_code_url'] ?? '') ?>" placeholder="https://"></label>
+          <p class="admin-span-2 form-note">すべて任意です。入力した項目だけ表示されます。Google Driveの資料は閲覧できる共有設定にしてください。既存の外部URLもそのまま利用できます。</p>
+          <?php foreach (studentResourceFields() as $key => $label): ?>
+          <label class="admin-span-2"><?= e($label) ?> URL（任意）<input type="url" name="<?= e($key) ?>" value="<?= e($student[$key] ?? '') ?>" placeholder="https://"></label>
+          <?php endforeach; ?>
           <label class="admin-span-2">動画URL<input type="url" name="video_url" value="<?= e($student['video_url'] ?? '') ?>" placeholder="https://"></label>
         </div></fieldset>
         <fieldset><legend><span>04</span>公開・活動設定</legend><div class="admin-check-grid">
