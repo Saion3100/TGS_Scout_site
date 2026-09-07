@@ -51,7 +51,7 @@ renderHeader($student['name'], 'students');
     <p class="section-number">04 — PORTFOLIO &amp; RESOURCES</p>
     <div class="section-head"><h2>ポートフォリオ・公開資料</h2></div>
     <div class="resource-groups">
-    <?php foreach (['ポートフォリオ', 'ソースコード', '作品'] as $group):
+    <?php foreach (['ポートフォリオ', 'ソースコード', '公開可能な作品'] as $group):
         $groupResources = array_filter($resources, static fn(array $resource): bool => $resource['group'] === $group);
         if (!$groupResources) continue;
     ?>

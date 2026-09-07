@@ -68,10 +68,10 @@ php -S localhost:8000 -t public
 
 | JSON項目 | 収集項目 |
 | --- | --- |
-| `portfolio_url` | ポートフォリオ（Google Drive URL） |
-| `portfolio_external_url` | ポートフォリオ（外部サイトURL） |
-| `source_code_url` | 公開可能なソースコード（Google Drive URL） |
-| `source_code_external_url` | 公開可能なソースコード（外部サイトURL） |
-| `work_url` | 公開可能な作品のURL |
+| `portfolio_drive_url` | ポートフォリオ（Google Drive URL） |
+| `portfolio_site_url` | ポートフォリオ（外部サイトURL） |
+| `source_code_drive_url` | ソースコード（Google Drive URL） |
+| `source_code_site_url` | ソースコード（外部サイトURL） |
+| `public_work_url` | 公開可能な作品のURL |
 
-管理画面から5項目を登録できます。既存の `portfolio_url`・`source_code_url` にある外部URLも継続表示します。Google Driveファイル（PDFなど）とGoogleスライドのポートフォリオはプレビューを表示し、フォルダ・外部サイト・ソースコード・作品URLは別タブで開くリンクを表示します。資料の閲覧権限が必要です。新項目がない既存JSONもそのまま利用できます。
+管理画面から5項目を登録できます。項目名は `docs/学生データ仕様書.md` に準拠します。Google Driveファイル（PDFなど）とGoogleスライドのポートフォリオはプレビューを表示し、フォルダ・外部サイト・ソースコード・作品URLは別タブで開くリンクを表示します。資料の閲覧権限が必要です。未入力の項目は空文字列にします。

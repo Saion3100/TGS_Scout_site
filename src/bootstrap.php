@@ -271,11 +271,11 @@ function googleDrivePreviewUrl(string $url): string
 function studentResourceFields(): array
 {
     return [
-        'portfolio_url' => 'ポートフォリオ（Google Drive・既存URL）',
-        'portfolio_external_url' => 'ポートフォリオ（外部サイト）',
-        'source_code_url' => '公開可能なソースコード（Google Drive・既存URL）',
-        'source_code_external_url' => '公開可能なソースコード（外部サイト）',
-        'work_url' => '公開可能な作品',
+        'portfolio_drive_url' => 'ポートフォリオ（Google Drive）',
+        'portfolio_site_url' => 'ポートフォリオ（外部サイト）',
+        'source_code_drive_url' => 'ソースコード（Google Drive）',
+        'source_code_site_url' => 'ソースコード（外部サイト）',
+        'public_work_url' => '公開可能な作品',
     ];
 }
 
@@ -285,13 +285,12 @@ function studentResources(array $student): array
     foreach (studentResourceFields() as $key => $label) {
         $url = trim((string) ($student[$key] ?? ''));
         if (!filter_var($url, FILTER_VALIDATE_URL) || !preg_match('~^https?://~i', $url)) continue;
-        $label = str_replace('Google Drive・既存URL', 'Google Drive', $label);
-        if (in_array($key, ['portfolio_url', 'source_code_url'], true) && !in_array(strtolower(parse_url($url, PHP_URL_HOST) ?: ''), ['drive.google.com', 'docs.google.com'], true)) {
+        if (in_array($key, ['portfolio_drive_url', 'source_code_drive_url'], true) && !in_array(strtolower(parse_url($url, PHP_URL_HOST) ?: ''), ['drive.google.com', 'docs.google.com'], true)) {
             $label = str_replace('Google Drive', '外部サイト', $label);
         }
-        $group = strpos($key, 'portfolio') === 0 ? 'ポートフォリオ' : (strpos($key, 'source_code') === 0 ? 'ソースコード' : '作品');
+        $group = strpos($key, 'portfolio') === 0 ? 'ポートフォリオ' : (strpos($key, 'source_code') === 0 ? 'ソースコード' : '公開可能な作品');
         $isGoogleDrive = in_array(strtolower(parse_url($url, PHP_URL_HOST) ?: ''), ['drive.google.com', 'docs.google.com'], true);
-        $resources[] = ['label' => $label, 'group' => $group, 'link_label' => $key === 'work_url' ? '作品を見る' : ($isGoogleDrive ? 'Google Driveで見る' : '外部サイトで見る'), 'url' => $url, 'preview' => strpos($key, 'portfolio') === 0 ? googleDrivePreviewUrl($url) : ''];
+        $resources[] = ['label' => $label, 'group' => $group, 'link_label' => $key === 'public_work_url' ? '作品を見る' : ($isGoogleDrive ? 'Google Driveで見る' : '外部サイトで見る'), 'url' => $url, 'preview' => strpos($key, 'portfolio') === 0 ? googleDrivePreviewUrl($url) : ''];
     }
     return $resources;
 }
