@@ -1,5 +1,5 @@
 const navToggle = document.querySelector('.nav-toggle');
-document.querySelectorAll('.student-photo').forEach(image => {
+document.querySelectorAll('.student-photo, .team-thumbnail').forEach(image => {
   const hideFailedImage = () => { image.hidden = true; };
   image.addEventListener('error', hideFailedImage);
   if (image.complete && image.naturalWidth === 0) hideFailedImage();
@@ -128,7 +128,7 @@ if (teamFilterRoot) {
     let count = 0;
     cards.forEach(card => {
       const visible = (!query || card.dataset.keywords.toLocaleLowerCase('ja').includes(query)) &&
-        selects.every(select => !select.value || card.dataset[select.dataset.teamField].includes(select.value));
+        selects.every(select => !select.value || JSON.parse(card.dataset[select.dataset.teamField] || '[]').includes(select.value));
       card.hidden = !visible;
       if (visible) count++;
     });

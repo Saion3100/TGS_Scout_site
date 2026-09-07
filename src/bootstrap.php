@@ -79,6 +79,28 @@ function e($value): string
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function valueList($value): array
+{
+    $items = is_array($value) ? $value : [$value];
+    return array_values(array_unique(array_filter(array_map(
+        static fn($item): string => is_scalar($item) ? trim((string) $item) : '',
+        $items
+    ), static fn(string $item): bool => $item !== '')));
+}
+
+function listText($value): string
+{
+    return implode(' / ', valueList($value));
+}
+
+function teamFilterOptions(array $teams, string $field): array
+{
+    $options = [];
+    foreach ($teams as $team) {
+        $options = array_merge($options, valueList($team[$field] ?? []));
+    }
+    return array_values(array_unique($options));
+}
 function repository(string $name): JsonRepository
 {
     if (!in_array($name, ['students', 'teams', 'featured_students', 'qr_codes', 'mapping'], true)) {
@@ -185,7 +207,21 @@ function studentTeams(string $studentId): array
 
 function studentImageUrl(array $student): string
 {
-    $source = trim((string) ($student['photo_url'] ?? $student['icon_url'] ?? ''));
+    return imageSourceUrl((string) ($student['photo_url'] ?? $student['icon_url'] ?? ''));
+}
+
+function teamThumbnail(array $team, bool $lazy = true): void
+{
+    $source = imageSourceUrl((string) ($team['thumbnail'] ?? ''));
+    if ($source === '') return;
+    ?>
+    <img class="team-thumbnail" src="<?= e($source) ?>" alt="<?= e($team['game_name']) ?>"<?= $lazy ? ' loading="lazy"' : '' ?> referrerpolicy="no-referrer">
+    <?php
+}
+
+function imageSourceUrl(string $source): string
+{
+    $source = trim($source);
     $parts = parse_url($source);
     if (($parts['host'] ?? '') === 'drive.google.com') {
         parse_str($parts['query'] ?? '', $query);

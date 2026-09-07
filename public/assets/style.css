@@ -283,3 +283,5 @@
 :is(.portrait,.profile-portrait)>.student-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-color:#e0e0e0}
 .hero-slide-media img{background-color:#e0e0e0}
 .student-photo[hidden]{display:none}
+
+.team-thumbnail{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#171717;z-index:2}.team-thumbnail[hidden]{display:none}

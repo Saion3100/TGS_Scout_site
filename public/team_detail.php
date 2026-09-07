@@ -13,20 +13,20 @@ renderHeader($team['game_name'], 'teams');
     <div class="breadcrumbs"><a href="<?= e(url()) ?>">HOME</a><span>/</span><a href="<?= e(url('teams.php')) ?>">GAMES</a><span>/</span><?= e($team['game_name']) ?></div>
     <div class="detail-hero-grid">
         <div>
-            <p class="kicker"><span></span><?= e($team['genre']) ?></p>
+            <p class="kicker"><span></span><?= e(listText($team['genre'] ?? [])) ?></p>
             <h1><?= e($team['game_name']) ?></h1>
             <p class="game-catch"><?= e($team['catchcopy']) ?></p>
             <div class="booth-chip">TGS 2026　BOOTH <strong><?= e($team['booth_no']) ?></strong></div>
         </div>
-        <div class="detail-art"><strong><?= e($team['game_name']) ?></strong><span>PLAYABLE AT TGS 2026</span></div>
+        <div class="detail-art"><strong><?= e($team['game_name']) ?></strong><span>PLAYABLE AT TGS 2026</span><?php teamThumbnail($team, false); ?></div>
     </div>
 </section>
 <section class="game-facts section-pad">
     <div class="facts-grid">
         <div><span>制作チーム</span><strong><?= e($team['team_name']) ?></strong></div>
-        <div><span>プレイ人数</span><strong><?= e($team['players']) ?></strong></div>
-        <div><span>対応機種</span><strong><?= e(implode(' / ', $team['platforms'])) ?></strong></div>
-        <div><span>使用エンジン</span><strong><?= e($team['engine']) ?></strong></div>
+        <div><span>プレイ人数</span><strong><?= e(listText($team['players'] ?? [])) ?></strong></div>
+        <div><span>対応機種</span><strong><?= e(listText($team['platforms'] ?? [])) ?></strong></div>
+        <div><span>使用エンジン</span><strong><?= e(listText($team['engine'] ?? [])) ?></strong></div>
         <div><span>制作期間</span><strong><?= e($team['production_period']) ?></strong></div>
         <div><span>試遊台</span><strong><?= e($team['booth_no']) ?></strong></div>
     </div>
@@ -36,13 +36,13 @@ renderHeader($team['game_name'], 'teams');
     <div class="intro-grid">
         <h2>ゲームについて</h2>
         <div><p class="large-copy"><?= e($team['description']) ?></p>
-            <ul class="highlight-list"><?php foreach ($team['highlights'] as $highlight): ?><li><?= e($highlight) ?></li><?php endforeach; ?></ul>
+            <ul class="highlight-list"><?php foreach (valueList($team['highlights'] ?? []) as $highlight): ?><li><?= e($highlight) ?></li><?php endforeach; ?></ul>
         </div>
     </div>
 </section>
 <section class="controls section-pad">
     <p class="section-number">02 — HOW TO PLAY</p>
-    <div class="intro-grid"><h2>操作方法</h2><ul class="control-list"><?php foreach ($team['controls'] as $control): ?><li><?= e($control) ?></li><?php endforeach; ?></ul></div>
+    <div class="intro-grid"><h2>操作方法</h2><ul class="control-list"><?php foreach (valueList($team['controls'] ?? []) as $control): ?><li><?= e($control) ?></li><?php endforeach; ?></ul></div>
 </section>
 <?php if (!empty($team['video_url'])): ?>
 <section class="media-section section-pad"><iframe src="<?= e($team['video_url']) ?>" title="<?= e($team['game_name']) ?> 紹介動画" loading="lazy" allowfullscreen></iframe></section>

@@ -41,8 +41,8 @@ renderHeader($student['name'], 'students');
     <div class="section-head"><div><p class="section-number">03 — WORKS</p><h2>参加作品</h2></div></div>
     <div class="team-grid"><?php foreach ($teams as $i => $team): ?>
         <a class="team-card compact theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
-            <div class="game-art"><strong><?= e($team['game_name']) ?></strong></div>
-            <div class="team-card-body"><span><?= e($team['student_role']) ?></span><h3><?= e($team['game_name']) ?></h3><p><?= e($team['genre']) ?></p></div>
+            <div class="game-art"><strong><?= e($team['game_name']) ?></strong><?php teamThumbnail($team); ?></div>
+            <div class="team-card-body"><span><?= e($team['student_role']) ?></span><h3><?= e($team['game_name']) ?></h3><p><?= e(listText($team['genre'] ?? [])) ?></p></div>
         </a>
     <?php endforeach; ?></div>
 </section>
