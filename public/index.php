@@ -19,7 +19,7 @@ foreach (array_slice($featuredStudents ?: $students, 0, 2) as $student) {
     $heroSlides[] = ['type' => 'student', 'eyebrow' => 'FEATURED STUDENT', 'title' => $student['name'], 'meta' => $student['role'] . ' / ' . ($student['graduation_year'] ?? ''), 'label' => firstCharacter($student['name']), 'image' => studentImageUrl($student), 'href' => url('student_detail.php') . '?id=' . rawurlencode((string) $student['id']), 'theme' => 'red'];
 }
 foreach (array_slice($teams, 0, 3) as $team) {
-    $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => listText($team['genre'] ?? []) . ' / BOOTH ' . $team['booth_no'], 'label' => $team['game_name'], 'image' => $team['screenshots'][0] ?? '', 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
+    $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => listText($team['genre'] ?? []) . ' / BOOTH ' . $team['booth_no'], 'label' => $team['game_name'], 'image' => imageSourceUrl((string) ($team['thumbnail'] ?? '')), 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
 }
 renderHeader();
 ?>
@@ -39,7 +39,7 @@ renderHeader();
             <?php foreach ($heroSlides as $index => $slide): ?>
             <a class="hero-slide theme-<?= e($slide['theme']) ?><?= $index === 0 ? ' is-active' : '' ?>" href="<?= e($slide['href']) ?>" data-hero-slide aria-hidden="<?= $index === 0 ? 'false' : 'true' ?>" tabindex="<?= $index === 0 ? '0' : '-1' ?>">
                 <div class="hero-slide-media">
-                    <?php if ($slide['image'] !== ''): ?><img src="<?= e($slide['image']) ?>" alt=""><?php else: ?><span class="hero-slide-placeholder hero-slide-placeholder-<?= e($slide['type']) ?>"><?= e($slide['label']) ?></span><?php endif; ?>
+                    <?php if ($slide['image'] !== ''): ?><img src="<?= e($slide['image']) ?>" alt="" referrerpolicy="no-referrer"><?php else: ?><span class="hero-slide-placeholder hero-slide-placeholder-<?= e($slide['type']) ?>"><?= e($slide['label']) ?></span><?php endif; ?>
                 </div>
                 <div class="hero-slide-copy"><span><?= e($slide['eyebrow']) ?></span><strong><?= e($slide['title']) ?></strong><small><?= e($slide['meta']) ?></small><b aria-hidden="true">VIEW ↗</b></div>
             </a>
