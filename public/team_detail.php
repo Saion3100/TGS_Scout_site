@@ -35,7 +35,7 @@ renderHeader($team['game_name'], 'teams');
     <p class="section-number">01 — ABOUT THE GAME</p>
     <div class="intro-grid">
         <h2>ゲームについて</h2>
-        <div><p class="large-copy"><?= e($team['description']) ?></p>
+        <div><p class="large-copy"><?= nl2br(e($team['description'])) ?></p>
             <ul class="highlight-list"><?php foreach (valueList($team['highlights'] ?? []) as $highlight): ?><li><?= e($highlight) ?></li><?php endforeach; ?></ul>
         </div>
     </div>
