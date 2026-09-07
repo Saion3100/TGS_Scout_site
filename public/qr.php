@@ -5,9 +5,10 @@ require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap
 $code = trim((string) ($_GET['code'] ?? ''));
 $record = $code !== '' ? findById(data('qr_codes'), $code) : null;
 
-if ($record === null && preg_match('/^student-(.+)$/', $code, $matches) === 1) {
+if (preg_match('/^student-(.+)$/', $code, $matches) === 1) {
     $student = findById(data('students'), $matches[1]);
-    if ($student !== null && !empty($student['is_active'])) {
+    if ($student === null || !isStudentPublic($student)) $record = null;
+    if ($record === null && $student !== null && isStudentPublic($student)) {
         $record = [
             'target_url' => absoluteUrl('student_detail.php', ['id' => $matches[1]]),
             'is_active' => true,

@@ -79,10 +79,12 @@ if(isset($_GET['saved']))$notice='作品データとQRコードを保存しま�
 <p class="form-note">1チームにつき最大8名まで登録できます。同じ学生を複数のチームに登録できます。所属を解除する場合は「未選択」に戻してください。兼任する役職は改行して複数入力できます。非公開の学生は公開ページには表示されません。</p>
 <?php for ($slot = 0; $slot < 8; $slot++): $member = $memberRows[$slot] ?? ['student_id' => '', 'role' => '']; ?>
 <div class="admin-form-grid project-member-row">
-<label>メンバー <?= $slot + 1 ?><select form="project-members-form" name="members[<?= $slot ?>][student_id]">
+<label>メンバー <?= $slot + 1 ?><select data-member-student aria-describedby="member-warning-<?= $slot ?>" form="project-members-form" name="members[<?= $slot ?>][student_id]">
 <option value="">未選択</option>
-<?php foreach ($students as $student): ?><option value="<?= e($student['id']) ?>" <?= (string) $student['id'] === (string) $member['student_id'] ? 'selected' : '' ?>><?= e($student['name']) ?>（ID: <?= e($student['id']) ?>）<?= empty($student['is_active']) ? '［非公開］' : '' ?></option><?php endforeach; ?>
+<?php foreach ($students as $student): ?><option data-public="<?= isStudentPublic($student) ? '1' : '0' ?>" value="<?= e($student['id']) ?>" <?= (string) $student['id'] === (string) $member['student_id'] ? 'selected' : '' ?>><?= e($student['name']) ?>（ID: <?= e($student['id']) ?>）<?= !isStudentPublic($student) ? '［非公開］' : '' ?></option><?php endforeach; ?>
 </select></label>
+<?php $selectedStudent = findById($students, (string) $member['student_id']); ?>
+<p id="member-warning-<?= $slot ?>" class="admin-alert admin-span-2" data-member-warning role="alert" <?= $selectedStudent !== null && !isStudentPublic($selectedStudent) ? '' : 'hidden' ?>>警告：選択した学生は非公開です。所属は保存できますが、公開ページには表示されません。</p>
 <label>役職（複数可・1行に1つ）<textarea form="project-members-form" name="members[<?= $slot ?>][role]" rows="3" placeholder="例：リーダー&#10;プログラマー"><?= e(str_replace(' / ', PHP_EOL, $member['role'])) ?></textarea></label>
 </div>
 <?php endfor; ?>
@@ -90,4 +92,4 @@ if(isset($_GET['saved']))$notice='作品データとQRコードを保存しま�
 <div class="admin-form-actions"><p>メンバーの変更はこのボタンで保存します。</p><button form="project-members-form" class="button button-primary" name="save_members" value="1">メンバーを保存する →</button></div>
 </fieldset>
 <fieldset><legend><span>04</span>作品QRコード</legend><div class="qr-preview-grid"><div data-qr-value="<?=e($teamQrUrl)?>"></div><div><label>固定URL<input value="<?=e($teamQrUrl)?>" readonly></label><p class="form-note">変更を保存するとQRコードが自動で有効になります。</p><button type="button" class="button button-outline" data-qr-download>PNGをダウンロード</button><button type="button" class="button button-outline" data-qr-print>印刷する</button></div></div></fieldset>
-<div class="admin-form-actions"><p>作品情報とQRコードを同時に保存します。</p><button class="button button-primary" name="save_team" value="1">変更を保存する →</button></div></form><form id="project-members-form" method="post" action="<?= e(url('teams_admin.php') . '?id=' . rawurlencode((string) $team['id']) . '#project-members') ?>"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="id" value="<?= e($team['id']) ?>"></form><?php else:?><div class="admin-empty"><span>WORK DATA</span><h2>編集する作品を選択</h2><p>左の一覧から作品を選んでください。</p></div><?php endif;?></div></div></section><script src="<?=e(url('assets/vendor/qrcode.min.js'))?>"></script><script src="<?=e(url('assets/qr-admin.js'))?>"></script></main></body></html>
+<div class="admin-form-actions"><p>作品情報とQRコードを同時に保存します。</p><button class="button button-primary" name="save_team" value="1">変更を保存する →</button></div></form><form id="project-members-form" method="post" action="<?= e(url('teams_admin.php') . '?id=' . rawurlencode((string) $team['id']) . '#project-members') ?>"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="id" value="<?= e($team['id']) ?>"></form><?php else:?><div class="admin-empty"><span>WORK DATA</span><h2>編集する作品を選択</h2><p>左の一覧から作品を選んでください。</p></div><?php endif;?></div></div></section><script src="<?=e(url('assets/vendor/qrcode.min.js'))?>"></script><script src="<?=e(url('assets/qr-admin.js'))?>"></script><script src="<?= e(assetUrl('team-members-admin.js')) ?>"></script></main></body></html>

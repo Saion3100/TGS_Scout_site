@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $studentId = filter_input(INPUT_GET, 'student', FILTER_UNSAFE_RAW) ?: '';
 $teamId = filter_input(INPUT_GET, 'team', FILTER_UNSAFE_RAW) ?: '';
-$student = $studentId ? findById(data('students'), $studentId) : null;
+$student = $studentId ? findById(publicStudents(), $studentId) : null;
 $team = $teamId ? findById(data('teams'), $teamId) : null;
 $subject = $student ? $student['name'] . 'さん' : ($team ? '作品「' . $team['game_name'] . '」' : '');
 renderHeader('お問い合わせ', 'contact');

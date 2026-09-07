@@ -2,7 +2,7 @@
 declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $teams = data('teams');
-$students = array_values(array_filter(data('students'), fn(array $s): bool => (bool) ($s['is_active'] ?? false)));
+$students = publicStudents();
 $featuredEntries = data('featured_students');
 usort($featuredEntries, fn(array $a, array $b): int => $a['order'] <=> $b['order']);
 $featuredStudents = [];

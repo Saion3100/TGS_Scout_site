@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/JsonRepository.php';
 
+// Recheck publication status on each request, including after back navigation.
+header('Cache-Control: no-store, max-age=0');
+
 const DATA_DIR = __DIR__ . '/../data';
 
 function loadLocalEnvironment(string $filePath): void
@@ -135,6 +138,15 @@ function findById(array $items, string $id): ?array
     return null;
 }
 
+function isStudentPublic(array $student): bool
+{
+    return in_array($student['is_active'] ?? false, [true, 1, '1'], true);
+}
+
+function publicStudents(): array
+{
+    return array_values(array_filter(data('students'), 'isStudentPublic'));
+}
 function teamMembers(string $teamId): array
 {
     $students = data('students');
@@ -144,7 +156,7 @@ function teamMembers(string $teamId): array
             continue;
         }
         $student = findById($students, $relation['student_id']);
-        if ($student && ($student['is_active'] ?? false)) {
+        if ($student && isStudentPublic($student)) {
             $student['team_role'] = $relation['role'];
             $student['team_role_group'] = $relation['role_group'] ?? $student['role'];
             $student['team_responsibility'] = $relation['responsibility'] ?? '';
@@ -244,6 +256,7 @@ function renderFooter(): void
 
 function studentCard(array $student): void
 {
+    if (!isStudentPublic($student)) return;
     ?>
 <a class="student-card" href="<?= e(url('student_detail.php')) ?>?id=<?= e($student['id']) ?>">
     <span class="card-index"><?= e(str_pad((string) (array_search($student, data('students'), true) + 1), 2, '0', STR_PAD_LEFT)) ?></span>
