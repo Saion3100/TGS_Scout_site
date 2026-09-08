@@ -17,15 +17,28 @@ final class SmtpMailer
     /** @var resource|null */
     private $conn = null;
 
+    private string $host;
+    private int $port;
+    private string $username;
+    private string $password;
+    private string $secure;
+    private int $timeout;
+
     public function __construct(
-        private string $host,
-        private int $port = 587,
-        private string $username = '',
-        private string $password = '',
+        string $host,
+        int $port = 587,
+        string $username = '',
+        string $password = '',
         /** 'tls' = STARTTLS, 'ssl' = implicit TLS, '' = plaintext */
-        private string $secure = 'tls',
-        private int $timeout = 15,
+        string $secure = 'tls',
+        int $timeout = 15
     ) {
+        $this->host = $host;
+        $this->port = $port;
+        $this->username = $username;
+        $this->password = $password;
+        $this->secure = $secure;
+        $this->timeout = $timeout;
     }
 
     /**
