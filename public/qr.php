@@ -27,18 +27,12 @@ if ($record === null && preg_match('/^team-(.+)$/', $code, $matches) === 1) {
 }
 
 if ($record === null || empty($record['is_active'])) {
-    http_response_code(404);
-    renderHeader('QRコードが見つかりません');
-    ?>
-    <section class="page-hero compact"><div><p class="section-number">QR CODE</p><h1>リンクを開けません</h1><p>このQRコードは無効か、登録されていません。</p></div></section>
-    <?php renderFooter();
-    exit;
+    redirectToError(404, 'qr');
 }
 
 $target = (string) ($record['target_url'] ?? '');
 if (filter_var($target, FILTER_VALIDATE_URL) === false || preg_match('~^https?://~i', $target) !== 1) {
-    http_response_code(500);
-    exit('Invalid QR destination.');
+    redirectToError(500, 'qr');
 }
 
 header('X-Robots-Tag: noindex, nofollow, noarchive', true);

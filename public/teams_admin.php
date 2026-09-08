@@ -48,7 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_members'])) {
         header('Location: ' . url('teams_admin.php') . '?id=' . rawurlencode($selectedId) . '&members_saved=1#project-members');
         exit;
     } catch (Throwable $exception) {
-        $error = $exception instanceof InvalidArgumentException ? $exception->getMessage() : 'メンバーを保存できませんでした。書き込み権限を確認してください。';
+        if (!($exception instanceof InvalidArgumentException)) {
+            error_log((string) $exception);
+            redirectToError(500);
+        }
+
+        $error = $exception->getMessage();
     }
 }
 if (isset($_GET['members_saved'])) $notice = 'プロジェクトメンバーを保存しました。';
@@ -72,7 +77,13 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['save_team'])) {
         $repo->saveById($team,false);
         syncManagedQr('team-'.$id,'作品：'.$team['game_name'],absoluteUrl('team_detail.php',['id'=>$id]),true);
         header('Location: '.url('teams_admin.php').'?id='.rawurlencode($id).'&saved=1'); exit;
-    } catch(Throwable $exception){$error=$exception->getMessage();}
+    } catch (Throwable $exception) {
+        if (!($exception instanceof InvalidArgumentException)) {
+            error_log((string) $exception);
+            redirectToError(500);
+        }
+        $error = $exception->getMessage();
+    }
 }
 if(isset($_GET['saved']))$notice='作品データとQRコードを保存しました。';
 ?>

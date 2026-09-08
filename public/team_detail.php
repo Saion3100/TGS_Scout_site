@@ -3,9 +3,7 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW) ?: '';
 $team = findById(data('teams'), $id);
-if (!$team) { http_response_code(404); renderHeader('作品が見つかりません'); ?>
-<section class="empty-state"><p>404</p><h1>作品が見つかりません</h1><a class="button button-primary" href="<?= e(url('teams.php')) ?>">作品一覧へ戻る</a></section>
-<?php renderFooter(); exit; }
+if (!$team) { redirectToError(404, 'team'); }
 $members = teamMembers($id);
 renderHeader($team['game_name'], 'teams');
 ?>

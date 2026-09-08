@@ -3,9 +3,7 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW) ?: '';
 $student = findById(data('students'), $id);
-if (!$student || !isStudentPublic($student)) { http_response_code(404); renderHeader('学生が見つかりません'); ?>
-<section class="empty-state"><p>404</p><h1>学生が見つかりません</h1><a class="button button-primary" href="<?= e(url('students.php')) ?>">学生一覧へ戻る</a></section>
-<?php renderFooter(); exit; }
+if (!$student || !isStudentPublic($student)) { redirectToError(404, 'student'); }
 $teams = studentTeams($id);
 $resources = studentResources($student);
 renderHeader($student['name'], 'students');

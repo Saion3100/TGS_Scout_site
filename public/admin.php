@@ -187,6 +187,11 @@ if ($section === 'featured') {
             header('Location: ' . url('admin.php') . '?section=featured&student_id=' . rawurlencode($studentId) . '&saved=1');
             exit;
         } catch (Throwable $exception) {
+            if (!($exception instanceof InvalidArgumentException)) {
+                error_log((string) $exception);
+                redirectToError(500);
+            }
+
             $error = $exception->getMessage();
             $isFeaturedNew = adminText('original_student_id') === '';
             $selectedStudentId = adminText('student_id');
@@ -232,6 +237,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
         header('Location: ' . url('admin.php') . '?id=' . rawurlencode($student['id']) . '&saved=1');
         exit;
     } catch (Throwable $exception) {
+        if (!($exception instanceof InvalidArgumentException)) {
+            error_log((string) $exception);
+            redirectToError(500);
+        }
+
         $error = $exception->getMessage();
         $student = studentFromPostFallback();
         $selectedId = (string) ($student['id'] ?? '');
