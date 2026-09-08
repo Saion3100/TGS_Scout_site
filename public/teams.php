@@ -19,12 +19,12 @@ renderHeader('出展作品', 'teams');
             <label>エンジン<select data-team-field="engine"><option value="">すべて</option><?php foreach (teamFilterOptions($teams, 'engine') as $value): ?><option><?= e($value) ?></option><?php endforeach; ?></select></label>
             <label>対応機種<select data-team-field="platform"><option value="">すべて</option><?php foreach (teamFilterOptions($teams, 'platforms') as $value): ?><option><?= e($value) ?></option><?php endforeach; ?></select></label>
         </div>
-        <label class="search-box"><span>⌕</span><input type="search" placeholder="チーム名・ゲーム名・試遊台番号" data-team-search aria-label="チーム名・ゲーム名・試遊台番号で検索"></label>
+        <label class="search-box"><span>⌕</span><input type="search" placeholder="チーム名・ゲーム名" data-team-search aria-label="チーム名・ゲーム名で検索"></label>
     </div>
     <div class="listing-meta"><span aria-live="polite"><strong data-team-result-count><?= count($teams) ?></strong> GAMES</span> <span>TGS 2026 EXHIBITION</span></div>
     <div class="team-grid team-grid-large">
         <?php foreach ($teams as $i => $team): ?>
-        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e(json_encode(valueList($team['genre'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-engine="<?= e(json_encode(valueList($team['engine'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-platform="<?= e(json_encode(valueList($team['platforms'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name'] . ' ' . $team['booth_no']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
+        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e(json_encode(valueList($team['genre'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-engine="<?= e(json_encode(valueList($team['engine'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-platform="<?= e(json_encode(valueList($team['platforms'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
             <div class="game-art">
                 <span class="game-number">0<?= $i + 1 ?></span>
                 <strong><?= e($team['game_name']) ?></strong>
@@ -34,7 +34,7 @@ renderHeader('出展作品', 'teams');
                 <span><?= e(listText($team['genre'] ?? [])) ?></span>
                 <h2><?= e($team['game_name']) ?></h2><p class="team-name"><?= e($team['team_name']) ?></p>
                 <p><?= e($team['catchcopy']) ?></p>
-                <small>BOOTH <?= e($team['booth_no']) ?>　/　<?= count(teamMembers($team['id'])) ?> MEMBERS</small>
+                <small><?= count(teamMembers($team['id'])) ?> MEMBERS</small>
             </div>
         </a>
         <?php endforeach; ?>

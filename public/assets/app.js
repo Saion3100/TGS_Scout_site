@@ -16,16 +16,33 @@ if (heroCarousel) {
   const slides = [...heroCarousel.querySelectorAll('[data-hero-slide]')];
   const dots = [...heroCarousel.querySelectorAll('[data-hero-dot]')];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HERO_INTERVAL = 5000;
+  const progressBar = heroCarousel.querySelector('.hero-carousel-progress span');
   let current = 0;
   let timer;
   let touchStartX = 0;
+  const restartProgress = () => {
+    if (!progressBar) return;
+    progressBar.style.animation = 'none';
+    void progressBar.offsetWidth; // force reflow so the animation restarts from 0
+    progressBar.style.animation = '';
+    progressBar.style.animationDuration = HERO_INTERVAL + 'ms';
+    progressBar.style.animationPlayState = 'running';
+    progressBar.classList.add('is-running');
+  };
   const showSlide = index => {
     current = (index + slides.length) % slides.length;
     slides.forEach((slide, i) => { const active = i === current; slide.classList.toggle('is-active', active); slide.setAttribute('aria-hidden', String(!active)); slide.tabIndex = active ? 0 : -1; });
     dots.forEach((dot, i) => { const active = i === current; dot.classList.toggle('is-active', active); dot.setAttribute('aria-current', String(active)); });
   };
-  const stop = () => window.clearInterval(timer);
-  const start = () => { stop(); if (!reduceMotion && slides.length > 1) timer = window.setInterval(() => showSlide(current + 1), 5000); };
+  const stop = () => { window.clearInterval(timer); if (progressBar) progressBar.style.animationPlayState = 'paused'; };
+  const start = () => {
+    stop();
+    if (reduceMotion || slides.length < 2) return;
+    if (progressBar) progressBar.style.animationPlayState = '';
+    restartProgress();
+    timer = window.setInterval(() => { showSlide(current + 1); restartProgress(); }, HERO_INTERVAL);
+  };
   heroCarousel.querySelector('[data-hero-prev]')?.addEventListener('click', () => { showSlide(current - 1); start(); });
   heroCarousel.querySelector('[data-hero-next]')?.addEventListener('click', () => { showSlide(current + 1); start(); });
   dots.forEach(dot => dot.addEventListener('click', () => { showSlide(Number(dot.dataset.heroDot)); start(); }));
@@ -151,10 +168,11 @@ if (teamFilterRoot) {
   updateTeams();
 }
 
-const contactForm = document.querySelector('[data-contact-form]');
-const dialog = document.querySelector('[data-demo-dialog]');
-contactForm?.addEventListener('submit', event => {
-  event.preventDefault();
-  if (contactForm.reportValidity()) dialog?.showModal();
+// Guard the confirm screen against double submission without blocking the POST itself.
+const confirmForm = document.querySelector('[data-contact-confirm]');
+confirmForm?.addEventListener('submit', () => {
+  const button = confirmForm.querySelector('button[type=submit]');
+  if (!button) return;
+  button.dataset.sending = 'true';
+  setTimeout(() => { button.disabled = true; }, 0);
 });
-document.querySelector('[data-dialog-close]')?.addEventListener('click', () => dialog.close());

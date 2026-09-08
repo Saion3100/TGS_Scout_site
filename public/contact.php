@@ -1,54 +1,137 @@
 <?php
 declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
-$studentId = filter_input(INPUT_GET, 'student', FILTER_UNSAFE_RAW) ?: '';
-$teamId = filter_input(INPUT_GET, 'team', FILTER_UNSAFE_RAW) ?: '';
-$student = $studentId ? findById(publicStudents(), $studentId) : null;
-$team = $teamId ? findById(data('teams'), $teamId) : null;
-$subject = $student ? $student['name'] . 'さん' : ($team ? '作品「' . $team['game_name'] . '」' : '');
+require_once is_file(__DIR__ . '/src/contact.php') ? __DIR__ . '/src/contact.php' : dirname(__DIR__) . '/src/contact.php';
+
+$isHttps = ((string) ($_SERVER['HTTPS'] ?? '') !== '' && ($_SERVER['HTTPS'] ?? '') !== 'off')
+    || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https'
+    || (int) ($_SERVER['SERVER_PORT'] ?? 0) === 443;
+
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_name('tgs_contact');
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => url('/'),
+        'httponly' => true,
+        'samesite' => 'Lax',
+        'secure' => $isHttps,
+    ]);
+    session_start();
+}
+
+if (empty($_SESSION['contact.csrf'])) {
+    $_SESSION['contact.csrf'] = bin2hex(random_bytes(32));
+}
+$csrf = $_SESSION['contact.csrf'];
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+// --- Completion screen (Post/Redirect/Get target) ---
+$completed = (string) (filter_input(INPUT_GET, 'completed', FILTER_UNSAFE_RAW) ?: '');
+if ($method === 'GET' && $completed !== '') {
+    $record = $_SESSION['contact.completed'] ?? null;
+    $known = is_array($record) && hash_equals((string) ($record['id'] ?? ''), $completed);
+    renderContactCompleted($completed, $known ? $record : null);
+    return;
+}
+
+// --- Resolve the target (detail-page links use ?student= / ?team=, POSTs carry hidden ids) ---
+$studentParam = (string) (filter_input(INPUT_GET, 'student', FILTER_UNSAFE_RAW) ?: ($_POST['student_id'] ?? ''));
+$teamParam = (string) (filter_input(INPUT_GET, 'team', FILTER_UNSAFE_RAW) ?: ($_POST['team_id'] ?? ''));
+$student = contactResolveStudent($studentParam);
+$team = $student ? null : contactResolveTeam($teamParam);
+$targetName = $student ? '学生：' . $student['name'] : ($team ? '作品「' . $team['game_name'] . '」' : '');
+// User-facing label: name only. Internal IDs go to the school notification separately.
+$targetLabel = $targetName;
+
+$values = contactDefaultValues();
+$errors = [];
+$stage = 'input';
+
+if ($method === 'POST') {
+    $tokenOk = hash_equals($csrf, (string) ($_POST['csrf'] ?? ''));
+    $do = (string) ($_POST['do'] ?? 'confirm');
+
+    if (!$tokenOk) {
+        $errors['_form'] = 'セッションの有効期限が切れました。お手数ですが最初から入力し直してください。';
+        $values = contactValuesFromPost($_POST);
+    } elseif ($do === 'edit') {
+        $stored = $_SESSION['contact.form_data'] ?? null;
+        $values = is_array($stored) ? $stored + contactDefaultValues() : contactValuesFromPost($_POST);
+    } elseif ($do === 'send') {
+        $formData = $_SESSION['contact.form_data'] ?? null;
+        $submitOk = !empty($_SESSION['contact.submit_token'])
+            && hash_equals($_SESSION['contact.submit_token'], (string) ($_POST['submit_token'] ?? ''));
+
+        if (!is_array($formData) || !$submitOk) {
+            unset($_SESSION['contact.submit_token']);
+            $values = is_array($formData) ? $formData : contactValuesFromPost($_POST);
+            $errors['_form'] = '確認画面の有効期限が切れました。お手数ですが、内容をもう一度ご確認のうえお進みください。';
+        } else {
+            [$values, $errors] = contactValidate($formData, $student, $team);
+
+            if (!$errors && $formData['student_id'] !== '' && !contactResolveStudent($formData['student_id'])) {
+                $errors['_form'] = '対象の学生情報が更新されました。お手数ですが内容をご確認のうえ、再度お進みください。';
+            } elseif (!$errors && $formData['team_id'] !== '' && !contactResolveTeam($formData['team_id'])) {
+                $errors['_form'] = '対象の作品情報が更新されました。お手数ですが内容をご確認のうえ、再度お進みください。';
+            }
+            if (!$errors && contactRateLimited()) {
+                $errors['_form'] = '短時間に複数の送信がありました。しばらく時間をおいてから再度お試しください。';
+            }
+
+            if (!$errors) {
+                $receipt = contactReceiptNumber();
+                $sendError = null;
+                if (contactSendSchoolNotification($receipt, $values, $targetName, $targetLabel, $sendError)) {
+                    contactSendAutoReply($receipt, $values, $targetLabel);
+                    contactRecordSend();
+                    $_SESSION['contact.completed'] = ['id' => $receipt, 'email' => $values['email'], 'at' => time()];
+                    unset($_SESSION['contact.form_data'], $_SESSION['contact.submit_token'], $_SESSION['contact.started_at']);
+                    header('Location: ' . url('contact.php') . '?completed=' . rawurlencode($receipt));
+                    return;
+                }
+                // School notification failed: keep the input, let the user retry, do not complete.
+                $_SESSION['contact.submit_token'] = bin2hex(random_bytes(32));
+                $errors['_form'] = 'メールの送信に失敗しました。時間をおいて再度お試しいただくか、'
+                    . contactConfig()['contact_fallback'] . ' へ直接ご連絡ください。';
+                $stage = 'confirm';
+            }
+        }
+    } else { // confirm
+        [$values, $errors] = contactValidate($_POST, $student, $team);
+
+        if (trim((string) ($_POST['nickname'] ?? '')) !== '') {
+            $errors['_form'] = '送信を確認できませんでした。しばらく時間をおいてから再度お試しください。';
+        } else {
+            $startedAt = $_SESSION['contact.started_at'] ?? null;
+            if (!is_int($startedAt)) {
+                $errors['_form'] = 'セッションの有効期限が切れました。お手数ですが最初から入力し直してください。';
+            } elseif (time() - $startedAt < CONTACT_MIN_FILL_SECONDS) {
+                $errors['_form'] = '入力が早すぎます。内容をご確認のうえ、もう一度送信してください。';
+            }
+        }
+
+        if (!$errors) {
+            $_SESSION['contact.form_data'] = $values;
+            $_SESSION['contact.submit_token'] = bin2hex(random_bytes(32));
+            $stage = 'confirm';
+        }
+    }
+}
+
+if ($method === 'GET') {
+    $_SESSION['contact.started_at'] = time();
+    if ($student) {
+        $values['student_id'] = $student['id'];
+    }
+    if ($team) {
+        $values['team_id'] = $team['id'];
+    }
+}
+
 renderHeader('お問い合わせ', 'contact');
-?>
-<section class="page-hero contact-hero">
-    <p class="section-number">CONTACT</p>
-    <h1>学校へ問い合わせる</h1>
-    <p>採用・面談・インターン等のご相談を学校がお預かりし、担当教員よりご連絡します。</p>
-</section>
-<section class="contact-layout section-pad">
-    <aside>
-        <p class="section-number">INFORMATION</p>
-        <h2>お問い合わせについて</h2>
-        <p>学生個人への直接連絡ではなく、学校が窓口となって適切におつなぎします。</p>
-        <dl><dt>受付内容</dt><dd>採用、面談、インターン、学校説明会、産学連携</dd><dt>現在の対象</dt><dd><?= $subject ? e($subject) : '指定なし' ?></dd></dl>
-    </aside>
-    <form class="contact-form" action="<?= e(url('contact.php')) ?>" method="get" data-contact-form>
-        <input type="hidden" name="sent" value="1">
-        <?php if ($student): ?><input type="hidden" name="student_id" value="<?= e($student['id']) ?>"><?php endif; ?>
-        <?php if ($team): ?><input type="hidden" name="team_id" value="<?= e($team['id']) ?>"><?php endif; ?>
-        <fieldset>
-            <legend><span>01</span>お問い合わせの目的 <b>必須</b></legend>
-            <?php
-            $actions = ['学校の先生に連絡したい','説明会の相談をしたい','この学生と話をしたい','この学生に応募してほしい','この学生に注目している'];
-            foreach ($actions as $i => $action): ?>
-            <label class="radio-card"><input type="radio" name="action" value="<?= e($action) ?>" <?= $i === 0 ? 'required' : '' ?>><span><?= e($action) ?></span></label>
-            <?php endforeach; ?>
-        </fieldset>
-        <fieldset>
-            <legend><span>02</span>企業・ご担当者情報</legend>
-            <label>企業名 <b>必須</b><input name="company" required autocomplete="organization"></label>
-            <div class="form-row"><label>部署名<input name="department" autocomplete="organization-title"></label><label>役職<input name="position" autocomplete="organization-title"></label></div>
-            <div class="form-row"><label>お名前 <b>必須</b><input name="name" required autocomplete="name"></label><label>メールアドレス <b>必須</b><input type="email" name="email" required autocomplete="email"></label></div>
-            <div class="form-row"><label>電話番号<input type="tel" name="phone" autocomplete="tel"></label><label>企業Webサイト<input type="url" name="website" placeholder="https://"></label></div>
-        </fieldset>
-        <fieldset>
-            <legend><span>03</span>ご相談内容</legend>
-            <label>対象の作品・学生<input name="subject" value="<?= e($subject) ?>" placeholder="作品名または学生名"></label>
-            <label>希望連絡時期<input name="preferred_time" placeholder="例：2026年10月上旬"></label>
-            <label>メッセージ<textarea name="message" rows="7" placeholder="ご相談内容をご記入ください"></textarea></label>
-        </fieldset>
-        <label class="privacy-check"><input type="checkbox" name="privacy_agreed" required> <a href="<?= e(url('privacy.php')) ?>" target="_blank">プライバシーポリシー</a>に同意する <b>必須</b></label>
-        <p class="form-note">※ 現在はデモ版のため、入力内容は送信されません。</p>
-        <button class="button button-primary submit-button" type="submit">入力内容を確認する <span>→</span></button>
-    </form>
-</section>
-<dialog class="demo-dialog" data-demo-dialog><div><span class="dialog-mark">✓</span><h2>入力を確認しました</h2><p>デモ版のため送信は行われていません。メール送信機能はサーバー仕様確定後に接続できます。</p><button class="button button-primary" type="button" data-dialog-close>閉じる</button></div></dialog>
-<?php renderFooter(); ?>
+if ($stage === 'confirm') {
+    renderContactConfirm($values, $csrf, $_SESSION['contact.submit_token'] ?? '', $targetLabel, $errors['_form'] ?? null);
+} else {
+    renderContactForm($values, $errors, $csrf, $student, $team, $targetName, $targetLabel);
+}
+renderFooter();

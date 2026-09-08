@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
-$teams = data('teams');
+$teams = array_values(array_filter(data('teams'), static fn(array $team): bool => trim((string) ($team['booth_no'] ?? '')) !== ''));
+usort($teams, static fn(array $a, array $b): int => strnatcmp(trim((string) $a['booth_no']), trim((string) $b['booth_no'])) ?: strcmp((string) $a['id'], (string) $b['id']));
 $students = publicStudents();
 $featuredEntries = data('featured_students');
 usort($featuredEntries, fn(array $a, array $b): int => $a['order'] <=> $b['order']);
@@ -19,7 +20,7 @@ foreach (array_slice($featuredStudents ?: $students, 0, 2) as $student) {
     $heroSlides[] = ['type' => 'student', 'eyebrow' => 'FEATURED STUDENT', 'title' => $student['name'], 'meta' => listText($student['role'] ?? []) . ' / ' . ($student['graduation_year'] ?? ''), 'label' => firstCharacter($student['name']), 'image' => studentImageUrl($student), 'href' => url('student_detail.php') . '?id=' . rawurlencode((string) $student['id']), 'theme' => 'red'];
 }
 foreach (array_slice($teams, 0, 3) as $team) {
-    $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => listText($team['genre'] ?? []) . ' / BOOTH ' . $team['booth_no'], 'label' => $team['game_name'], 'image' => imageSourceUrl((string) ($team['thumbnail'] ?? '')), 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
+    $heroSlides[] = ['type' => 'work', 'eyebrow' => 'TGS 2026 EXHIBITION', 'title' => $team['game_name'], 'meta' => listText($team['genre'] ?? []), 'label' => $team['game_name'], 'image' => imageSourceUrl((string) ($team['thumbnail'] ?? '')), 'href' => url('team_detail.php') . '?id=' . rawurlencode((string) $team['id']), 'theme' => $team['theme'] ?? 'red'];
 }
 renderHeader();
 ?>
@@ -133,7 +134,6 @@ renderHeader();
                     <span><?= e(listText($team['genre'] ?? [])) ?></span>
                     <h3><?= e($team['game_name']) ?></h3>
                     <p><?= e($team['catchcopy']) ?></p>
-                    <small>BOOTH <?= e($team['booth_no']) ?></small>
                 </div>
             </a>
             <?php endforeach; ?>
