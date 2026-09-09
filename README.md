@@ -94,3 +94,13 @@ php -S localhost:8000 -t public
 503応答には `Retry-After: 300` を付けます。エラー画面と静的ファイルは引き続き表示できます。
 Webサーバーが同名の環境変数を設定している場合は、その値が優先されます。
 PHPが実行されないアクセス拒否や存在しないファイルへのアクセスは、サーバー標準のエラー画面になります。
+
+`.htaccess` に以下を設定することでサーバ内部の処理で表示できます
+サーバ側で `ErrorDocument` の利用が許可されている必要があります
+
+```
+ErrorDocument 403 /it-work/TGS_Scout/error.php?status=403
+ErrorDocument 404 /it-work/TGS_Scout/error.php?status=404
+ErrorDocument 500 /it-work/TGS_Scout/error.php?status=500
+ErrorDocument 503 /it-work/TGS_Scout/error.php?status=503
+```
