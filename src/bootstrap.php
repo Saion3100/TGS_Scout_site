@@ -44,6 +44,11 @@ function loadLocalEnvironment(string $filePath): void
 
 loadLocalEnvironment(__DIR__ . '/../.env');
 
+// The standalone error page does not load bootstrap, preventing redirect loops.
+if (PHP_SAPI !== 'cli' && filter_var(getenv('TGS_MAINTENANCE'), FILTER_VALIDATE_BOOLEAN)) {
+    redirectToError(503);
+}
+
 function data(string $name): array
 {
     static $cache = [];

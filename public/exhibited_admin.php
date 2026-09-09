@@ -9,8 +9,8 @@ if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_byt
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        if (!is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-            throw new InvalidArgumentException('セッションの有効期限が切れました。再読み込みしてください。');
+        if (!is_string($_SESSION['csrf_token'] ?? null) || $_SESSION['csrf_token'] === '' || !is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            redirectToError(403, 'csrf');
         }
         if (!is_string($_POST['id'] ?? null) || !is_string($_POST['booth_no'] ?? null)) {
             throw new InvalidArgumentException('作品と試遊台番号を正しく指定してください。');
@@ -29,7 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ' . url('exhibited_admin.php') . '?id=' . rawurlencode((string) $updatedTeam['id']) . '&saved=1');
         exit;
     } catch (Throwable $exception) {
-        $error = $exception instanceof InvalidArgumentException ? $exception->getMessage() : '試遊台番号を保存できませんでした。';
+        if (!($exception instanceof InvalidArgumentException)) {
+            error_log((string) $exception);
+            redirectToError(500);
+        }
+        $error = $exception->getMessage();
     }
 }
 $allTeams = data('teams');

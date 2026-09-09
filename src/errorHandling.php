@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 function redirectToError(int $status = 500, string $reason = ''): void
 {
-    $status = in_array($status, [403, 404, 500], true) ? $status : 500;
+    $status = in_array($status, [403, 404, 500, 503], true) ? $status : 500;
     while (ob_get_level() > 0) {
         if (!ob_end_clean()) break;
     }
     $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
     if (strpos($script, '/api/') !== false) {
         http_response_code($status);
+        if ($status === 503) header('Retry-After: 300');
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode(['error' => 'Unable to process the request.']);
         exit;

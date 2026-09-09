@@ -149,9 +149,9 @@ if ($section === 'featured') {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['save_featured']) || isset($_POST['delete_featured']))) {
         try {
-            if (!hash_equals((string) ($_SESSION['csrf_token'] ?? ''), (string) ($_POST['csrf_token'] ?? ''))) {
-                throw new RuntimeException('セッションの有効期限が切れました。再読み込みしてください。');
-            }
+            if (!is_string($_SESSION['csrf_token'] ?? null) || $_SESSION['csrf_token'] === '' || !is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            redirectToError(403, 'csrf');
+        }
             $originalStudentId = adminText('original_student_id');
             if (isset($_POST['delete_featured'])) {
                 if ($originalStudentId === '') { throw new InvalidArgumentException('削除対象が見つかりません。'); }
@@ -223,8 +223,8 @@ $student = $isNew ? [] : ($selectedId !== '' ? findById($students, $selectedId) 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
     $isNew = ($_POST['mode'] ?? '') === 'new';
     try {
-        if (!hash_equals((string) ($_SESSION['csrf_token'] ?? ''), (string) ($_POST['csrf_token'] ?? ''))) {
-            throw new RuntimeException('セッションの有効期限が切れました。再読み込みしてください。');
+        if (!is_string($_SESSION['csrf_token'] ?? null) || $_SESSION['csrf_token'] === '' || !is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            redirectToError(403, 'csrf');
         }
         $originalId = adminText('original_id');
         if (!$isNew && ($originalId === '' || findById($students, $originalId) === null)) {

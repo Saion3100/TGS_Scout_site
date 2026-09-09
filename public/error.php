@@ -4,11 +4,18 @@ declare(strict_types=1);
 // Share the site layout without loading application data or error handlers.
 require_once is_file(__DIR__ . '/src/layout.php') ? __DIR__ . '/src/layout.php' : dirname(__DIR__) . '/src/layout.php';
 $status = filter_input(INPUT_GET, 'status', FILTER_VALIDATE_INT);
-$status = in_array($status, [403, 404, 500], true) ? $status : 500;
+$status = in_array($status, [403, 404, 500, 503], true) ? $status : 500;
 $reason = is_string($_GET['reason'] ?? null) ? $_GET['reason'] : '';
-$titles = [403 => 'このページにはアクセスできません', 404 => 'ページが見つかりません', 500 => '処理中にエラーが発生しました'];
+$titles = [403 => 'このページにはアクセスできません', 404 => 'ページが見つかりません', 500 => '処理中にエラーが発生しました', 503 => 'ただいまメンテナンス中です'];
 $title = $titles[$status];
 $message = $status === 500 ? '時間をおいて、もう一度お試しください。' : 'URLをご確認いただくか、下のボタンから目的のページをお探しください。';
+if ($status === 403) {
+    $message = $reason === 'csrf' ? 'セッションの有効期限が切れたか、送信を確認できませんでした。元の画面を再読み込みして、もう一度お試しください。' : 'このページを表示する権限がありません。';
+}
+if ($status === 503) {
+    $message = '現在、一時的にサービスを停止しています。時間をおいて、もう一度お試しください。';
+    header('Retry-After: 300');
+}
 if ($status === 404) {
     $details = ['student' => '指定された学生は存在しないか、現在公開されていません。', 'team' => '指定された作品は見つかりませんでした。', 'qr' => 'このQRコードは無効か、登録されていません。'];
     $message = $details[$reason] ?? $message;

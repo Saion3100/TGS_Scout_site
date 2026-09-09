@@ -26,7 +26,9 @@ foreach ($relations as $relation) {
 $memberRows = array_values($memberValues);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_members'])) {
     try {
-        if (!is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) throw new InvalidArgumentException('セッションの有効期限が切れました。再読み込みしてください。');
+        if (!is_string($_SESSION['csrf_token'] ?? null) || $_SESSION['csrf_token'] === '' || !is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            redirectToError(403, 'csrf');
+        }
         if ($team === null || teamAdminText('id') !== $selectedId) throw new InvalidArgumentException('編集対象の作品が見つかりません。');
         $postedMembers = $_POST['members'] ?? [];
         if (!is_array($postedMembers)) throw new InvalidArgumentException('メンバーの指定が正しくありません。');
@@ -65,7 +67,9 @@ if (isset($_GET['members_saved'])) $notice = 'プロジェクトメンバーを�
 if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['save_team'])) {
     $isNew = ($_POST['mode'] ?? '') === 'new';
     try {
-        if (!hash_equals((string)($_SESSION['csrf_token']??''),(string)($_POST['csrf_token']??''))) throw new RuntimeException('セッションの有効期限が切れました。再読み込みしてください。');
+        if (!is_string($_SESSION['csrf_token'] ?? null) || $_SESSION['csrf_token'] === '' || !is_string($_POST['csrf_token'] ?? null) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+            redirectToError(403, 'csrf');
+        }
         if ($isNew) { $id=nextTeamId($teams); $existing=[]; }
         else { $id=teamAdminText('id'); $existing=findById($teams,$id); if($existing===null)throw new InvalidArgumentException('編集対象の作品が見つかりません。'); }
         $required=['team_name'=>'チーム名','game_name'=>'作品名','genre'=>'ジャンル','players'=>'プレイ人数','engine'=>'使用エンジン','development_start_date'=>'開発開始日','catchcopy'=>'キャッチコピー','description'=>'作品説明'];
