@@ -1,62 +1,62 @@
 [
     {
-        "team_id": "t02",
-        "student_id": "2",
-        "role": "3Dデザイナー",
-        "role_group": "デザイナー",
-        "responsibility": "深海生物・背景モデル"
-    },
-    {
-        "team_id": "t02",
-        "student_id": "4",
-        "role": "システムプログラマー",
-        "role_group": "プログラマー",
-        "responsibility": "探索システム・セーブ機能"
-    },
-    {
-        "team_id": "t02",
-        "student_id": "5",
-        "role": "サウンドデザイナー",
-        "role_group": "サウンド",
-        "responsibility": "環境音・効果音・実装"
-    },
-    {
-        "team_id": "t03",
-        "student_id": "3",
-        "role": "リードプランナー",
-        "role_group": "プランナー",
-        "responsibility": "協力ルール・進行管理"
-    },
-    {
-        "team_id": "t03",
-        "student_id": "4",
-        "role": "リードプログラマー",
-        "role_group": "プログラマー",
-        "responsibility": "協力プレイ・厨房ギミック"
-    },
-    {
-        "team_id": "t03",
-        "student_id": "5",
-        "role": "コンポーザー",
-        "role_group": "サウンド",
-        "responsibility": "BGM・ジングル制作"
-    },
-    {
         "team_id": "t01",
+        "student_id": "23",
+        "role": "チームリーダー"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "9",
+        "role": "ディレクター \/ ゲームプレイプログラマー \/ リードプログラマー \/ サブプログラマー"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "24",
+        "role": "プランナー \/ プロデューサー \/ ゲームUIデザイナー \/ ゲームコンポーザー"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "27",
+        "role": "ゲームUIプログラマー \/ サブプログラマー"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "15",
+        "role": "リードデザイナー \/ ゲームキャラクターデザイナー \/ サブデザイナー"
+    },
+    {
+        "team_id": "t02",
+        "student_id": "19",
+        "role": "ゲームプレイプログラマー \/ 内部スクリプトQA \/ サブプログラマー"
+    },
+    {
+        "team_id": "t03",
+        "student_id": "6",
+        "role": "プランナー \/ プログラマー"
+    },
+    {
+        "team_id": "t03",
+        "student_id": "12",
+        "role": "プログラマー"
+    },
+    {
+        "team_id": "t04",
         "student_id": "1",
-        "role": "リードプログラマー",
-        "responsibility": "プレイヤー挙動・戦闘・シェーダー"
+        "role": "プログラマー \/ ステージデザイン"
     },
     {
-        "team_id": "t01",
+        "team_id": "t04",
+        "student_id": "14",
+        "role": "プログラマー \/ ビジュアル監督"
+    },
+    {
+        "team_id": "t06",
+        "student_id": "25",
+        "role": "プログラマー"
+    },
+    {
+        "team_id": "t07",
         "student_id": "2",
-        "role": "アートディレクター",
-        "responsibility": "キャラクター・背景・キービジュアル"
-    },
-    {
-        "team_id": "t01",
-        "student_id": "3",
-        "role": "ゲームプランナー \/ キャラクターデザイナー",
-        "responsibility": "コア企画・レベルデザイン"
+        "role": "企画 \/ ゲームデザイン \/ ディレクション \/ 動作検証"
     }
 ]

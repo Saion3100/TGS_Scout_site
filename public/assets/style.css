@@ -330,3 +330,22 @@ body:has(.detail-sticky-cta) .back-to-top{bottom:calc(108px + env(safe-area-inse
 .error-message{color:var(--muted)}
 .error-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
 .error-actions .button{min-height:48px}
+
+/* Sidebar controls share the admin form typography and focus treatment. */
+.admin-list-sort,.admin-list-search{display:grid;gap:7px;min-width:0;margin:0 0 7px;font-size:13px;font-weight:800}
+.admin-list-sort select,.admin-list-search input{display:block;width:100%;min-width:0;height:48px;padding:11px 14px;border:1px solid #cfcfcf;border-radius:0;background:#fff;color:var(--ink);font:inherit}
+.admin-list-sort select{padding-right:32px;cursor:pointer}
+.admin-list-search input::placeholder{color:var(--muted);font-weight:400;opacity:1}
+.admin-list-sort select:focus,.admin-list-search input:focus{outline:2px solid var(--red);outline-offset:1px;border-color:var(--red)}
+.admin-list [data-admin-search-empty]{margin:0 0 7px;padding:14px;border:1px solid var(--line);background:var(--soft);color:var(--muted);font-size:13px}
+
+.searchable-select{position:relative;min-width:0}
+.searchable-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;padding:13px 14px;border:1px solid #cfcfcf;border-radius:0;background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.searchable-select-trigger::after{content:'▾';flex:none;color:var(--muted)}
+.searchable-select-trigger:disabled{background:var(--soft);color:var(--muted);cursor:default}
+.searchable-select-trigger:focus-visible,.searchable-select-results button:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.searchable-select-panel{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:30;padding:10px;border:1px solid var(--line);background:#fff;box-shadow:0 8px 24px #0002}
+.searchable-select-results{max-height:240px;overflow:auto;margin-top:8px}
+.searchable-select-results button{display:block;width:100%;padding:10px;border:0;background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+.searchable-select-results button:hover,.searchable-select-results button.is-selected{background:var(--soft);color:var(--red)}
+.searchable-select-panel p{margin:8px 0 0;color:var(--muted);font-size:12px;font-weight:400}

@@ -91,7 +91,7 @@ $postedBoothNo = $error !== '' && is_string($_POST['booth_no'] ?? null) ? $_POST
                     <p class="form-note">出展作品に未登録のチームのみ選択できます。同じ番号を複数作品に設定できます。番号は公開ページには表示されません。</p>
                     <div class="admin-form-grid">
                         <label class="admin-span-2"><span>チーム名 <b>*</b></span>
-                            <select name="id" required <?= !$unregisteredTeams ? 'disabled' : '' ?>>
+                            <select data-searchable-select name="id" required <?= !$unregisteredTeams ? 'disabled' : '' ?>>
                                 <option value=""><?= $unregisteredTeams ? 'チームを選択してください' : '登録できるチームはありません' ?></option>
                                 <?php foreach ($unregisteredTeams as $candidate): ?>
                                 <option value="<?= e($candidate['id']) ?>" <?= isset($_POST['register_exhibited']) && ($_POST['id'] ?? null) === (string) $candidate['id'] ? 'selected' : '' ?>><?= e($candidate['team_name']) ?>（<?= e($candidate['game_name']) ?>）</option>
@@ -123,5 +123,6 @@ $postedBoothNo = $error !== '' && is_string($_POST['booth_no'] ?? null) ? $_POST
         </div>
     </div>
 </section></main>
+<script src="<?= e(assetUrl('searchable-select.js')) ?>"></script>
 </body>
 </html>
