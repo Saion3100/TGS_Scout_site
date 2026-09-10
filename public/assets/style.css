@@ -331,6 +331,17 @@ body:has(.detail-sticky-cta) .back-to-top{bottom:calc(108px + env(safe-area-inse
 .error-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
 .error-actions .button{min-height:48px}
 
+/* Compact admin header. */
+.admin-shell:not(.admin-login-shell){padding-top:24px}
+.admin-toolbar{gap:16px;margin-bottom:18px}
+.admin-toolbar .section-number{margin-bottom:4px}
+.admin-toolbar h1{margin:0 0 4px;font-size:30px;line-height:1.35}
+.admin-toolbar .admin-lead{font-size:13px}
+.admin-toolbar-actions .button{min-height:42px;padding:0 16px}
+.admin-tabs{margin-bottom:20px}
+.admin-tabs a{min-height:44px;padding:10px 12px;font-size:14px}
+@media(max-width:700px){.admin-shell:not(.admin-login-shell){padding-top:18px}.admin-toolbar{gap:12px;margin-bottom:14px}.admin-toolbar h1{font-size:26px}.admin-toolbar-actions{flex-direction:row;flex-wrap:wrap;gap:8px}.admin-toolbar-actions>.button{width:auto}.admin-toolbar-actions .button{font-size:12px;padding:0 12px}.admin-tabs{margin-bottom:16px}.admin-tabs a{padding:10px 8px;font-size:13px}}
+
 /* Sidebar controls share the admin form typography and focus treatment. */
 .admin-list-sort,.admin-list-search{display:grid;gap:7px;min-width:0;margin:0 0 7px;font-size:13px;font-weight:800}
 .admin-list-sort select,.admin-list-search input{display:block;width:100%;min-width:0;height:48px;padding:11px 14px;border:1px solid #cfcfcf;border-radius:0;background:#fff;color:var(--ink);font:inherit}
