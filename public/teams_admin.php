@@ -4,6 +4,7 @@ require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap
 session_start();
 header('X-Robots-Tag: noindex, nofollow, noarchive', true);
 requireManagementLogin();
+handleManagementDeletion('teams');
 if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 function teamAdminText(string $name): string { return trim((string) ($_POST[$name] ?? '')); }
@@ -11,7 +12,7 @@ function teamAdminList(string $name): array { $parts=preg_split('/[\r\n,、]+/u'
 function teamAdminListText($values): string { return implode(PHP_EOL,valueList($values)); }
 function nextTeamId(array $teams): string {
     $max=0;
-    foreach($teams as $item){ if(preg_match('/^t(\d+)$/',(string)($item['id']??''),$m)===1) $max=max($max,(int)$m[1]); }
+    foreach(array_merge($teams, reservedManagementIds('team-')) as $item){ if(preg_match('/^t(\d+)$/',(string)($item['id']??''),$m)===1) $max=max($max,(int)$m[1]); }
     return 't'.str_pad((string)($max+1),2,'0',STR_PAD_LEFT);
 }
 
@@ -109,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['save_team'])) {
         if(!$isNew)$selectedId=teamAdminText('id');
     }
 }
+if(isset($_GET['deleted'])) $notice='作品を削除しました。';
 if(isset($_GET['saved']))$notice='作品データとQRコードを保存しました。';
 ?>
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>作品データ管理 | TGS SCOUT ADMIN</title><link rel="stylesheet" href="<?= e(assetUrl('style.css')) ?>"><link rel="stylesheet" href="<?= e(assetUrl('qr-admin.css')) ?>"></head><body id="page-top" class="admin-body"><?php renderBackToTop(); ?><main class="admin-main"><section class="admin-shell">
@@ -138,4 +140,4 @@ if(isset($_GET['saved']))$notice='作品データとQRコードを保存しま�
 </fieldset>
 <?php endif; ?><fieldset><legend><span>04</span>作品QRコード</legend><div class="qr-preview-grid"><div data-qr-value="<?=e($teamQrUrl)?>"></div><div><label>固定URL<input value="<?=e($teamQrUrl)?>" readonly></label><p class="form-note">変更を保存するとQRコードが自動で有効になります。</p><button type="button" class="button button-outline" data-qr-download>PNGをダウンロード</button><button type="button" class="button button-outline" data-qr-print>印刷する</button></div></div></fieldset>
 <?php endif; ?>
-<div class="admin-form-actions"><p><?= $isNew?'作品を新規登録します。メンバーは登録後に追加できます。':'作品情報とQRコードを同時に保存します。' ?></p><button class="button button-primary" name="save_team" value="1"><?= $isNew?'作品を追加する':'変更を保存する' ?> →</button></div></form><?php if(!$isNew && isAdminUser()): ?><form id="project-members-form" method="post" action="<?= e(url('teams_admin.php') . '?id=' . rawurlencode((string) $team['id']) . '#project-members') ?>"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="id" value="<?= e($team['id']) ?>"></form><?php endif; ?><?php else:?><div class="admin-empty"><span>WORK DATA</span><h2><?= !$teams && !isAdminUser() ? '参加作品は登録されていません' : '編集する作品を選択' ?></h2><p>左の一覧から作品を選んでください。</p></div><?php endif;?></div></div></section><script src="<?=e(url('assets/vendor/qrcode.min.js'))?>"></script><script src="<?=e(url('assets/qr-admin.js'))?>"></script><script src="<?= e(assetUrl('team-members-admin.js')) ?>"></script><script src="<?= e(assetUrl('admin-list-sort.js')) ?>"></script><script src="<?= e(assetUrl('searchable-select.js')) ?>"></script></main></body></html>
+<div class="admin-form-actions"><p><?= $isNew?'作品を新規登録します。メンバーは登録後に追加できます。':'作品情報とQRコードを同時に保存します。' ?></p><?php if (isAdminUser() && !$isNew): ?><button class="button admin-delete-button" name="delete_team" value="1" formnovalidate onclick="return confirm('この作品を削除しますか？参加メンバーの所属・出展登録も解除されます。元に戻せません。')">作品を削除する</button><?php endif; ?><button class="button button-primary" name="save_team" value="1"><?= $isNew?'作品を追加する':'変更を保存する' ?> →</button></div></form><?php if(!$isNew && isAdminUser()): ?><form id="project-members-form" method="post" action="<?= e(url('teams_admin.php') . '?id=' . rawurlencode((string) $team['id']) . '#project-members') ?>"><input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="id" value="<?= e($team['id']) ?>"></form><?php endif; ?><?php else:?><div class="admin-empty"><span>WORK DATA</span><h2><?= !$teams && !isAdminUser() ? '参加作品は登録されていません' : '編集する作品を選択' ?></h2><p>左の一覧から作品を選んでください。</p></div><?php endif;?></div></div></section><script src="<?=e(url('assets/vendor/qrcode.min.js'))?>"></script><script src="<?=e(url('assets/qr-admin.js'))?>"></script><script src="<?= e(assetUrl('team-members-admin.js')) ?>"></script><script src="<?= e(assetUrl('admin-list-sort.js')) ?>"></script><script src="<?= e(assetUrl('searchable-select.js')) ?>"></script></main></body></html>

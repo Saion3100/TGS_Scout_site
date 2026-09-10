@@ -6,6 +6,7 @@ require_once __DIR__ . '/errorHandling.php';
 require_once __DIR__ . '/JsonRepository.php';
 require_once __DIR__ . '/StudentPhoto.php';
 require_once __DIR__ . '/AdminAuth.php';
+require_once __DIR__ . '/AdminDelete.php';
 
 // Recheck publication status on each request, including after back navigation.
 header('Cache-Control: no-store, max-age=0');

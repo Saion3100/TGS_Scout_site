@@ -74,7 +74,7 @@ function renderAdminStart(string $title = 'データ管理'): void
         function nextStudentId(array $students): string
         {
             $maximum = 0;
-            foreach ($students as $student) {
+            foreach (array_merge($students, reservedManagementIds('student-')) as $student) {
                 if (preg_match('/^\d+$/', (string) ($student['id'] ?? '')) === 1) {
                     $maximum = max($maximum, (int) $student['id']);
                 }
@@ -164,7 +164,8 @@ function renderAdminStart(string $title = 'データ管理'): void
                 exit;
             }
 
-            $students = repository('students')->all();
+            handleManagementDeletion('students');
+$students = repository('students')->all();
             $section = (string) ($_GET['section'] ?? $_POST['section'] ?? 'students');
 
             if (!isAdminUser()) {
@@ -259,7 +260,8 @@ function renderAdminStart(string $title = 'データ管理'): void
                         $featured = ['student_id' => $selectedStudentId, 'order' => adminText('order'), 'focus' => adminText('focus'), 'teacher_comment' => adminText('teacher_comment')];
                     }
                 }
-                if (isset($_GET['saved'])) {
+                if (isset($_GET['deleted']) && $section === 'students') $notice = '学生を削除しました。';
+if (isset($_GET['saved'])) {
                     $notice = '注目学生を保存しました。トップページにも反映されています。';
                 }
                 if (isset($_GET['deleted'])) {
@@ -505,7 +507,7 @@ function renderAdminStart(string $title = 'データ管理'): void
                         </fieldset>
                     <?php endif; ?>
                     <div class="admin-form-actions">
-                        <p>保存するとJSONへ変換され、公開サイトへ即時反映されます。</p><button class="button button-primary" name="save_student" value="1"><?= $isNew ? '学生を追加する' : '変更を保存する' ?> <span>→</span></button>
+                        <p>保存するとJSONへ変換され、公開サイトへ即時反映されます。</p><?php if (isAdminUser() && !$isNew): ?><button class="button admin-delete-button" name="delete_student" value="1" formnovalidate onclick="return confirm('この学生を削除しますか？所属・注目学生の掲載も解除されます。元に戻せません。')">学生を削除する</button><?php endif; ?><button class="button button-primary" name="save_student" value="1"><?= $isNew ? '学生を追加する' : '変更を保存する' ?> <span>→</span></button>
                     </div>
                 </form>
             <?php else: ?><div class="admin-empty"><span>STUDENT DATA</span>
