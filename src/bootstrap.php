@@ -111,7 +111,14 @@ function absoluteUrl(string $path, array $query = []): string
     $configuredBaseUrl = trim((string) getenv('TGS_PUBLIC_BASE_URL'));
     $baseUrl = $configuredBaseUrl !== ''
         ? rtrim($configuredBaseUrl, '/')
-        : 'https://r1u2.v2011.coreserver.jp/it-work/TGS_Scout';
+        : 'https://game.itc.ac.jp/scout';
+    if (preg_match('~^https?://~i', $baseUrl) !== 1) {
+        $baseUrl = 'https://' . ltrim($baseUrl, '/');
+    }
+    // Legacy server configuration mistakenly used an FTP directory as a public URL.
+    if (preg_match('~^https?://(?:www\.)?itc\.ac\.jp/public_html/game\.itc\.ac\.jp/scout$~i', $baseUrl) === 1) {
+        $baseUrl = 'https://game.itc.ac.jp/scout';
+    }
     return $baseUrl . '/' . ltrim($path, '/') . ($query ? '?' . http_build_query($query) : '');
 }
 
@@ -135,6 +142,10 @@ function syncManagedQr(string $id, string $label, string $targetUrl, bool $isAct
 
 function managedQrUrl(string $id): string
 {
+    // Printed managed codes open the public page without relying on a remote redirect.
+    if (preg_match('/^(student|team)-(.+)$/', $id, $matches) === 1) {
+        return absoluteUrl($matches[1] . '_detail.php', ['id' => $matches[2]]);
+    }
     return absoluteUrl('qr.php', ['code' => $id]);
 }
 

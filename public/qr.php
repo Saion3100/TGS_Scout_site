@@ -31,6 +31,12 @@ if ($record === null || empty($record['is_active'])) {
 }
 
 $target = (string) ($record['target_url'] ?? '');
+// Managed QR destinations follow the current public URL, including existing records.
+if (preg_match('/^student-(.+)$/', $code, $matches) === 1) {
+    $target = absoluteUrl('student_detail.php', ['id' => $matches[1]]);
+} elseif (preg_match('/^team-(.+)$/', $code, $matches) === 1) {
+    $target = absoluteUrl('team_detail.php', ['id' => $matches[1]]);
+}
 if (filter_var($target, FILTER_VALIDATE_URL) === false || preg_match('~^https?://~i', $target) !== 1) {
     redirectToError(500, 'qr');
 }
