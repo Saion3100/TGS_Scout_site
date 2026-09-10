@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once is_file(__DIR__ . '/src/bootstrap.php') ? __DIR__ . '/src/bootstrap.php' : dirname(__DIR__) . '/src/bootstrap.php';
 session_start();
 header('X-Robots-Tag: noindex, nofollow, noarchive', true);
-if (empty($_SESSION['admin_authenticated'])) { header('Location: ' . url('admin.php')); exit; }
+requireAdminUser();
 
 if (empty($_SESSION['csrf_token'])) $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 $error = '';
@@ -66,12 +66,7 @@ $postedBoothNo = $error !== '' && is_string($_POST['booth_no'] ?? null) ? $_POST
         <div><p class="section-number">TGS SCOUT ADMIN</p><h1>出展作品管理</h1><p class="admin-lead">試遊台番号の登録・更新</p></div>
         <div class="admin-toolbar-actions"><a class="button button-outline" href="<?= e(url()) ?>">← 公開ページへ</a><form method="post" action="<?= e(url('admin.php')) ?>"><button class="button button-primary" name="logout" value="1">ログアウト</button></form></div>
     </div>
-    <nav class="admin-tabs" aria-label="管理データ">
-        <a href="<?= e(url('admin.php')) ?>">学生</a>
-        <a href="<?= e(url('admin.php')) ?>?section=featured">注目学生</a>
-        <a href="<?= e(url('teams_admin.php')) ?>">作品</a>
-        <a class="is-active" aria-current="page" href="<?= e(url('exhibited_admin.php')) ?>">出展作品</a>
-    </nav>
+    <?php renderManagementTabs('exhibited'); ?>
     <?php if (isset($_GET['saved'])): ?><p class="admin-success">試遊台番号を保存しました。</p><?php endif; ?>
     <?php if ($error !== ''): ?><p class="admin-error" role="alert"><?= e($error) ?></p><?php endif; ?>
     <div class="admin-grid">

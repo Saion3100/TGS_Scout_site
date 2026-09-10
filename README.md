@@ -4,14 +4,19 @@
 
 ## データ管理画面
 
-`/admin.php` から学生・作品JSONを追加、編集できます。管理画面は環境変数
-`TGS_ADMIN_PASSWORD` が設定されている場合だけ利用できます。
+`/admin.php` の共通フォームからログインできます。管理者はID `admin` と `TGS_ADMIN_PASSWORD`、
+学生は自分の学生IDまたは氏名（漢字）と `TGS_STUDENT_PASSWORD`（学生共通）を入力します。
+それぞれ未設定の区分はログインできません。ローカルでは非公開の `.env` に設定できます。
+学生は自分のプロフィール・写真と参加作品のみ編集でき、公開状態・試遊台番号・参加メンバー・注目学生は管理者が管理します。
+共通パスワードのため、学生IDを入力した人の本人確認は行いません。
+詳細は [adminページ仕様書](docs/adminページ仕様書.md) を参照してください。
 
 Apacheで `.htaccess` が使えるFTPサーバーでは、公開ディレクトリの `.htaccess` に
 次のように設定できます（実際には十分長い固有のパスワードを使用してください）。
 
 ```apacheconf
 SetEnv TGS_ADMIN_PASSWORD "change-this-password"
+SetEnv TGS_STUDENT_PASSWORD "different-student-password"
 ```
 
 PHPプロセスに `data/` の書き込み権限が必要です。一般的なレンタルサーバーでは

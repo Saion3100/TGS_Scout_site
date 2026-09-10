@@ -6,7 +6,7 @@ header('Cache-Control: no-store');
 try {
     $student = findById(data('students'), (string) ($_GET['id'] ?? ''));
     session_start();
-    $admin = !empty($_SESSION['admin_authenticated']);
+    $admin = $student !== null && canEditStudent((string) $student['id']);
     session_write_close();
     if (!$student || (empty($student['is_active']) && !$admin) || empty($student['photo_drive_file_id'])) {
         http_response_code(404); exit;
