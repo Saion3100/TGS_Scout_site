@@ -7,6 +7,9 @@ header('X-Robots-Tag: noindex, nofollow, noarchive', true);
 $configuredPassword = (string) getenv('TGS_ADMIN_PASSWORD');
 $error = '';
 $notice = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($_POST) && (int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 0) {
+    $error = '送信サイズがサーバーの上限を超えた可能性があります。写真を小さくして再選択してください。';
+}
 
 function renderAdminStart(string $title = 'データ管理'): void
 {
@@ -24,7 +27,7 @@ function renderAdminStart(string $title = 'データ管理'): void
 
 function renderAdminEnd(): void
 {
-    ?><script src="<?= e(assetUrl('vendor/qrcode.min.js')) ?>"></script><script src="<?= e(assetUrl('qr-admin.js')) ?>"></script></main></body></html><?php
+    ?><script src="<?= e(assetUrl('vendor/qrcode.min.js')) ?>"></script><script src="<?= e(assetUrl('qr-admin.js')) ?>"></script><script src="<?= e(assetUrl('student-photo-admin.js')) ?>"></script></main></body></html><?php
 }
 
 function adminText(string $name): string
@@ -231,8 +234,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
             throw new InvalidArgumentException('編集対象の学生が見つかりません。');
         }
         $studentId = $isNew ? nextStudentId($students) : $originalId;
-        $student = studentFromPost($studentId);
+        $existing = $isNew ? [] : findById($students, $originalId);
+        $student = array_merge($existing, studentFromPost($studentId));
+        if (isset($_FILES['student_photo']) && ($_FILES['student_photo']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+            if (!isset($_POST['photo_consent'])) throw new InvalidArgumentException('写真の掲載同意を確認してください。');
+            try {
+                $student['photo_drive_file_id'] = StudentPhoto::upload($_FILES['student_photo'], $studentId);
+                $student['photo_url'] = url('student_photo.php') . '?id=' . rawurlencode($studentId);
+            } catch (RuntimeException $photoError) {
+                error_log('Student photo upload: ' . $photoError->getMessage());
+                throw new InvalidArgumentException('Google Driveに写真を保存できませんでした。認証設定・権限・通信を確認して、写真を再選択してください。');
+            }
+        }
         repository('students')->saveById($student, $isNew);
+        try {
+            StudentPhoto::trashPrevious($existing, $student, repository('students')->all());
+        } catch (Throwable $cleanupError) {
+            error_log('Student photo cleanup: ' . $cleanupError->getMessage());
+            $_SESSION['photo_cleanup_warning'] = '新しい写真と学生情報は保存済みですが、旧写真をゴミ箱へ移せませんでした。Driveの権限・通信を確認してください。';
+        }
         syncManagedQr('student-' . $studentId, '学生：' . $student['name'], absoluteUrl('student_detail.php', ['id' => $studentId]), !empty($student['is_active']));
         header('Location: ' . url('admin.php') . '?id=' . rawurlencode($student['id']) . '&saved=1');
         exit;
@@ -243,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_student'])) {
         }
 
         $error = $exception->getMessage();
-        $student = studentFromPostFallback();
+        $student = array_merge($isNew ? [] : (findById($students, $originalId ?? '') ?? []), studentFromPostFallback());
         $selectedId = (string) ($student['id'] ?? '');
     }
 }
@@ -261,6 +281,10 @@ function studentFromPostFallback(): array
 }
 
 if (isset($_GET['saved'])) { $notice = '学生データを保存しました。公開ページにも反映されています。'; }
+if (isset($_SESSION['photo_cleanup_warning'])) {
+    $error = (string) $_SESSION['photo_cleanup_warning'];
+    unset($_SESSION['photo_cleanup_warning']);
+}
 $roles = array_values(array_unique(array_merge(['プログラマー', 'デザイナー', 'プランナー', 'サウンド', 'その他'], teamFilterOptions($students, 'role'), valueList($student['role'] ?? []))));
 $courses = array_values(array_unique(array_filter(array_column($students, 'course'))));
 $graduationYears = array_values(array_unique(array_filter(array_column($students, 'graduation_year'))));
@@ -275,7 +299,7 @@ renderAdminStart('学生データ管理');
     <div class="admin-editor">
       <?php if ($student !== null): ?>
       <div class="admin-editor-head"><div><p class="section-number"><?= $isNew ? 'NEW STUDENT' : 'EDIT STUDENT' ?></p><h2><?= $isNew ? '学生を新規追加' : e($student['name'] ?? '学生を編集') ?></h2></div><span>必須項目 <b>*</b></span></div>
-      <form method="post" class="admin-student-form">
+      <form method="post" enctype="multipart/form-data" class="admin-student-form">
         <input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>"><input type="hidden" name="mode" value="<?= $isNew ? 'new' : 'edit' ?>"><input type="hidden" name="original_id" value="<?= e($student['id'] ?? '') ?>">
         <fieldset><legend><span>01</span>基本情報</legend><div class="admin-form-grid">
           <label><span>氏名 <b>*</b></span><input name="name" value="<?= e($student['name'] ?? '') ?>" required></label>
@@ -286,6 +310,22 @@ renderAdminStart('学生データ管理');
           <div class="admin-span-2"><p>職種（複数選択可・1つ以上必須） <b>*</b></p><div class="admin-check-grid"><?php foreach ($roles as $value): ?><label><input type="checkbox" name="role[]" value="<?= e($value) ?>" <?= in_array($value, valueList($student['role'] ?? []), true) ? 'checked' : '' ?>><span><?= e($value) ?></span></label><?php endforeach; ?></div></div>
           <label class="admin-span-2">希望職種<textarea name="desired_roles" rows="3" placeholder="1行に1項目"><?= e(adminListText($student['desired_roles'] ?? [])) ?></textarea></label>
         </div></fieldset>
+        <fieldset data-photo-editor><legend>プロフィール写真</legend>
+          <p class="form-note">横3：縦4で切り抜きます。元画像のサイズ指定はありません（10MB以下）。写真は学生情報と一緒に保存されます。</p>
+          <?php if (studentImageUrl($student) !== ''): ?><img src="<?= e(studentImageUrl($student)) ?>" alt="現在のプロフィール写真" style="width:150px;aspect-ratio:3/4;object-fit:contain"><?php endif; ?>
+          <?php $photoError = StudentPhoto::configurationError(); if ($photoError !== ''): ?><p class="admin-error"><?= e($photoError) ?></p><?php endif; ?>
+          <label>新しい写真<input type="file" accept="image/jpeg,image/png,image/webp" data-photo-file <?= $photoError !== '' ? 'disabled' : '' ?>></label>
+          <div data-photo-controls hidden>
+            <canvas width="300" height="400" data-photo-canvas style="display:block;max-width:100%;touch-action:none;border:1px solid #aaa" aria-label="写真の切り抜きプレビュー"></canvas>
+            <label>拡大率<input type="range" min="1" max="4" step="0.01" value="1" data-photo-zoom></label>
+            <label>左右の位置<input type="range" min="0" max="100" value="50" data-photo-x></label>
+            <label>上下の位置<input type="range" min="0" max="100" value="50" data-photo-y></label>
+            <button type="button" class="button button-outline" data-photo-confirm>この範囲で確定</button>
+            <button type="button" class="button button-outline" data-photo-cancel>写真の変更を取り消す</button>
+            <label><input type="checkbox" name="photo_consent" value="1">本人の写真掲載への同意を確認しました</label>
+          </div>
+          <p role="status" data-photo-status></p>
+        </fieldset>
         <fieldset><legend><span>02</span>プロフィール・スキル</legend><div class="admin-form-grid">
           <label class="admin-span-2"><span>見出し <b>*</b></span><input name="headline" value="<?= e($student['headline'] ?? '') ?>" required></label>
           <label class="admin-span-2"><span>プロフィール <b>*</b></span><textarea name="bio" rows="6" required><?= e($student['bio'] ?? '') ?></textarea></label>

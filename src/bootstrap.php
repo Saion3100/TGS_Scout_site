@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/layout.php';
 require_once __DIR__ . '/errorHandling.php';
 require_once __DIR__ . '/JsonRepository.php';
+require_once __DIR__ . '/StudentPhoto.php';
 
 // Recheck publication status on each request, including after back navigation.
 header('Cache-Control: no-store, max-age=0');
@@ -201,6 +202,7 @@ function studentTeams(string $studentId): array
 
 function studentImageUrl(array $student): string
 {
+    if (!empty($student['photo_drive_file_id'])) return url('student_photo.php') . '?id=' . rawurlencode((string) $student['id']);
     return imageSourceUrl((string) ($student['photo_url'] ?? $student['icon_url'] ?? ''));
 }
 
