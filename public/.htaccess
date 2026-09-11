@@ -1,9 +1,9 @@
-SetEnv TGS_ADMIN_PASSWORD "krcit25"
 
-ErrorDocument 403 /it-work/TGS_Scout/error.php?status=403
-ErrorDocument 404 /it-work/TGS_Scout/error.php?status=404
-ErrorDocument 500 /it-work/TGS_Scout/error.php?status=500
-ErrorDocument 503 /it-work/TGS_Scout/error.php?status=503
+ErrorDocument 403  /scout/error.php?status=403
+ErrorDocument 404  /scout/error.php?status=404
+ErrorDocument 500  /scout/error.php?status=500
+ErrorDocument 503  /scout/error.php?status=503
+
 # Block HTTP access to environment files.
 <FilesMatch "^\.env(?:\..*)?$">
     Require all denied
