@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
-function url(string $path = ''): string
+require_once __DIR__ . '/routes.php';
+
+redirectLegacyRoute();
+
+function url(string $path = '', array $query = []): string
 {
     static $basePath;
 
@@ -11,7 +15,7 @@ function url(string $path = ''): string
         $basePath = in_array($directory, ['', '.', '/'], true) ? '' : rtrim($directory, '/');
     }
 
-    return $basePath . ($path === '' || $path === '/' ? '/' : '/' . ltrim($path, '/'));
+    return $basePath . '/' . routePath($path, $query);
 }
 
 function assetUrl(string $path): string

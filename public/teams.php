@@ -24,7 +24,7 @@ renderHeader('出展作品', 'teams');
     <div class="listing-meta"><span aria-live="polite"><strong data-team-result-count><?= count($teams) ?></strong> GAMES</span> <span>TGS 2026 EXHIBITION</span></div>
     <div class="team-grid team-grid-large">
         <?php foreach ($teams as $i => $team): ?>
-        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e(json_encode(valueList($team['genre'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-engine="<?= e(json_encode(valueList($team['engine'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-platform="<?= e(json_encode(valueList($team['platforms'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
+        <a class="team-card theme-<?= e($team['theme']) ?>" data-team data-genre="<?= e(json_encode(valueList($team['genre'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-engine="<?= e(json_encode(valueList($team['engine'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-platform="<?= e(json_encode(valueList($team['platforms'] ?? []), JSON_THROW_ON_ERROR)) ?>" data-keywords="<?= e($team['team_name'] . ' ' . $team['game_name']) ?>" href="<?= e(url('team_detail.php', ['id' => $team['id']])) ?>">
             <div class="game-art">
                 <span class="game-number">0<?= $i + 1 ?></span>
                 <strong><?= e($team['game_name']) ?></strong>

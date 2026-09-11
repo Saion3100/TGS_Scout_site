@@ -119,7 +119,7 @@ function absoluteUrl(string $path, array $query = []): string
     if (preg_match('~^https?://(?:www\.)?itc\.ac\.jp/public_html/game\.itc\.ac\.jp/scout$~i', $baseUrl) === 1) {
         $baseUrl = 'https://game.itc.ac.jp/scout';
     }
-    return $baseUrl . '/' . ltrim($path, '/') . ($query ? '?' . http_build_query($query) : '');
+    return $baseUrl . '/' . routePath($path, $query);
 }
 
 function syncManagedQr(string $id, string $label, string $targetUrl, bool $isActive): void
@@ -296,7 +296,7 @@ function studentCard(array $student): void
 {
     if (!isStudentPublic($student)) return;
     ?>
-<a class="student-card" href="<?= e(url('student_detail.php')) ?>?id=<?= e($student['id']) ?>">
+<a class="student-card" href="<?= e(url('student_detail.php', ['id' => $student['id']])) ?>">
     <div class="portrait" aria-hidden="true"><span><?= e(firstCharacter($student['name'])) ?></span><?php if (studentImageUrl($student) !== ''): ?><img class="student-photo" src="<?= e(studentImageUrl($student)) ?>" alt="" loading="lazy" referrerpolicy="no-referrer"><?php endif; ?></div>
     <div class="student-card-body">
         <span class="role-label"><?= e(listText($student['role'] ?? [])) ?></span>

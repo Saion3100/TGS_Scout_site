@@ -38,7 +38,7 @@ renderHeader($student['name'], 'students');
 <section class="works section-pad">
     <div class="section-head"><div><p class="section-number">03 — WORKS</p><h2>参加作品</h2></div></div>
     <div class="team-grid"><?php foreach ($teams as $i => $team): ?>
-        <a class="team-card compact theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php')) ?>?id=<?= e($team['id']) ?>">
+        <a class="team-card compact theme-<?= e($team['theme']) ?>" href="<?= e(url('team_detail.php', ['id' => $team['id']])) ?>">
             <div class="game-art"><strong><?= e($team['game_name']) ?></strong><?php teamThumbnail($team); ?></div>
             <div class="team-card-body"><span><?= e($team['student_role']) ?></span><h3><?= e($team['game_name']) ?></h3><p><?= e(listText($team['genre'] ?? [])) ?></p></div>
         </a>
@@ -69,8 +69,8 @@ renderHeader($student['name'], 'students');
     <?php endforeach; ?>
 </section>
 <?php endif; ?>
-<section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
-<a class="detail-sticky-cta" href="<?= e(url('contact.php')) ?>?student=<?= e($student['id']) ?>" aria-label="<?= e($student['name']) ?>さんについて学校へ相談する">
+<section class="detail-cta"><p><?= e($student['name']) ?>さんについて話を聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php', ['student' => $student['id']])) ?>">学校へ問い合わせる <span>→</span></a></section>
+<a class="detail-sticky-cta" href="<?= e(url('contact.php', ['student' => $student['id']])) ?>" aria-label="<?= e($student['name']) ?>さんについて学校へ相談する">
     <span><small>気になる学生が見つかったら</small>この学生について相談</span><b aria-hidden="true">→</b>
 </a>
 <?php renderFooter(); ?>

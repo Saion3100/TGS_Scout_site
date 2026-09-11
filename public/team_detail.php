@@ -54,8 +54,8 @@ renderHeader($team['game_name'], 'teams');
         <?php endforeach; ?>
     </div>
 </section>
-<section class="detail-cta"><p>この作品について詳しく聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php')) ?>?team=<?= e($team['id']) ?>">学校へ問い合わせる <span>→</span></a></section>
-<a class="detail-sticky-cta" href="<?= e(url('contact.php')) ?>?team=<?= e($team['id']) ?>" aria-label="作品「<?= e($team['game_name']) ?>」について学校へ相談する">
+<section class="detail-cta"><p>この作品について詳しく聞きたい</p><a class="button button-primary" href="<?= e(url('contact.php', ['team' => $team['id']])) ?>">学校へ問い合わせる <span>→</span></a></section>
+<a class="detail-sticky-cta" href="<?= e(url('contact.php', ['team' => $team['id']])) ?>" aria-label="作品「<?= e($team['game_name']) ?>」について学校へ相談する">
     <span><small>気になる作品が見つかったら</small>この作品について相談</span><b aria-hidden="true">→</b>
 </a>
 <?php renderFooter(); ?>

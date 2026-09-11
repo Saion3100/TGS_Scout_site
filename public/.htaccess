@@ -8,3 +8,12 @@ ErrorDocument 503  /scout/error.php?status=503
 <FilesMatch "^\.env(?:\..*)?$">
     Require all denied
 </FilesMatch>
+
+# Explicit routes keep physical PHP scripts and GET parameters intact.
+RewriteEngine On
+RewriteRule ^students/([A-Za-z0-9_-]+)/?$ student_detail.php?id=$1 [QSA,END]
+RewriteRule ^teams/([A-Za-z0-9_-]+)/?$ team_detail.php?id=$1 [QSA,END]
+RewriteRule ^qr/([A-Za-z0-9_-]+)/?$ qr.php?code=$1 [QSA,END]
+RewriteRule ^contact/student/([A-Za-z0-9_-]+)/?$ contact.php?student=$1 [QSA,END]
+RewriteRule ^contact/team/([A-Za-z0-9_-]+)/?$ contact.php?team=$1 [QSA,END]
+RewriteRule ^(students|teams|guide|privacy|contact|admin|teams_admin|mapping_admin|exhibited_admin)/?$ $1.php [END]

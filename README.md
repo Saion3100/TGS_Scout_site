@@ -1,5 +1,38 @@
 # TGS SCOUT 2026
 
+## URL整形（Apache環境）
+
+公開URLはGET通信のまま、次の形式で表示します。`/scout`などの公開ディレクトリは自動で付与されます。
+
+| 従来のURL | 整形後 |
+| --- | --- |
+| `/students.php` | `/students` |
+| `/student_detail.php?id=5` | `/students/5` |
+| `/teams.php` | `/teams` |
+| `/team_detail.php?id=t01` | `/teams/t01` |
+| `/contact.php?student=5` | `/contact/student/5` |
+| `/contact.php?team=t01` | `/contact/team/t01` |
+| `/qr.php?code=student-5` | `/qr/student-5` |
+| `/guide.php`・`/privacy.php`・`/contact.php` | `/guide`・`/privacy`・`/contact` |
+| `/admin.php` | `/admin` |
+
+`teams_admin`・`mapping_admin`・`exhibited_admin`も拡張子なしになります。管理画面のID・保存結果や問い合わせの完了状態など、上記以外のパラメータはクエリに残します。画像配信の`student_photo.php`、API、エラーページは従来のURLを使います。以下の既存説明にある旧URLも引き続き利用できます。
+
+### 配置と動作
+
+- Apache 2.4以上で`mod_rewrite`を有効にし、公開ディレクトリで`AllowOverride FileInfo`（既存のアクセス制限には`AuthConfig`も必要）または`AllowOverride All`を許可してください。
+- `public/.htaccess`と変更したPHP・JavaScriptを一緒に配置してください。`src/routes.php`も必要です。既存のErrorDocument・環境ファイルへのアクセス制限は維持しています。
+- `.htaccess`は整形URLを既存PHPへ内部書き換えします。PHP側の`filter_input(INPUT_GET, ...)`や`$_GET`は引き続き利用します。
+- 明示的に旧URLへアクセスしたGET/HEADは301で整形URLに移動します。既存QRコードやブックマークは再発行不要です。POSTと内部エラー処理はこのリダイレクトの対象外です。
+- ID・QRコードに使用できるパス文字は英数字・ハイフン・アンダースコアです。それ以外の識別子は互換性のため旧形式で生成します。
+- URL生成は`url('student_detail.php', ['id' => $id])`のようにクエリを第2引数で渡します。絶対URLは`absoluteUrl()`を使います。QR画像の保存ファイル名も整形URLに対応しています。
+
+### ローカル確認
+
+既存の`php -S localhost:8000 -t public`も利用できます。PHP内蔵サーバーは`.htaccess`を処理しないため、この環境ではリンク・QR URLを従来形式で生成します。整形URLと301リダイレクトの動作確認にはApache環境を使用してください。
+
+`php tests/routes.php`でURL生成を確認できます。Apacheへの配置後は、学生・作品詳細への直接アクセス、旧URLからの301、問い合わせの入力・確認・送信、QRリンク、CSS・画像、管理画面のログイン・保存を確認してください。
+
 学生タブの写真アップロード・Google共有ドライブ設定は [学生プロフィール写真仕様書](docs/学生プロフィール写真仕様書.md) を参照してください。PHPのGD・cURL・OpenSSLとサービスアカウント設定が必要です。
 
 ## データ管理画面
